@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+<!--
+table.bordered {border-collapse: collapse; border: 2px solid gray;}
+h1      {text-align: center;}
+td.left {text-align: left;}
+td.code {text-align: left;
+         font-family: courier-new, monospace;
+         font-size: 0.9em;}
+pre.plain_code {text-align: left;
+                font-family: courier, monospace;
+                font-size: 0.8em;}
+pre.highlit_code {text-align: left;
+                  font-family: courier, monospace;
+                  background-color:#e8e8e8;
+                  font-size: 0.8em;}
+th {border: 2px solid gray; background-color: cyan;}
+td {border: 2px solid gray;}
+div.top {background-color:cyan; width:870px}
+div.body {width:900px; background-color : #ffffff;}
+h3 {background-color:yellow;}
+b.bright {color:magenta;}
+i.bright {color:magenta;}
+em.standout {color:blue;}
+.controlname {font-weight:bold;font-style:italic;}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+Building P3ICLI From Sources On A Windows Host
+</title>
+</head>
+<body>
+<div class="body">
+<h1>
+Building P3ICLI From Sources On A Windows Host
+</h1>
+<h3>
+Required Build Tools
+</h3>
+<ul>
+    <li>WinZip or <a href="http://www.7-zip.org/">7-zip</a>.</li>
+    <li>The <b>flex</b> scanner and <b>byacc</b> parser included in the
+        <a href="http://cygwin.com/">cygwin</a> Linux emulation package.
+    </li>
+    <li>Microsoft Developer Studio 2012 or later.  Earlier versions of
+        DevStudio may also build the application correctly.
+    </li>
+    <li>
+        <b class="bright">Caution:</b> P3ICLI will not build "out of the
+        box" with DevStudio 2019 (and later) due to missing afx*.h include
+        files, which are not installed by default.  Follow
+        <a href="https://developercommunity.visualstudio.com/content/problem/520396/visual-studio-2019-appears-to-be-missing-afxh-incl.html">
+        this link</a> for instructions on how to install these missing files.
+        <p>
+        Synopsis of the aforementioned link..."Make sure you have selected
+        these options when installing Visual Studio:"
+        </p>
+        <img src="build_images/vs_install_config_for_missing_include_files.png"
+         alt="" />
+    </li>
+</ul>
+<h3>
+Start By Downloading And Unpacking The Source
+</h3>
+<ol>
+    <li>Navigate to the P3ICLI
+        <a href="https://sourceforge.net/projects/p3icli/files/source/">
+        source repository</a> and download a version of your choice (the latest
+        version usually makes the most sense).
+    </li>
+    <li>Move the downloaded, compressed tarball to an <b>empty</b> folder.</li>
+    <li>Use WinZip or 7-zip to uncompress and extract the contents of the
+        tarball.  The sources will be unpacked in a new subfolder named
+        <b class="bright">p3icli</b>.
+    </li>
+</ol>
+<h3>
+If Cygwin Is Already Installed...Almost Done
+</h3>
+If cygwin is already installed, there's not much more to do.
+<ol>
+<li value="4">
+    Open a bash prompt and verify that
+    <b>flex</b>, <b>byacc</b>, and <b>m4</b> (required by flex)
+    are installed by typing these shell commands:
+    <blockquote>
+    <pre class="highlit_code">
+$ type flex
+$ type byacc
+$ type m4
+</pre>
+    </blockquote>
+    If bash locates all three programs via the PATH environment
+    variable, the response looks similar to this:
+    <blockquote>
+    <pre class="highlit_code">
+$ type flex
+flex is /usr/bin/flex
+$ type byacc
+byacc is /usr/bin/byacc
+$ type m4
+m4 is /usr/bin/m4
+</pre>
+    </blockquote>
+    <p>
+    If any of the tools is missing, re-run cygwin's setup.exe and install them.
+    Flex and byacc are both found under the "Devel" category.  M4 is found
+    under the "Interpreters" category.
+    After installation, verify that <b>flex</b>, <b>byacc</b>, and <b>m4</b>
+    are accessible by bash as described above.
+</li>
+<li>
+    Navigate with File Explorer to the
+    <b class="bright">p3icli</b>
+    folder created in step 3 above and double-click the file
+    <b><i>p3icli.sln</i></b> to
+    launch Developer Studio and open the project.
+</li>
+</ol>
+That's it.  Happy hacking.
+<h3>
+If Cygwin Is <u>Not</u> Installed....
+</h3>
+If cygwin is <u>not</u> installed, the assumption will be made that you've
+never used this linux emulation implementation before and so, step-by-step
+installation instructions are necessary.  Note that cygwin's installation chews
+up considerable disk
+space, so this tool must be installed on a host that
+can comfortably absorb the loss of
+<b class="bright">1&nbsp;GB</b> of free space.
+<ol>
+<li value="6">
+    Visit <a href="https://cygwin.com/">cygwin.com</a> with a web browser and
+    download the 32-bit version of <b>setup-x86.exe</b> .
+</li>
+<li>
+    Move <b>setup-x86.exe</b> to an empty folder and run the program.
+</li>
+<li>
+    Click the Next button in the initial dialog box.<br />
+    <img src="build_images/initial_cygwin_setup_dlg_box.png" alt="" />
+    <br />&nbsp;<br />
+</li>
+<li>
+    In the ensuing dialog box, check "Install from Internet" and click the Next
+    button.<br />
+    <img src="build_images/choose_install_dlg_box.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    In the ensuing dialog box, accept the default root installation folder
+    (c:\cygwin) and ensure that the "Install For All Users" option is ticked.
+    Click the Next button.<br />
+    <img src="build_images/root_install_folder.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Now specify a folder where downloaded (compressed) packages will be
+    copied from the Internet.  Think of this as a scratch, working folder for
+    the upcoming installation of cygwin tools.
+    <blockquote>
+        Do <b class="bright">not</b> specify c:\cygwin as
+        the scratch (aka local package) folder.
+    </blockquote>
+    <p>
+    After specifying a scratch folder, click the Next button.<br />
+    <img src="build_images/choose_pkg_install_folder.png"  alt=""/>
+    </p>
+</li>
+<li>
+    In the ensuing dialog box, specify Internet connection settings appropriate
+    for your environment and click the Next button.<br />
+    <img src="build_images/specify_internet_connection.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Choose a download site.  Pick a site that's geographically
+    "nearby" and then click the Next button.<br />
+    <img src="build_images/choose_download_site.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    The cygwin installer will connect with the selected site, download a list
+    of available packages (e.g., programs, libraries, documentation, etc.),
+    and display them in a tree-structured dialog box.  Many packages
+    will be selected for installation by default, but
+    <b class="bright">not</b>
+    <b>flex</b>, <b>byacc</b>, or <b>m4</b> (the latter is invoked by
+    flex).<br />
+    <img src="build_images/initial_package_selection_dlg_box.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Search for <b>flex</b>&nbsp;.<br />
+    <img src="build_images/search_for_flex.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Select <b>flex</b> under the "Devel" category.<br />
+    <img src="build_images/select_flex.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Search for <b>m4</b>&nbsp;.<br />
+    <img src="build_images/search_for_m4.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Select <b>m4</b> under the "Interpreters" category.<br />
+    <img src="build_images/select_m4.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Search for <b>byacc</b>&nbsp;.
+    <img src="build_images/search_for_byacc.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Select <b>byacc</b> under the "Devel" category and then press Next to
+    begin the actual cygwin installation.<br />
+    <img src="build_images/select_byacc.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Installation takes quite some time.  Be patient.<br />
+    <img src="build_images/install_progress.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    At the completion of the installation, creation of icons is optional.
+    Click the Finish button to finish cygwin installation.<br />
+    <img src="build_images/click_finish.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Use the Windows Control Panel to append ";c:\cygwin\bin" to the
+    <b class="bright">PATH</b>
+    environment variable.  <b class="bright">Don't skip this step.</b>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Use the WinKey+R shortcut to start a "Run" dialog box. Type "bash" and then
+    click OK to start a bash shell.
+    <img src="build_images/run_bash.png"  alt=""/>
+    <br />&nbsp;<br />
+</li>
+<li>
+    Proceed to step 4 above and verify that
+    <b>flex</b>, <b>byacc</b>, and <b>m4</b>
+    are installed and accessible via the PATH environment variable.
+</li>
+<li>
+    Navigate with File Explorer to the
+    <b class="bright">p3icli</b>
+    folder created in step 3 above and double-click the file
+    <b><i>p3icli.sln</i></b> to
+    launch Developer Studio and open the project.
+</li>
+</ol>
+Whew...that's a lot of work to install a handful of build tools! Happy hacking.
+</div>
+</body>
+</html>

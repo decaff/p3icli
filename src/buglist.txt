@@ -1,0 +1,52 @@
+     ==================================================================
+     PowerPoint Picture Insert Command Line Interface (P3ICLI) Bug List
+     ==================================================================
+
+- If File Explorer (nee Windows Explorer) preview mode displays a powerpoint
+  presentation when p3icli scripting begins, an attempt will be made to connect
+  to the (crippled) presentation resident in the Explorer's preview pane.  The
+  crippled presentation is essentially read-only, so a cascade of errors ensues
+  and p3icli aborts.  The -Ex command line switch can be used to automatically
+  close File Explorer under certain conditions.  Refer to the documentation
+  topic entitled "PowerPoint Instability On Windows 10" for further discussion.
+
+- In an Office 2010 or later environment, if a "start ppt minimized" command
+  is used to start PPT, the application's window pops open (to a "normal"
+  state) as soon as a slide presentation is created.  This is a PPT
+  regression (with respect to all previous versions of the program).
+
+- For completeness sake, <int> tokens should allow an optional '+' (not
+  just '-').
+
+- When a template containing a slide master configuration created with a
+  newer version of PPT is subsequently referenced by P3ICLI while
+  interfacing with older versions of PPT, slide index out-of-range errors
+  may be reported.  This problem has been observed when testing Office
+  2003 and 2007 in a single use case that most users will not encounter.
+  There is no solution for this problem via P3ICLI changes.  In such OOR
+  situations, try these workarounds:
+
+    b) Upgrade to a newer PPT version, or
+    c) Delete unused master slides until OOR errors no longer occur, or
+    a) If the template is stored in .ppt format, save it in a newer format.
+       For example:  .ppt => .pptx.
+
+- P3ICLI does not search for multiple shapes tagged with the same
+  user-specified label (e.g., all caption shapes labeled "cap2").
+  Instead P3ICLI stops searching after the first label match.
+  Consequently, do _not_ create shapes with duplicate labels
+  (this is easy to do when copying and pasting PowerPoint shapes).
+  Duplicate shape labels lead to extremely vexing script errors.  For
+  example, given two captions labeled "cap2", this command only
+  labels _one_ caption:
+
+      cap2 "My caption 2 text"
+
+
+     ==================================================================
+                           Program Status Note
+     ==================================================================
+     P3ICLI is a mature product, now in maintenance stage.  Send
+     enhancement requests and/or bug reports to Clark Morgan, here:
+
+                spammers.are.scum@gmail.com

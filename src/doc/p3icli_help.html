@@ -1,0 +1,2666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+<!--
+table.bordered {border-collapse: collapse; border: 2px solid gray;}
+td.left {text-align: left;}
+td.code {text-align: left;
+         font-family: courier-new, monospace;
+         font-size: 0.9em;}
+pre.plain_code {text-align: left;
+                font-family: courier, monospace;
+                font-size: 0.8em;}
+pre.highlit_code {text-align: left;
+                  font-family: courier, monospace;
+                  background-color:#e8e8e8;
+                  font-size: 0.8em;}
+th {border: 2px solid gray; background-color: cyan;}
+td {border: 2px solid gray;}
+div.top {background-color:cyan; width:870px}
+div.body {width:900px}
+div.small_note {font-size: 0.70em;}
+h3 {background-color:yellow;}
+b.bright {color:magenta;}
+i.bright {color:magenta;}
+em.standout {color:blue;}
+.controlname {font-weight:bold;font-style:italic;}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+P3ICLI (PowerPoint Picture Insert Command Line Interface) Reference Manual
+</title>
+</head>
+<body bgcolor="#FFFFFF">
+<h1 align="center">
+P3ICLI (PowerPoint Picture Insert Command Line Interface)<br />Reference Manual
+</h1>
+<h4 align="center">
+Version 3.2
+</h4>
+<div class="top">
+<h3>
+Table Of Contents
+</h3>
+<ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#theory_of_operation">How Does It Work?</a></li>
+    <li><a href="#creating_template">Creating A Template</a></li>
+    <li><a href="#labeling_template_shapes_office_2010">
+                    Labeling Template Shapes (Office 2010)</a></li>
+    <li><a href="#labeling_template_shapes_office_2013">
+                    Labeling Template Shapes (Office 2013)</a></li>
+    <li><a href="#labeling_template_shapes_office_2016_2019">
+                    Labeling Template Shapes (Office 2016/2019)</a></li>
+    <li><a href="#web_alternative_text_strings">
+                    Web Alternative Text Strings</a></li>
+    <li><a href="#naming_template_slides">Naming Template Slides</a></li>
+    <li><a href="#notation">Syntax/Semantics Notation</a></li>
+    <li><a href="#script_format">Script File Format</a></li>
+    <li><a href="#script_syntax">Scripting Syntax</a></li>
+    <li><a href="#invocation">P3ICLI Command Line Invocation</a></li>
+    <li><a href="#example_cmdline">Example Command Line Invocation</a></li>
+    <li><a href="#exit_code">P3ICLI Exit Code</a></li>
+    <li><a href="#log_file_format">Log File Format</a></li>
+    <li>
+        <a href="#example_using_open">Example Script Using Open Template</a>
+    </li>
+    <li>
+        <a href="#example_using_insert">Example Script Using Insert Slide</a>
+    </li>
+    <li>
+        <a href="#example_using_jsl">
+            Example Using General Purpose Scripting Language</a>
+    </li>
+    <li><a href="#scripting_hints">Script Hints</a></li>
+    <li><a href="#utf8_encoding_hints">UTF-8 (aka UNICODE) Encoding Hints</a></li>
+    <li><a href="#cleaning_up_image_files">Cleaning Up Temporary Images Files</a></li>
+    <li><a href="#optimization_insights">Script Optimization Insights</a></li>
+    <li><a href="#modifying_pic_shapes">Dynamically Modifying Picture Shapes</a></li>
+    <li><a href="#modifying_text_shapes">Dynamically Modifying Text Shapes</a></li>
+    <li><a href="#office_2013_considerations">Office 2013 (and later) Considerations</a></li>
+    <li><a href="#task_scheduler_caveats">Task Scheduler Hints/Caveats</a></li>
+    <li><a href="#fast_PC_considerations">Fast PC Considerations</a></li>
+    <li><a href="#win10_instability">PowerPoint Instability On Windows 10</a></li>
+</ul>
+<h4>Figures and Tables</h4>
+<ul>
+    <li><a href="#sample_screenshot">Figure 1 - sampleTemplate.potx (Screen Shot)</a></li>
+    <li><a href="#sample_web_text_office_2010">
+    Figure 2A - Example Web Alternative Text (Screen Shot, Office 2010)</a></li>
+    <li><a href="#sample_web_text_office_2013">
+    Figure 2B - Example Web Alternative Text (Screen Shot, Office 2013)</a></li>
+    <li><a href="#sample_web_text_office_2016_2019">
+    Figure 2C - Example Web Alternative Text (Screen Shot, Office 2016/2019)</a></li>
+    <li><a href="#sample_named_slide">Figure 3 - Example Named Slide (Screen Shot)</a>;</li>
+    <li><a href="#task_scheduler_config">Figure 4 - Task Scheduler General Settings (Screen Shot)</a>;</li>
+    <li><a href="#shape_text_strings">Table 1 - Shapes Versus Alternative Text Strings</a></li>
+    <li><a href="#syntax_notation">Table 2 - Syntax Notation</a></li>
+    <li><a href="#semantics_notation">Table 3 - Semantics Notation</a></li>
+    <li><a href="#script_format_tbl">Table 4 - Script File Format</a></li>
+    <li><a href="#syntax_tbl">Table 5 - P3ICLI Script Syntax</a></li>
+    <li><a href="#log_format_tbl">Table 6 - Log File Format</a></li>
+</ul>
+</div>
+<div class="body">
+<hr />
+<h3>
+<a name="overview" />Overview
+</h3>
+P3ICLI is a semi-acronym denoting
+"<b class="bright">P</b>ower<b class="bright">P</b>oint
+<b class="bright">P</b>icture <b class="bright">I</b>nsert
+<b class="bright">C</b>ommand <b class="bright">L</b>ine
+<b class="bright">I</b>nterface", which is a command line tool that
+programmatically adds pictures, graphical images, captions, and slide titles to
+Microsoft PowerPoint&reg; presentations.  If the choice of this acronym seems
+odd, try rolling the logical alternative (pppicli) across your tongue.
+<h3>
+<a name="theory_of_operation" />How Does It Work?
+</h3>
+P3ICLI requires three input elements:
+<ol>
+    <li>One or more specially constructed template slides containing
+        graphical objects that specify the exact placement of title text,
+        caption text, and graphics objects.
+    </li>
+    <li>Picture/graphic files ('natch).</li>
+    <li>A simple <u>text file</u> script that specifies:
+    <ol type="a">
+        <li>Template file path,</li>
+        <li>Slide title and caption text,</li>
+        <li>Picture/graphic file placement on the template,</li>
+        <li>The sequence point at which an unmodified copy of the template is
+            duplicated so that steps "b", "c", and "d" may be repeated as
+            necessary to create the desired PowerPoint presentation.
+        </li>
+    </ol></li>
+</ol>
+<h3>
+<a name="creating_template" />Creating A Template
+</h3>
+A template is a PowerPoint slide comprised of at least three elements:
+<ol>
+    <li>An optional title placeholder shape,</li>
+    <li>Up to 20 optional caption shapes, and</li>
+    <li>Up to 20 rectangle shapes that denote the coordinates where
+        picture/graphic files are to be placed.  The rectangles may also
+        specify a nonzero text rotation angle, which is subsequently
+        applied to inserted pictures/graphic files.  This latter feature is
+        <u>only</u> supported by versions of PowerPoint newer than Office
+        2000 (e.g., Office 2003, Office 2007, etc.).
+    </li>
+</ol>
+<div align="center">
+<p>
+<u>Template Shape Notes</u>
+</p>
+</div>
+<ul>
+<li>
+Title placeholder shapes are included on many of the stock layout
+slides supplied with each installation of Microsoft Office and can be
+readily recognized by the label "Click to add title".
+</li>
+<li>
+Any PowerPoint shape that includes a "text frame" may be used as a caption
+shape.  Put another way, <b>any</b> shape capable of displaying text
+is acceptable.  However, it's important to point out that Text Box shapes
+expand as necessary to accommodate text of any practical length, while
+non-Text Box shapes do not.
+</li>
+<li>
+Rectangle shapes are manually added to a slide via the
+PowerPoint Office Ribbon interface.
+</li>
+<li>
+A caption shape need <b>not</b> be physically located within the
+proximity of a picture shape&mdash;P3ICLI assumes no shared association
+between pictures and captions.  Thus, it's possible for a template slide
+to consist of nothing but caption shapes.
+</li>
+</ul>
+<p>
+The P3ICLI release distribution includes an example template called
+<a href="sampleTemplate.potx">sampleTemplate.potx</a>, which is shown
+in the following screen shot:
+</p>
+<div align="center">
+<a name="sample_screenshot" />
+<b>Figure 1 -- sampleTemplate.potx</b><br />
+<img src="sample_template.png" alt="screen shot of sampleTemplate.potx" />
+</div>
+<p>
+The text placed within the frames of each of these nine shapes (i.e.,
+"title", "Rect 1", "Pic 1", "Pic2", "Caption 1", "cap3" etc.)
+is <b>irrelevant</b> to P3ICLI, but does serve as
+a useful visual cue when formally labeling template shapes (see next topic).
+</p>
+<center>
+<b>Notes</b>
+</center>
+<ol>
+   <li>
+       At the user's discretion, other shape types and effects may be placed on
+       the template, but they are ignored by P3ICLI.
+   </li>
+   <li>
+       The PowerPoint template file need not be restricted to files that end in
+       the <b>.potx</b> suffix.  A template could just as easily be constructed
+       from a file with a <b class="bright">.pptx</b> suffix.
+   </li>
+</ol>
+<h3>
+<a name="labeling_template_shapes_office_2010" />
+Labeling Template Shapes (Office 2010)
+</h3>
+Since a variety of shapes/effects might be placed on a template, some
+mechanism is required to uniquely identify P3ICLI's title, caption, and
+rectangle shapes. That mechanism is the shape's Web Alternative Text (aka
+Alt Text) string.  Accessing a shape's Web Alternative Text in Office 2010
+requires these steps:
+<ol>
+    <li>Select and right-click the shape,</li>
+    <li>Click either the "Size and Position" <u>or</u> "Format Shape" menu items,</li>
+    <li>Click the "Alt Text" button in the dialog box that pops up.</li>
+</ol>
+<p>
+Figure 2A displays an example Office 2010 Alt Text screen shot.
+</p>
+<div align="center">
+<a name="sample_web_text_office_2010" />
+<b>Figure 2A -- Example Web Alternative Text (Office 2010)</b><br />
+<img src="sample_web_text_office_2010.png"
+     alt="screen shot of Alternative Text (Office 2010)" />
+</div>
+<h3>
+<a name="labeling_template_shapes_office_2013" />
+Labeling Template Shapes (Office 2013)
+</h3>
+Office 2013 presents a much different interface than Office 2010.
+Accessing a shape's Web Alternative Text in this version entails
+the following steps:
+<ol>
+    <li>Select and right-click the shape.</li>
+    <li>Click the "Size and Position" menu item, which opens a pinned
+        dialog box in PPT's right hand window pane.</li>
+    <li>Collapse (minimize) the displayed "SIZE" data by clicking the "SIZE" menu.</li>
+    <li>Click the "ALT TEXT" menu in the right hand window pane.</li>
+</ol>
+<p>
+Figure 2B displays an example Office 2013 Alt Text screen shot.
+</p>
+<div align="center">
+<a name="sample_web_text_office_2013" />
+<b>Figure 2B -- Example Web Alternative Text (Office 2013)</b><br />
+<img src="sample_web_text_office_2013.png"
+     alt="screen shot of Alternative Text (Office 2013)" />
+</div>
+<h3>
+<a name="labeling_template_shapes_office_2016_2019" />
+Labeling Template Shapes (Office 2016/2019)
+</h3>
+Office 2016 and 2019 offer yet another interface for modifying Alt Text.
+Accessing a shape's Web Alternative Text in these versions entails
+the following steps:
+<ol>
+    <li>Select and right-click the shape.</li>
+    <li>Click the "Edit Alt Text..." menu item, which opens a pinned
+        dialog box in PPT's right hand window pane.</li>
+</ol>
+<p>
+Refer to Figure 2C for an example screen shot.
+</p>
+<div align="center">
+<a name="sample_web_text_office_2016_2019" />
+<b>Figure 2C -- Example Web Alternative Text (Office 2016/2019)</b><br />
+<img src="sample_web_text_office_2016_2019.png"
+     alt="screen shot of Alternative Text (Office 2016/2019)" />
+</div>
+<h3>
+<a name="web_alternative_text_strings" />
+Required Web Alternative Text Strings
+</h3>
+The following table specifies required P3ICLI Web Alt Text strings:
+<p>
+<br />
+</p>
+<div align="center">
+<a name="shape_text_strings" />
+<table class="bordered" cellpadding="3" width="65%">
+    <caption><b>Table 1 -- Shapes Versus Alternative Text Strings</b></caption>
+<tr>
+    <th width="25%">P3ICLI Template<br />Shape Type</th>
+    <th width="20%">Alternative<br />Text String</th>
+    <th>Identifies</th>
+</tr>
+<tr>
+    <td style="text-align:center">Title</td>
+    <td class="code" style="text-align:center">title</td>
+    <td class="left">optional title placeholder shape</td>
+</tr>
+<tr>
+    <td style="text-align:center">Rectangle #1</td>
+    <td class="code" style="text-align:center">pic1</td>
+    <td class="left">picture shape #1</td>
+</tr>
+<tr>
+    <td style="text-align:center">Rectangle #2</td>
+    <td class="code" style="text-align:center">pic2</td>
+    <td class="left">picture shape #2</td>
+</tr>
+<tr>
+    <td style="text-align:center"><b>...</b></td>
+    <td class="code" style="text-align:center"><b>...</b></td>
+    <td class="left"><b>...</b></td>
+</tr>
+<tr>
+    <td style="text-align:center">Rectangle #20</td>
+    <td class="code" style="text-align:center">pic20</td>
+    <td class="left">picture shape #20</td>
+</tr>
+<tr>
+    <td style="text-align:center">Caption #1</td>
+    <td class="code" style="text-align:center">cap1</td>
+    <td class="left">text caption shape #1</td>
+</tr>
+<tr>
+    <td style="text-align:center">Caption #2</td>
+    <td class="code" style="text-align:center">cap2</td>
+    <td class="left">text caption shape #2</td>
+</tr>
+<tr>
+    <td style="text-align:center"><b>...</b></td>
+    <td class="code" style="text-align:center"><b>...</b></td>
+    <td class="left"><b>...</b></td>
+</tr>
+<tr>
+    <td style="text-align:center">Caption #20</td>
+    <td class="code" style="text-align:center">cap20</td>
+    <td class="left">text caption shape #20</td>
+</tr>
+</table>
+</div>
+<p>
+It should be emphasized that text case <em><u>matters</u></em>.
+Use the exact case shown in Table 1 above.
+(e.g., "title", not "TITLE" or "Title").
+</p>
+<h3>
+<a name="naming_template_slides" />
+Naming Template Slides
+</h3>
+The simplest P3ICLI template "package", for lack of a better term, is
+comprised of a <em>single</em> PowerPoint slide populated with one or more
+template shapes.  But it's difficult to create a complex presentation based
+on a single slide.  Fortunately, P3ICLI provides an
+<em class="standout">insert&nbsp;slide</em> command that provides runtime
+access to an unlimited number of template slides.
+<p>
+The <em class="standout">insert&nbsp;slide</em> command references
+template slides by either their ordinal position within a
+PowerPoint file (i.e., slide #1, slide #2, etc.) or by a user-defined name.
+The latter
+approach facilitates mnemonic recall and self-documenting scripts.  Ordinal
+naming, on the other hand, is brittle and subject to failure when template
+slides are reordered or deleted.
+</p>
+<p>
+A template slide is named by adding a
+PowerPoint comment to the slide and including comment
+text that appropriately identifies the template.
+See Figure 3 for an example of a named slide.
+</p>
+<div align="center">
+<a name="sample_named_slide" />
+<b>Figure 3 -- Example Named Slide</b><br />
+<img src="sample_named_slide.png" alt="screen shot of named slide" />
+</div>
+<div align="center">
+<p>
+&nbsp;<br />
+<u>Slide Insertion Example Syntax</u>
+</p>
+</div>
+<p>
+The single slide template shown in Figure 3 could be accessed by P3ICLI
+using either of these two equivalent commands:
+</p>
+<blockquote><code>
+insert slide 1 from template c:\path\to\template.ppt<br />
+insert slide "2up, no caps" from template c:\path\to\template.ppt<br />
+&nbsp;<br />
+</code></blockquote>
+<div align="center">
+<p>
+<u>Template Slide Naming Notes</u>
+</p>
+</div>
+<ul>
+<li>
+The comment object that names a template slide is deleted
+following its insertion into a PowerPoint presentation
+via the
+<em class="standout">insert&nbsp;slide &lt;qstring&gt;</em> command.
+I.E., slide names do not appear in the final presentation
+created by P3ICLI.  But comment deletion does <b><u>not</u></b> take place
+when template slides are referenced by ordinal number.  Take note that the
+<em class="standout">remove comments</em>
+script command  supports arbitrary comment removal.
+</li>
+<li>
+P3ICLI trims leading and trailing white space from a slide's comment
+text before performing a case <u>insensitive</u> string equality test
+against the similarly trimmed target slide name specified via the
+<em class="standout">insert&nbsp;slide &lt;qstring&gt;</em> command.
+However, P3ICLI does not
+compress the white space characters that delimit the words of a slide's
+name.  This can lead to seemingly vexing script behavior.  For example,
+suppose a slide's comment includes the text "3up,&nbsp;1&nbsp;cap",
+but a script erroneously refers to this slide as
+"3&nbsp;up,&nbsp;1&nbsp;cap".  In this case, the two names appear almost
+identical, but do not match due to the extra space mistakenly inserted
+between "3" and "up".
+</li>
+</ul>
+<p>
+The remainder of this manual describes script syntax and program invocation.
+</p>
+<h3>
+<a name="notation" />
+Syntax/Semantics Notation
+</h3>
+<div align="center">
+<a name="syntax_notation" />
+<table class="bordered" cellpadding="3" width="85%">
+    <caption><b>Table 2 -- Syntax Notation</b></caption>
+<tr>
+    <th width="20%">Notation</th>
+    <th>Explanation</th>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">{a | b}</td>
+    <td class="left">Choose "a" or "b".</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">&lt;value&gt;</td>
+    <td class="left">User-specified <em>value</em>.  The semantics of
+    <em>value</em>
+    are described in the discussion of the affected script command.</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">[element]</td>
+    <td class="left">Syntax <em>element</em> is optional.</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center;font-size:1.0em"><b>...</b></td>
+    <td class="left">Preceding syntax element may be repeated zero or more
+    times.</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">'element'</td>
+    <td class="left">Syntax requires use of literal <em>element</em>.
+    Used when the command syntax requires a symbol included in
+    this notation.  Example syntax:
+    <blockquote>
+        <code>insert '['xyzzy']'</code>
+    </blockquote>
+    which says that "insert [xyzzy]" is a valid command (the single quotes
+    remove any special syntactical meaning associated with the
+    bracket characters).
+    </td>
+</tr>
+</table>
+<br />&nbsp;<br />
+<a name="semantics_notation" />
+<table class="bordered" cellpadding="3" width="85%">
+    <caption><b>Table 3 -- Semantics Notation</b></caption>
+<tr>
+    <th width="20%">Notation</th>
+    <th>Explanation</th>
+</tr>
+<tr>
+    <td style="text-align:center">PPT</td>
+    <td class="left">Abbreviation for PowerPoint.</td>
+</tr>
+<tr>
+    <td style="text-align:center"><b class="bright">(R)</b></td>
+    <td class="left">
+    Script command requires <b class="bright">R</b>unning,
+    OLE-connected PPT instance.
+    </td>
+</tr>
+<tr>
+    <td style="text-align:center"><b class="bright">(T)</b></td>
+    <td class="left">
+    Script command requires active <b class="bright">T</b>emplate slide
+    (i.e., must be preceded by <em>open template</em> or
+    <em>insert slide</em> command).
+    </td>
+</tr>
+</table>
+</div>
+<h3>
+<a name="script_format" />
+Script File Format
+</h3>
+A script file is comprised of command elements and optional comments,
+one command per logical scriptfile line.  Command elements include:
+<div align="center">
+<a name="script_format_tbl" />
+<table class="bordered" cellpadding="3" width="85%">
+    <caption><b>Table 4 -- Script File Format</b></caption>
+<tr>
+    <th width="30%">Element</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td style="text-align:center">defined keywords</td>
+    <td class="left">Examples:  <em>open</em>, <em>slide</em>,
+                                <em>sleep</em></td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">&lt;int&gt;</td>
+    <td class="left">Integer, optionally preceded with a minus sign (-) .</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">&lt;uint&gt;</td>
+    <td class="left">Unsigned integer.</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">&lt;filename&gt;</td>
+    <td class="left">Unquoted character string specifying a file path.</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center"># comment</td>
+    <td class="left">Annotate script with comments&mdash;blank script
+                     lines are also accepted.  Inline comments
+                     <u>are</u> supported (see 2nd example).  Examples:
+                     <p>
+                     <code>
+                     &nbsp;# next, create slide number 3<br />
+                     &nbsp;title "Not Sure Yet"&nbsp;&nbsp;# FIXME later
+                     </code>
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">&lt;qstring&gt;</td>
+    <td class="left">Quoted string, which may be delimited with
+    double or single quotes.  Supported escape sequences include:
+    <br />&nbsp;<br />
+    <code>&nbsp;\r&nbsp;&nbsp;</code>
+        insert carriage return, useful for forcing a title break<br />
+    <code>&nbsp;\n&nbsp;&nbsp;</code>insert newline<br />
+    <code>&nbsp;\t&nbsp;&nbsp;</code>insert tab<br />
+    <code>&nbsp;\'&nbsp;&nbsp;</code>insert literal single quote<br />
+    <code>&nbsp;\"&nbsp;&nbsp;</code>insert literal double quote<br />
+    <code>&nbsp;\\&nbsp;&nbsp;</code>insert \
+    <br />&nbsp;<br />
+    Examples:
+    <p>
+    <code>
+        &nbsp;"string #1"<br />
+        &nbsp;'string #2'<br />
+        &nbsp;'strval is \'xyz\''<br />
+    </code>
+    </p>
+    </td>
+</tr>
+</table>
+</div>
+<h3>
+<a name="script_syntax" />Scripting Syntax
+</h3>
+<a name="syntax_tbl" />
+<table class="bordered" cellpadding="3" width="100%">
+    <caption><b>Table 5 -- P3ICLI Script Syntax</b></caption>
+<tr>
+    <th width="49%">Script Command</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td class="code">cap&lt;uint&gt; &lt;qstring&gt;</td>
+    <td class="left">Set the text of the specified caption shape
+                     <b class="bright">(R) (T)</b>.  Once set, the shape is
+                     marked "modified", which has implications for the
+                     <em>clean</em> command.
+                     The valid range of <em>&lt;uint&gt;</em> is 1-20.
+                     Example:
+                     <blockquote>
+                         <code>cap1 'Summary Statistics'</code>
+                     </blockquote>
+                     <p>
+                     Data embedded within <em>&lt;qstring&gt;</em> may be
+                     encoded in either the UTF-8 or ANSI character sets, as
+                     specified by the <em class="standout">encoding</em>
+                     command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">cap&lt;uint&gt; '&lt;'cleaned'&gt;'</td>
+    <td class="left">Mark the specified template shape as
+                     "modified", thereby protecting it from
+                     the <em>clean</em> command.
+                     <b class="bright">(R) (T)</b>.
+                     The valid range of <em>&lt;uint&gt;</em> is 1-20.
+                     Example:
+                     <blockquote>
+                         <code>cap2 &lt;cleaned&gt;</code>
+                     </blockquote><p>
+                     which ensures that <em>cap2</em> is not removed by a
+                     subsequent <em>clean</em> command.  This idiom is
+                     useful when circumstances require manually adding
+                     caption text at a later time.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">cap&lt;uint&gt; move &lt;int&gt;','&lt;int&gt;</td>
+    <td class="left">Move the specified caption shape to a new location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>left</b> and <b>top</b>
+                     coordinates (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     cap3 move 198, 126
+                     </code>
+                     </p>
+                     <p>
+                     Which moves cap3 to a location 2.75 inches from the left
+                     edge of the current slide and 1.75 inches below the slide's
+                     top edge.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_text_shapes">
+                     Dynamically Modifying Text Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">cap&lt;uint&gt; size &lt;uint&gt;','&lt;uint&gt;</td>
+    <td class="left">Resize the specified caption shape while maintaining its
+                     current location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>width</b> and
+                     <b>height</b>
+                     (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     cap1 size 72, 144
+                     </code>
+                     </p>
+                     <p>
+                     Which resizes cap1 as a 1in wide by 2in tall
+                     rectangle.  Cap1 does not move.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_text_shapes">
+                     Dynamically Modifying Text Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">clean {slide | pics | caps}</td>
+    <td class="left">
+        With respect to PPT's currently active
+        slide, remove unmodified shapes known to
+        P3ICLI.  <b class="bright">(R) (T)</b>.
+        Refer to the table
+        <a href="#shape_text_strings">
+        Shapes Versus Alternative Text Strings</a>
+        for a description of the labeling that
+        identifies P3ICLI shapes on a PPT template slide.
+        See also the descriptions of these commands:
+        <ul>
+            <li><em class="standout">cap&lt;uint&gt; &lt;qstring&gt;</em></li>
+            <li><em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em></li>
+            <li><em class="standout">title &lt;qstring&gt;</em></li>
+        </ul>
+        for an explanation of how template shapes transition to the "modified"
+        state.  The command:
+        <blockquote>
+            <code>clean slide</code>
+        </blockquote>
+        <p>
+        removes all unmodified picture, caption, title shapes.  The command:
+        </p>
+        <blockquote>
+            <code>clean pics</code>
+        </blockquote>
+        <p>
+        only affects unmodified picture shapes (title and caption shapes
+        ignored).  The command:
+        </p>
+        <blockquote>
+            <code>clean caps</code>
+        </blockquote>
+        <p>
+        only affects unmodified caption shapes (title and picture shapes
+        ignored).
+        </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">
+        copy src fmt {on | off}
+        <p>
+        copy source format {on | off}
+        </p>
+    </td>
+    <td class="left">Specifies whether P3ICLI copies background slide
+                     formatting information (e.g., design, color scheme, gradients,
+                     etc.) from the "source" slide during the execution
+                     of an <em class="standout">insert slide</em> command.
+                     Default is <b>off</b>.  Example:
+                     <blockquote>
+                         <code>copy src fmt on</code>
+                     </blockquote>
+                     <p>
+                     Note 1: the state of this P3ICLI parameter is both order
+                     dependent and persistent.  Place this command
+                     <i>before</i> a targeted
+                     <em class="standout">insert slide</em> command.
+                     </p>
+                     <p>
+                     Note 2:  user-defined textures cannot be copied for
+                     any version of PPT released prior to Office 2007,
+                     since no PPT programmatic support exists for this
+                     slide formatting feature.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">
+        custom property &lt;qstring&gt;'='&lt;qstring&gt;
+        <p>
+        custom property &lt;qstring&gt;'='&lt;int&gt;
+        </p>
+        <p>
+        custom property &lt;qstring&gt;'='{yes | no}
+        </p>
+    </td>
+    <td class="left">Add a Text, Number, or Yes/No custom property to the
+                     presentation that P3ICLI is creating
+                     <b class="bright">(R) (T)</b>.
+                     Additionally, if this notation is used, a Date
+                     custom property is added:
+                     <p>
+                         <code>
+                         &nbsp;&nbsp;
+                 custom property &lt;qstring&gt; = "date: &lt;valid_date&gt;"
+                         </code>
+                     </p>
+                     <p>
+                     If this notation is used, the named property is deleted:
+                     </p>
+                     <p>
+                         <code>
+                         &nbsp;&nbsp;
+                         custom property &lt;qstring&gt; = ""
+                         </code>
+                     </p>
+                     <p>
+                     Examples:
+                     </p>
+                     <p>
+                         <code>
+                         &nbsp;&nbsp;
+                     custom property "Local Owner"&nbsp;&nbsp;=&nbsp;"Kilroy"
+                         <br />
+                         &nbsp;&nbsp;
+                     custom property "Kilroy ID"&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;1234
+                         <br />
+                         &nbsp;&nbsp;
+                         custom property "Kilroy Lives"&nbsp;=&nbsp;yes
+                         <br />
+                         &nbsp;&nbsp;
+             custom property "Kilroy Bday"&nbsp;&nbsp;=&nbsp;"date: 2016/04/15"
+                         <br />
+                         &nbsp;&nbsp;
+             custom property "Kilroy BDay"&nbsp;&nbsp;=&nbsp;""  # delete prop
+                         <br />
+                         </code>
+                     </p>
+                     <p>
+                     Note 1: the accepted range of
+                     <em class="standout">&lt;int&gt;</em> values is
+                     2147483647 to -2147483648, with the caveat that PPT
+                     displays negative numeric values &lt; -999999 in an
+                     inexact floating point format.
+                     </p>
+                     <p>
+                     Note 2: deleting a nonexistent custom property is
+                     <u>not</u> an error.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">
+        delete image files {on | off}
+        <p>
+        dif {on | off}
+        </p>
+    </td>
+    <td class="left">Specifies whether P3ICLI automatically deletes image files
+                     specified via the
+                     <em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em>
+                     command. Default is <b>off</b>, which is to say, that
+                     P3ICLI normally leaves image files untouched.  Example:
+                     <blockquote>
+                         <code>delete image files on</code>
+                     </blockquote>
+                     <p>
+                     Note 1:  see also <em class="standout">ignore &lt;filename&gt;
+                     </em>.
+                     </p>
+                     <p>
+                     Note 2:  the topic <a href="#cleaning_up_image_files">
+                     Cleaning Up Temporary Images Files</a>
+                     documents use of this command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">{dup | duplicate} template</td>
+    <td class="left">Duplicate an unmodified copy of the template slide and
+                     make that duplicate PPT's active slide.
+                     <b class="bright">(R) (T)</b>.
+                     This command adds a new, unmodified template slide to
+                     the current presentation.
+
+    </td>
+</tr>
+<tr>
+    <td class="code">encoding {ansi | utf8}</td>
+    <td class="left">Specifies whether P3ICLI transmits
+                     <a href="https://en.wikipedia.org/wiki/Windows_code_page">
+                     ANSI</a> or
+            <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">
+                     UTF-8</a> character codes via these commands:
+                     <ul>
+                        <li>
+                         <em class="standout">cap&lt;uint&gt; &lt;qstring&gt;</em>
+                        </li>
+                        <li>
+                         <em class="standout">title &lt;qstring&gt;</em>
+                        </li>
+                     </ul>
+                     <p>
+                     Example:
+                     </p>
+                     <blockquote>
+                         <code>
+                         encoding utf8
+                         <br />
+                         open template c:\temp\mytmplt.ppt
+                         <br />
+                         cap1 "Production 3-&sigma; limits"
+                         <br />
+                         title "&#x00bf;Se recomienda precauci&oacute;n?"
+                         </code>
+
+                     </blockquote>
+                     <p>
+                     Note 1: UTF-8 provides access to a vast collection of
+                     symbols not supported by ANSI.
+                     </p>
+                     <p>
+                     Note 2: for the sake of backwards
+                     compatibility with existing P3ICLI scripts, the default
+                     encoding is <b>ansi</b>.
+                     </p>
+                     <p>
+                     Note 3: the state of this P3ICLI parameter is both order
+                     dependent and persistent.  Place this command
+                     <i>before</i> any
+                     <em class="standout">cap&lt;uint&gt;</em> or
+                     <em class="standout">title</em>
+                     command that includes caption/title string data
+                     not compatible with the current
+                     <em class="standout">encoding</em>.
+                     </p>
+                     <p>
+                     Note 4: if garbage is displayed instead of Unicode
+                     characters, consult these
+                     <a href="#utf8_encoding_hints">Encoding Hints</a>.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">{exit | halt | quit}</td>
+    <td class="left">P3ICLI exits immediately.  Useful script debugging aid.
+    </td>
+</tr>
+<tr>
+    <td class="code">
+        ignore &lt;filename&gt;
+    </td>
+    <td class="left">Protects <em>&lt;filename&gt;</em> from deletion when
+                     <em class="standout">delete image files</em>
+                     is <b>on</b>.  Example:
+                     <blockquote>
+                         <code>ignore c:\temp\reusable_image.png</code>
+                     </blockquote>
+                     <p>
+                     The topic <a href="#cleaning_up_image_files">
+                     Cleaning Up Temporary Images Files</a>
+                     documents use of this command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">
+        insert slide &lt;uint&gt; from template &lt;filename&gt;
+        <p>
+        insert slide &lt;qstring&gt; from template &lt;filename&gt;
+        </p>
+    </td>
+    <td class="left">The <em>&lt;uint&gt;</em> version of this command
+                     inserts template slides by ordinal number
+                     from <em>&lt;filename&gt;</em>
+                     into a new or existing PPT
+                     instance.
+                     The <em>&lt;qstring&gt;</em> version of this command
+                     inserts template
+                     <a href="#naming_template_slides">slides by name</a>.
+                     <p>
+                     Unlike the <em>open</em> command,
+                     <em>insert</em> only creates a new
+                     presentation when PPT is <u>not</u> currently
+                     running.  The <em>insert</em> command:
+                     </p>
+                     <ul>
+                     <li>Permits the creation of a presentation based upon an
+                         essentially unlimited number of template slides.
+                     </li>
+                     <li>Establishes an OLE-connected instance of
+                         PPT, as well as establishing the current active
+                         template slide.
+                     </li>
+                     <li>Is affected by the
+                         <em class="standout">copy src fmt</em> command.
+                     </li>
+                     <li>Is affected by the
+                         <em class="standout">slide size</em> command.
+                     </li>
+                     </ul>
+                     <p>
+                     Examples:
+                     </p>
+                     <code>
+                     &nbsp;&nbsp;insert slide 3 from template c:\ppt\tmplt.pot
+                     <br />
+                     &nbsp;&nbsp;insert slide 7 from template c:\ppt\tmplt.pot
+                     <br />
+                     &nbsp;&nbsp;insert slide "2up" from template \ppt\slds.pot
+                     </code>
+                     <p>
+                     Users transitioning to Office 2013/2016 from an earlier
+                     version should study the <em class="standout">
+                     slide size</em> command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">kill ppt {save | discard}</td>
+    <td class="left">Close all running PPT instances.  The
+                     <em>save</em>/<em>discard</em> arguments specify whether
+                     unsaved changes in currently open presentations are
+                     saved or discarded.  It's not an error to issue this
+                     command when no PPT instances exist.
+                     <p>
+                     It's worth noting that
+                     <em class="standout">kill ppt save</em> exhibits
+                     quirks with respect to modified presentations that
+                     have <u>never</u> before been saved.  To wit:
+                     </p>
+                     <ul>
+                         <li>Office 2000 saves the presentations on the
+                             desktop (i.e., in the folder \windows\desktop)
+                             using the first slide's title as the
+                             presentation filename (I kid you not).
+                         </li>
+                         <li>Office XP (service pack 3) saves the
+                             presentations in the \windows\system32 folder
+                             using the first slide's title as the
+                             presentation filename (wow!).
+                         </li>
+                     </ul>
+                     <p>
+                     Consequently, it's fairly important to precede
+                     <em class="standout">kill ppt save</em> with a
+                     <em class="standout">save as</em> command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">list geometries [&lt;qstring&gt;]</td>
+    <td class="left">For each caption, picture, and title shape resident on
+                     the original
+                     <b>template</b> slide, list its dimensions and
+                     position scaled in points (72 points to the inch)
+                     <b class="bright">(R) (T)</b>.  Additionally, list the
+                     template slide's dimensions (width and height), scaled
+                     in points.
+                     The listing is repeated for the <b>current</b> slide
+                     (the contents of which might have been modified by
+                     various
+                     <em class="standout">{size|move}</em> commands),
+                     thus allowing a quick comparision of the
+                     geometries associated with the current
+                     slide versus the unmodifid template slide.
+                     <p>
+                     The optional <em>&lt;qstring&gt;</em> argument adds a
+                     user-defined annotation that precedes this command's
+                     listing.
+                     </p>
+                     <p>
+                     Listing format sans <em>&lt;qstring&gt;</em>
+                     annotation:
+                     </p>
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     Tmplt Slide: bounds (<i>width</i>,<i>height</i>)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: title
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: pic1
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: pic2
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       etc.
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: cap1
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: cap2
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       etc.
+                       <br />&nbsp;
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: bounds (<i>width</i>,<i>height</i>)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: title
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: pic1
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: pic2
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       etc.
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: cap1
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: cap2
+                       (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+                       <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       etc.
+                     </code>
+                     </p>
+                     <p>
+                     Example command usage that includes a
+                     <em>&lt;qstring&gt;</em> annotation:
+                     </p>
+                     <code>
+                     &nbsp;&nbsp;
+                     <em class="standout">list geometries
+                     "1 title, 1 pic tmplt"</em>
+                       <br />&nbsp;&nbsp;
+                       <br />&nbsp;&nbsp;
+                     1 title, 1 pic tmplt
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: bounds (720, 540)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: title (612,72) @ (66,30)
+                       <br />&nbsp;&nbsp;
+                     Tmplt Slide: pic1 (264,168) @ (54,126)
+                       <br />&nbsp;&nbsp;
+                       <br />&nbsp;&nbsp;
+                     1 title, 1 pic tmplt
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: bounds (720, 540)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: title (612,72) @ (66,30)
+                       <br />&nbsp;&nbsp;
+                     Curr Slide: pic1 (264,168) @ (54,126)
+                     </code>
+                     <p>
+                     Refer to the topics
+                     <a href="#modifying_pic_shapes">
+                     Dynamically Modifying Picture Shapes</a>
+                     and
+                     <a href="#modifying_text_shapes">
+                     Dynamically Modifying Text Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">open template &lt;filename&gt;</td>
+    <td class="left">Open <em>&lt;filename&gt;</em> in a new or existing PPT
+                     instance.  This command:
+                     <ul>
+                         <li>Establishes an OLE-connected instance of
+                             PPT, as well as establishing the current active
+                             template slide.
+                         </li>
+                         <li>Creates a new, unnamed PPT presentation based
+                             on <em>&lt;filename&gt;</em>'s
+                             <u><b>single</b></u> template slide.  Contrast
+                             <em>open template</em> with <em>insert
+                             slide</em>, which utilizes one to N
+                             slides.
+                         </li>
+                     </ul>
+                     It bears repeating one more time that this command is
+                     designed for use with a template file containing a
+                     <u><b>single</b></u> slide.
+    </td>
+</tr>
+<tr>
+    <td class="code">pic&lt;uint&gt; &lt;filename&gt;</td>
+    <td class="left">Replace the template shape labeled
+                     <em>pic&lt;uint&gt;</em> with the graphic/picture stored
+                     in <em>&lt;filename&gt;</em>.
+                     <b class="bright">(R) (T)</b>.
+                     The valid range of <em>&lt;uint&gt;</em> is 1-20.
+                     A replaced template shape is marked
+                     "modified", which has implications for the
+                     <em>clean</em> command.  Example usage:
+                     <p>
+                         <code>
+                         &nbsp;&nbsp;pic1 c:\temp\wrapup.png<br />
+                         &nbsp;&nbsp;pic4 c:\stats\analysis3\ttest.jpeg
+                         </code>
+                     </p>
+                     The topic <a href="#cleaning_up_image_files">
+                     Cleaning Up Temporary Images Files</a>
+                     describes how filenames referenced via this command can be
+                     queued for automatic deletion when P3ICLI exits.
+    </td>
+</tr>
+<tr>
+    <td class="code">pic&lt;uint&gt; '&lt;'cleaned'&gt;'</td>
+    <td class="left">Mark the specified template shape as
+                     "modified", thereby protecting it from
+                     the <em>clean</em> command.
+                     <b class="bright">(R) (T)</b>.
+                     The valid range of <em>&lt;uint&gt;</em> is 1-20.
+                     Example:
+                     <p>
+                         <code>
+                         &nbsp;&nbsp;pic2 &lt;cleaned&gt;
+                         </code>
+                     </p><p>
+                     which ensures that <em>pic2</em> is not removed by a
+                     subsequent <em>clean</em> command.  This idiom is
+                     useful when circumstances require manually adding
+                     graphics at a later time.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">pic&lt;uint&gt; move &lt;int&gt;','&lt;int&gt;</td>
+    <td class="left">Move the specified picture shape to a new location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>left</b> and <b>top</b>
+                     coordinates (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     pic3 move 216, 288
+                     </code>
+                     </p>
+                     <p>
+                     Which moves pic3 to a location 3 inches from the left
+                     edge of the current slide and 4 inches below the slide's
+                     top edge.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_pic_shapes">
+                     Dynamically Modifying Picture Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">pic&lt;uint&gt; size &lt;uint&gt;','&lt;uint&gt;</td>
+    <td class="left">Resize the specified picture shape while maintaining its
+                     current location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>width</b> and
+                     <b>height</b>
+                     (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     pic1 size 180, 144
+                     </code>
+                     </p>
+                     <p>
+                     Which resizes pic1 as a rectangle 2.5 inches wide by 2
+                     inches tall.  Pic1 does not move.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_pic_shapes">
+                     Dynamically Modifying Picture Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">remove comments</td>
+    <td class="left">Arbitrarily remove all comments from the
+                     currently active slide.
+                     <b class="bright">(R) (T)</b>.  In the case where
+                     no comments exist, <b><u>no</u></b> error is reported.
+    </td>
+</tr>
+<tr>
+    <td class="code">save as {html | pdf | presentation} &lt;filename&gt;</td>
+    <td class="left">Save PPT's current, active window contents
+                 to the specified <em>&lt;filename&gt;</em> in either
+                 <em>html</em>, <em>pdf</em>, or <em>presentation</em> format.
+                 <b class="bright">(R)</b>.
+                 If <em>&lt;filename&gt;</em> exists, it is silently
+                 overwritten.  When the <em>save as</em> operation
+                 completes, PPT's active window is closed.
+                 <p>
+                 Note that the <em>pdf</em> format is <u>not</u> supported
+                 in Office 2003.
+                 On the other hand,
+                 the <em>html</em> format is <u>not</u> supported in
+                 Office 2013 (and presumably, later versions as well) and will
+                 elicit a PPT runtime error.  Support for the <em>html</em>
+                 format in Office 2010 is <b>shaky</b> at best, as many web browsers
+                 cannot access anything but the first slide in a
+                 multi-slide presentation.  PDF seems to be the most
+                 reliable alternative file format for Office 2010 and beyond.
+                 Example usage:
+                 </p>
+                 <p>
+                     <code>
+                     &nbsp;&nbsp;save as presentation c:\temp\pres1.ppt<br />
+                     &nbsp;&nbsp;save as pdf c:\temp\pres1.pdf<br />
+                     &nbsp;&nbsp;save as html c:\temp\pres1.html
+                     </code>
+                 </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">sleep &lt;uint&gt;</td>
+    <td class="left">Pause script <em>&lt;uint&gt;</em> milliseconds.
+                     Crude debugging aid.  Can also be used as a
+                     synchronizing device on very slow hosts
+                     (see the second example script below).  Valid range
+                     is 0-30000 (30 seconds).  Example:
+                     <blockquote><code>
+                     sleep 5000&nbsp;&nbsp;&nbsp;# sleep for 5 seconds
+                     </code></blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="code">slide size {4:3 | default}</td>
+    <td class="left"><div class="small_note">
+                     <b>Note:</b> Office 2010 or earlier users should study
+                     this block of
+                     documentation to discern the purpose of the
+                     <em class="standout">slide size</em> command, but
+                     <u>ignore</u> the <em class="standout">4:3</em> argument.
+                     However, the
+                     <em class="standout">slide size 16:9</em> variant
+                     (described <b>next</b> in the syntax table), may prove
+                     useful.
+                     </div>
+                     <p>
+                     Office 2013 (and later) changed the default slide
+                     size dimensions from 720 by 540 to 960 by 540, scaled
+                     in points.  This translates to a change from 10in wide
+                     by 7.5in tall to 13.33in by 7.5in (the former values
+                     constitute a 4:3 aspect ratio and the latter 16:9).
+                     P3ICLI
+                     templates created pre-Office 2013 retain their
+                     existing slide geometries when opened with the
+                     <em class="standout">open template</em> command.
+                     But if those same pre-Office 2013 templates are
+                     opened in Office 2013 (and later) via an <em
+                     class="standout">insert slide
+                     {&lt;uint&gt;|&lt;qstring&gt;}</em> command, they are
+                     automatically expanded to a 13.33in width.  If this
+                     behavior is objectionable, place a
+                     <em class="standout">slide size</em>
+                     command somewhere
+                     <b>before</b> the <b>first</b>
+                     <em class="standout">insert slide</em> command
+                     included in a script.
+                     <b>Correct</b> example usage:
+                     </p>
+                     <blockquote><code>
+                     slide size 4:3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 720 by 540<br />
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <b class="bright">Incorrect:</b>
+                     <blockquote><code>
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     slide size
+                     4:3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     To disable the 4:3 setting, use this command:
+                     <blockquote><code>
+                     slide size default&nbsp;&nbsp;&nbsp;# PPT chooses slide size
+                     </code></blockquote>
+                     By default, P3ICLI makes no effort to manage slide
+                     size.  In other words, the default for this command is
+                     <b>default</b> :-) .  It's worth emphasizing that the
+                     <em class="standout">open template</em> command
+                     ignores the current <em class="standout">slide size</em>
+                     setting.
+    </td>
+</tr>
+<tr>
+    <td class="code">slide size {16:9 | default}</td>
+    <td class="left"><div class="small_note">
+                     <b>Note:</b> This variant of the
+                     <em class="standout">slide size</em>
+                     command is N/A for Office 2013 and later.
+                     </div>
+                     <p>
+                     Users of Office 2010 (or earlier) may want to create
+                     templates with a 16:9 slide aspect ratio and use them
+                     with their version of PPT, even though the default
+                     aspect slide ratio is 4:3.  This <b>correct</b>
+                     sequence of commands forces a 16:9 slide ratio:
+                     </p>
+                     <blockquote><code>
+                     slide size 16:9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 960 by 540<br />
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <b class="bright">Incorrect:</b>
+                     <blockquote><code>
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     slide size
+                     16:9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <b>Note 1:</b>
+                     P3ICLI makes no effort to manage slide
+                     size, which implies that the default for this command is
+                     <b>default</b>.<br />
+                     <b>Note 2:</b>
+                     The <em class="standout">open template</em> command
+                     ignores <em class="standout">slide size</em>.
+    </td>
+</tr>
+<tr>
+    <td class="code">slide size {a4 | &lt;uint&gt;','&lt;uint&gt; | default}</td>
+    <td class="left">P3ICLI also supports two other slide size variants.
+                     The <em class="standout">a4</em> command argument maps
+                     onto the PPT definition of A4 (10.833in w x 7.5in h, or
+                     780 by 540 points), which is not the same as the ISO A4
+                     standard (8.27in w x 11.69in h).  But fear not, users may
+                     select any reasonable slide geometry via the <em
+                     class="standout">&lt;uint&gt;','&lt;uint&gt;</em>
+                     variant.  In this variant, the first integer
+                     represents the width of the slide and the second
+                     represents the height, scaled in points (72 pts/inch).
+                     The minimum value for either parameter is 72 points, which
+                     is silently enforced.
+                     <p>
+                     As is true for all variants of this command,
+                     <em class="standout">slide size</em>
+                     must be placed somewhere
+                     <b>before</b> the <b>first</b>
+                     <em class="standout">insert slide</em> command
+                     appears in a script.
+                     This <b>correct</b>
+                     sequence of commands forces a PPT A4 slide ratio:
+                     </p>
+                     <blockquote><code>
+                     slide size a4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 780 by 540<br />
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <b class="bright">Incorrect:</b>
+                     <blockquote><code>
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     slide size
+                     a4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <p>
+                     This <b>correct</b>
+                     sequence of commands forces a 595w x 842h slide ratio,
+                     which corresponds to the ISO A4 international standard:
+                     </p>
+                     <blockquote><code>
+                     slide size 595, 842&nbsp;&nbsp;&nbsp;# portrait orientation<br />
+                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     # remainder of script ...
+                     </code></blockquote>
+                     <b>Note 1:</b>
+                     P3ICLI makes no effort to manage slide
+                     size, which implies that the default for this command is
+                     <b>default</b>.<br />
+                     <b>Note 2:</b>
+                     The <em class="standout">open template</em> command
+                     ignores <em class="standout">slide size</em>.
+    </td>
+</tr>
+<tr>
+    <td class="code">start ppt [minimized]</td>
+    <td class="left">Launch PowerPoint, if not already
+                     running&mdash;establishes
+                     an OLE-connected instance of PPT.  The optional
+                     <em>minimized</em> argument specifies that PPT
+                     starts as a minimized window, which
+                     prevents the application from flashing open as the
+                     topmost, foreground window.
+                     <p>
+                     This command is not strictly necessary, since
+                     the <em class="standout">open template</em> and
+                     <em class="standout">insert slide</em>
+                     commands launch PowerPoint as necessary.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">third party fix {on | off}</td>
+    <td class="left">Apply internal workaround(s) for a third party security
+                     application that monitors and disrupts P3ICLI
+                     activities.  Currently, the <b>on</b> state ensures that
+                     all <em class="standout">insert slide</em> operations
+                     are carried out via a clipboard copy and paste (as opposed
+                     to a direct file copy).
+                     <p>
+                     Default is <b>off</b>.  Example:
+                     </p>
+                     <blockquote>
+                         <code>third party fix on</code>
+                     </blockquote>
+    </td>
+</tr>
+<tr>
+    <td class="code">title &lt;qstring&gt;</td>
+    <td class="left">Set the text of a template's title shape.
+                     <b class="bright">(R) (T)</b>.  Once set, the shape is
+                     marked "modified", which has implications for the
+                     <em>clean</em> command.  Example:
+                     <blockquote>
+                         <code>title "Voter Turnout By County"</code>
+                     </blockquote>
+                     <p>
+                     Data embedded within <em>&lt;qstring&gt;</em> may be
+                     encoded in either the UTF-8 or ANSI character sets, as
+                     specified by the <em class="standout">encoding</em>
+                     command.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">title move &lt;int&gt;','&lt;int&gt;</td>
+    <td class="left">Move the title shape to a new location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>left</b> and <b>top</b>
+                     coordinates (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     title move 288, 36
+                     </code>
+                     </p>
+                     <p>
+                     Which moves the title to a location 4.5 inches from
+                     the left edge of the current slide and 0.5 inches
+                     below the slide's top edge.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_text_shapes">
+                     Dynamically Modifying Text Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">title size &lt;uint&gt;','&lt;uint&gt;</td>
+    <td class="left">Resize the title shape while maintaining
+                     its current location on
+                     the <b>current</b> slide (original template slide remains
+                     unchanged)
+                     <b class="bright">(R) (T)</b>.
+                     This command's two numerical arguments
+                     reflect the affected shape's new <b>width</b> and
+                     <b>height</b>
+                     (scaled in points, 72 points per inch).
+                     Example:
+                     <p>
+                     <code>
+                     &nbsp;&nbsp;
+                     title size 144, 72
+                     </code>
+                     </p>
+                     <p>
+                     Which resizes the title as a 2in wide by 1in tall
+                     rectangle.  The title does not move.
+                     </p>
+                     <p>
+                     Refer to the topic
+                     <a href="#modifying_text_shapes">
+                     Dynamically Modifying Text Shapes</a>
+                     for further details.
+                     </p>
+    </td>
+</tr>
+</table>
+<h3>
+<a name="invocation" />
+P3ICLI Command Line Invocation
+</h3>
+<pre class="plain_code">
+p3icli [-hvDEFISX] [-T &lt;msec&gt;] [-W{a|x}:&lt;msec&gt;] [-V &lt;versionfile&gt;] [-l &lt;logfile&gt;] [&lt;scriptfile&gt;...]
+</pre>
+<p>
+where:
+</p>
+<div align="center">
+<table class="bordered" cellpadding="3">
+<tr>
+    <td class="code">-h</td>
+    <td class="left">display command line syntax (help) and exit.
+    </td>
+</tr>
+<tr>
+    <td class="code">-v</td>
+    <td class="left">display program version and exit.
+    </td>
+</tr>
+<tr>
+    <td class="code">-D[n]</td>
+    <td class="left">enable internal debug messages at optional level "n"
+                     (an unsigned integer).
+                     Higher levels enable more detailed debugging.
+                     Default is level "0".
+    </td>
+</tr>
+<tr>
+    <td class="code">-Ex</td>
+    <td class="left">send an 'End task' message to all visible instances of
+                     windows eXplorer (aka File Explorer) on a Windows 10 host
+                     if and only if <em class="standout">
+                     copy src fmt</em> is <em class="standout">on</em>.
+                     This switch may also be controlled via an environment
+                     variable.
+                     Refer to the <a href="#win10_instability">
+                     PowerPoint Instability On Windows 10 </a> topic for
+                     further details.
+                     By default, the message is <u>not</u> sent.
+    </td>
+</tr>
+<tr>
+    <td class="code">-F</td>
+    <td class="left">When
+                     <em class="standout">delete image files</em> is
+                     <em class="standout">on</em>,
+                     force file deletion if the number of errors at program exit
+                     is &gt; 0.
+                     Refer to the <a href="#cleaning_up_image_files">
+                     Cleaning Up Temporary Images Files</a>
+                     topic for further details.
+    </td>
+</tr>
+<tr>
+    <td class="code">-Ix</td>
+    <td class="left">Ignore windows eXplorer (aka File Explorer) on a Windows
+                     10 host.
+                     This switch may also be controlled via an environment
+                     variable.
+                     Refer to the <a href="#win10_instability">
+                     PowerPoint Instability On Windows 10 </a> topic for
+                     further details.
+                     If <em class="standout"> copy src fmt</em> is
+                     <em class="standout">on</em>,
+                     the default is to warn once (with a lengthy message) when
+                     Windows Explorer is running as a visible process.
+    </td>
+</tr>
+<tr>
+    <td class="code">-S</td>
+    <td class="left">dump accepted syntax on stdout and exit.
+    </td>
+</tr>
+<tr>
+    <td class="code">-X</td>
+    <td class="left">forces P3ICLI to execute a <em class="standout">
+                     kill ppt discard</em>
+                     command after all script(s) are processed.  Useful
+                     in a server environment (prevents errant
+                     scripts from stranding orphan instances of
+                     PowerPoint).
+    </td>
+</tr>
+<tr>
+    <td class="code">-T &lt;msec&gt;</td>
+    <td class="left">
+        assumes P3ICLI is running under the Windows Task Scheduler, which
+        implies that before any &lt;scriptfiles&gt; are processed:
+        <ol>
+            <li>
+                a single instance of PowerPoint is started, and
+            </li>
+            <li>
+                that (new) PowerPoint instance is allowed &lt;msec&gt;
+                (milliseconds) of time to cleanly initialize.
+            </li>
+        </ol>
+        Carefully read
+        <a href="#task_scheduler_caveats">Task Scheduler Hints/Caveats</a> for
+        further information.
+    </td>
+</tr>
+<tr>
+    <td class="code">-V &lt;versionfile&gt;</td>
+    <td class="left">write program version to &lt;versionfile&gt; and exit.
+    </td>
+</tr>
+<tr>
+    <td class="code">-Wa:&lt;msec&gt;</td>
+    <td class="left">
+        wait &lt;msec&gt; milliseconds after transmitting an Asynchronous
+        PPT command.  If unspecified, the default is 80 milliseconds. This
+        parameter may also be configured via an environment variable.  Refer to
+        the <a href="#fast_PC_considerations">Fast PC Considerations</a>
+        topic for further details.
+    </td>
+</tr>
+<tr>
+    <td class="code">-Wx:&lt;msec&gt;</td>
+    <td class="left">
+        wait &lt;msec&gt; milliseconds at program eXit when the -T or -X
+        command line options are in effect.
+        If unspecified, the default is 256 milliseconds. This
+        parameter may also be configured via an environment variable.  Refer to
+        the <a href="#fast_PC_considerations">Fast PC Considerations</a>
+        topic for further details.
+    </td>
+</tr>
+<tr>
+    <td width="25%" class="code">-l &lt;logfile&gt;</td>
+    <td class="left">record error count and error messages in
+                     &lt;logfile&gt; instead of stderr.
+    </td>
+</tr>
+<tr>
+    <td width="25%" class="code">&lt;scriptfile&gt;</td>
+    <td class="left">specifies the path to one or more files containing
+    P3ICLI scripting commands.
+    If not specified, commands are read from stdin.</td>
+</tr>
+</table>
+</div>
+
+<h3>
+<a name="example_cmdline" />Example Command Line Invocation
+</h3>
+Process one script, errors (if any) listed on stderr:
+<blockquote>
+    <pre class="plain_code">
+        p3icli my_script.txt
+    </pre>
+</blockquote>
+Process two scripts, error(s) listed in user-specified log file:
+<blockquote>
+    <pre class="plain_code">
+        p3icli -l c:\temp\p3icli_log.txt script1.txt script2.txt
+    </pre>
+</blockquote>
+
+<h3>
+<a name="exit_code" />P3ICLI Exit Code
+</h3>
+The program's exit code is set to the total number of syntax or runtime
+errors encountered during the course of command execution.
+<p>
+Currently, P3ICLI aborts when 8 total errors are detected.
+</p>
+<h3>
+<a name="log_file_format" />Log File Format
+</h3>
+<div align="center">
+<a name="log_format_tbl" />
+<table class="bordered" cellpadding="3" width="80%">
+    <caption><b>Table 6 -- Log File Format</b></caption>
+<tr>
+    <th width="30%">Logical File<br />Line Number</th>
+    <th>Data</th>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">1</td>
+    <td class="left">P3ICLI exit code (i.e., total error count)</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">2</td>
+    <td class="left">Runtime error/warning/informational message #1
+                     (if any)</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">3</td>
+    <td class="left">Runtime error/warning/informational message #2
+                     (if any)</td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center;font-size:1.0em"><b>...</b></td>
+    <td class="code" style="font-size:1.0em"><b>...</b></td>
+</tr>
+<tr>
+    <td class="code" style="text-align:center">N + 1</td>
+    <td class="left">Runtime error/warning/informational message #N
+                     (if any)</td>
+</tr>
+</table>
+</div>
+<h3>
+<a name="example_using_open" />Example Script Using <em>Open Template</em>
+</h3>
+Using the template file <a href="sampleTemplate.potx">sampleTemplate.potx</a>
+(included with the P3ICLI
+distribution), the following script creates two slides from six hypothetical
+graphic/picture files stored in c:\temp .
+<blockquote>
+<pre class="highlit_code">
+# begin script
+open template \path\to\sampleTemplate.potx
+# populate slide #1 =&gt; 3 pics
+title "What a cute baby!"
+pic1 c:\temp\baby_smiling1.jpeg
+cap1 "Say Cheese!"
+pic2 c:\temp\baby_smiling2.jpeg
+cap2 "Feb, 2005"
+pic3 c:\temp\baby_pose.jpeg
+cap3 "Blue skies"
+clean slide                  # remove pic4 snd cap4 shapes
+#
+# all slide 1 template picture shapes populated
+#
+duplicate template           # create and move to next slide
+# populate slide #2 =&gt; 3 pics
+title "Happy Baby"
+pic1 c:\temp\baby_pout.jpeg
+cap1 "Are we done, yet?"
+pic3 c:\temp\baby_drool1.jpeg
+cap3 "Can we talk?"
+pic4 c:\temp\baby_on_stomach.jpeg
+cap4 "Just for fun"
+clean slide                  # remove pic2 and cap2 shapes
+save as presentation c:\temp\example.pptx
+</pre>
+</blockquote>
+<h3>
+<a name="example_using_insert" />Example Script Using <em>Insert Slide</em>
+</h3>
+The template file <a href="portfolio.potx">portfolio.potx</a>
+(included with the P3ICLI distribution) is
+comprised of three slides, each of which includes a title shape and, in
+sequential order, one, two, and three rectangular shapes.  The following
+script creates a presentation comprised of four slides fully populated with
+graphic/picture files:
+<blockquote>
+<pre class="highlit_code">
+# begin script
+kill ppt discard
+# On a very slow host, killing PPT and immediately attempting to restart it
+# occasionally causes the PPT automation server to _not_ start.
+# So wait a bit.
+sleep 200
+#
+insert slide 1 from template \path\to\portfolio.potx
+title "National Sales Figures"
+pic1 c:\temp\national_sales_figures.jpeg
+clean slide      # not really necessary
+#
+dup template     # create another slide with just one rectangle shape
+title "Oregon Sales Figures"
+pic1 c:\temp\oregon_sales_figures.jpeg
+#
+insert slide 2 from template \path\to\portfolio.potx
+title "Largest Two National Customers"
+pic1 c:\temp\mega_corp1_sales.gif
+pic2 c:\temp\mega_corp2_sales.gif
+#
+insert slide 3 from template \path\to\portfolio.potx
+title "Largest Three Oregon Customers"
+pic1 c:\temp\pdx_cust1.png
+pic2 c:\temp\pdx_cust2.png
+pic3 c:\temp\salem_cust1.png
+#
+save as presentation c:\temp\sales_summary.pptx
+</pre>
+</blockquote>
+<h3>
+<a name="example_using_jsl" />
+Example Using General Purpose Scripting Language
+</h3>
+Of course, no one wants to sit at a keyboard and type P3ICLI commands into
+a console window and/or text editor. P3ICLI is primarily targeted for use
+within
+a programming framework that dynamically creates both graphic images and
+P3ICLI commands that manipulate same.
+<p>
+The JMP Scripting Language serves this purpose well, as
+<a href="http://p3icli.sourceforge.net/jsl_example.html">
+described here</a>.
+</p>
+<h3>
+<a name="scripting_hints" />Script Hints
+</h3>
+<ul>
+    <li>
+    Always specify the full path to any graphics or template file.
+    Remember, when PowerPoint starts, its default working directory is not
+    necessarily the same as P3ICLI's.  Not specifying the full path often
+    elicits a terse PowerPoint "File not found" error.<br />&nbsp;
+    </li>
+    <li>
+    P3ICLI does not search for multiple shapes tagged with the same
+    user-specified label (e.g., all caption shapes labeled "cap2").
+    Instead P3ICLI stops searching after the first label match.
+    Consequently, do <u><b>not</b></u> create shapes with duplicate labels
+    (this is easy to do when copying and pasting PowerPoint shapes).
+    Duplicate shape labels lead to extremely vexing script errors.  For
+    example, given two captions labeled "cap2", this command only
+    labels <b>one</b> caption:
+    <blockquote>
+    <pre class="plain_code">
+cap2 "My caption 2 text"
+    </pre>
+    </blockquote>
+    </li>
+</ul>
+<hr />
+<center>
+If you've read this far through the P3ICLI reference manual, you're ready to
+write scripts.  Go for it!
+</center>
+<center>
+<p>
+The remainder of the manual covers topics that may or may not prove useful for
+your presentations.
+</p>
+</center>
+<hr />
+<h3>
+<a name="utf8_encoding_hints" />UTF-8 (aka Unicode) Encoding Hints
+</h3>
+Suppose you wish to add nifty Unicode characters
+to P3ICLI caption and/or title shapes.
+You've located said characters by browsing online documentation and
+pasted their Unicode values into the <em>&lt;qstring&gt;</em>
+argument associated with
+either a <em class="standout">cap&lt;uint&gt;</em> or
+<em class="standout">title</em> command.  The commands will look
+similar to this fragment:
+<blockquote>
+<pre class="highlit_code">
+encoding utf8
+# open a template or insert a template slide
+cap4 'The Empty Set symbol looks like this: &empty;'
+title "This is a pair of scissors: &#x2702;"
+</pre>
+</blockquote>
+When this snippet is processed by P3ICLI, a pretty &empty; symbol may be
+displayed in caption number 4, along with a pair of scissors in the title.
+Or, <b>garbage</b> may appear instead.
+If garbage is displayed, what's the problem?
+Could be one of these issues:
+<ol>
+    <li>
+        The PowerPoint font associated with the affected title/caption shapes
+        may not support the desired Unicode character.
+        <blockquote>
+            <b>NB:</b> If PowerPoint displays garbage when a desired Unicode
+            character is <u>manually</u> pasted into the targeted
+            caption/title shape, P3ICLI cannot copy it correctly from a script.
+        </blockquote>
+        In this situation, find a PowerPoint font that supports the desired
+        characters and adjust the affected title/caption shape's font to match.
+        <br />&nbsp;
+    </li>
+    <li>
+        A PowerPoint bug.  For example, the author's copy of PowerPoint 2013
+        cannot display Unicode characters with a value greater than
+        0xFFFF (U+FFFF).  On the other hand, Word 2013 and Excel 2013 are not
+        similarly affected.
+        <br />&nbsp;
+    </li>
+    <li>As a last resort, this could be a P3ICLI bug.  Contact the author.</li>
+</ol>
+<h3>
+<a name="cleaning_up_image_files" />Cleaning Up Temporary Image Files
+</h3>
+Suppose P3ICLI is used in conjunction with an analysis environment where image
+files are created on the fly (say, in a statistics package like JMP) and
+then processed by a program-generated script.  If the generated images
+serve no purpose after P3ICLI copies them into a PowerPoint presentation,
+someone or some process must eventually delete the files.  P3ICLI includes
+a mechanism that, when enabled, automatically reaps these temporary files.
+<p>
+<b>Use Case #1</b>&nbsp;--&nbsp;<u>All</u> Image Files Are Temporary
+</p>
+To configure P3ICLI to delete every image file referenced by
+<em class="standout">pic&lt;uint&gt;</em>, simply add this
+command somewhere near the beginning of a script:
+<blockquote>
+<pre class="highlit_code">
+delete image files on     # must! precede script's first pic&lt;uint&gt; cmd
+#
+# or, equivalently:   dif on
+#
+</pre>
+</blockquote>
+<p>
+As long as there are no errors in the aforementioned script, P3ICLI deletes
+the temporary image files when it terminates (exits).  See the discussion of the -F
+command line switch below for further details describing how script
+errors affect the <em class="standout">delete image files</em> feature.
+</p>
+<p>
+<b>Use Case #2</b>&nbsp;--&nbsp;<u>Some</u> Image Files Are Temporary
+(Ignore Command)
+</p>
+The <em class="standout">ignore &lt;filename&gt;</em> command can be used to
+protect any filename from deletion by P3ICLI.  Note that
+this command's specified file need <u>not</u> exist when the
+command appears in a script, making it convenient to place a
+list of protected file(s) at the beginning of a script.
+<p>
+It logically follows, then, that
+an <em class="standout">ignore'd</em> filename need <u>not</u> precede its
+use in a <em class="standout">pic&lt;uint&gt;</em> command.  In other
+words, <em class="standout">ignore</em> is
+position-independent within a script.
+</p>
+<p>
+Finally, don't misspell the <em class="standout">ignore</em> command's
+<em class="standout">&lt;filename&gt;</em>, or you'll be sorry.
+</p>
+<p>
+Example Use Case #2:
+</p>
+<blockquote>
+<pre class="highlit_code">
+ignore c:\temp\intro_graphic.png
+delete image files on
+open template c:\temp\mytmplt.pptx
+pic1 c:\temp\intro_graphic.png         # protected by ignore above
+pic2 c:\temp\June_2019_trends.png      # will be deleted
+dup template
+pic1 c:\temp\2019_forecast.png         # will be deleted
+pic2 c:\temp\audience_questions.png    # protected by next cmd
+ignore c:\temp\audience_questions.png
+</pre>
+</blockquote>
+<p>
+<b>Use Case #3</b>&nbsp;--&nbsp;<u>Some</u> Image Files Are Temporary
+(Eschew Ignore Command)
+</p>
+If use of the <em class="standout">ignore</em> command is unappealing, it's
+also possible to interleave the <em class="standout">delete image files</em>
+command to achieve the same effect, like so:
+<blockquote>
+<pre class="highlit_code">
+delete image files off                 # unnecessary, "off" is default
+open template c:\temp\mytmplt.pptx
+pic1 c:\temp\intro_graphic.png         # protected
+delete image files on
+pic2 c:\temp\June_2019_trends.png      # will be deleted
+dup template
+pic1 c:\temp\2019_forecast.png         # will be deleted
+delete image files off
+pic2 c:\temp\audience_questions.png    # protected by prev cmd
+</pre>
+</blockquote>
+<b>Notes:</b>
+<ul>
+    <li>
+         Image files are not deleted if P3ICLI exits with an error code (i.e.,
+         error count) &gt; 0.  The undeleted files may or may not provide
+         useful in a script debugging context.  To override this behavior and
+         always delete targeted image files, add the -F switch to the P3ICLI
+         command line.
+    </li>
+    <li>
+         If the debug switch (-D) is added to the P3ICLI command line,
+         filenames will be listed as they are deleted upon program exit.
+    </li>
+</ul>
+<h3>
+<a name="optimization_insights" />Script Optimization Insights
+</h3>
+In general, optimizing a script for maximum speed doesn't buy much, given
+the fact that thick slide decks overwhelm most audiences.  Put another way,
+optimizing P3ICLI to shave a few seconds off the creation time of a
+short presentation is a fool's errand.
+<p>
+But if there's a
+need to run the same script over and over, or if a script generates many
+PPT slides, efficiency might matter.  What follows are two optimizing
+tips that may apply to your environment.
+</p>
+<ul>
+    <li>
+    The <em class="standout">copy source format on</em> feature is
+    computationally expensive.  If a script utilizes the
+    <em class="standout">insert slide</em> command and the source template
+    slide(s) include <b><u>no</u></b> background formatting worth copying to the
+    P3ICLI-generated presentation, don't enable "copy source format".
+    <br />&nbsp;
+    </li>
+    <li>
+    Beware of this suboptimal script idiom (highlighted in bold font):
+<blockquote>
+<pre class="highlit_code">
+insert slide 1 from template c:\temp\tmplt.ppt
+pic1 some_graphic.jpg
+cap1 "explanatory text"
+<b>insert slide 1 from template c:\temp\tmplt.ppt</b>
+pic1 another_graphic.jpg
+cap1 "more explanatory text"
+<b>insert slide 1 from template c:\temp\tmplt.ppt</b>
+pic1 graphic.jpg
+cap1 "more text"
+</pre>
+</blockquote>
+    Repeatedly inserting the <b><u>same</u></b> slide <b><u>in
+    succession</u></b> is computationally expensive when compared to the
+    identical effect that can be achieved via <em
+    class="standout">duplicate template</em>, like so:
+<blockquote>
+<pre class="highlit_code">
+insert slide 1 from template c:\temp\tmplt.ppt
+pic1 some_graphic.jpg
+cap1 "explanatory text"
+<b>duplicate template</b>
+pic1 another_graphic.jpg
+cap1 "more explanatory text"
+<b>dup template</b>
+pic1 graphic.jpg
+cap1 "more text"
+</pre>
+</blockquote>
+    When it makes sense, favor "dup template".
+    </li>
+</ul>
+<h3>
+<a name="modifying_pic_shapes" />Dynamically Modifying Picture Shapes
+</h3>
+<center>
+<b class="bright" style="font-size:1.5em;">Caution!</b>
+</center>
+<blockquote>
+    <blockquote style="font-size:.8em;">
+        This is an advanced topic--explore <b>only</b>
+        <b class="bright">after</b> mastering
+        the basics of populating captions, titles, and pictures/graphics
+        on PowerPoint slides.
+    </blockquote>
+</blockquote>
+<p>
+<b class="bright">Note:</b> This topic focuses on picture shape
+manipulation, since rectifying skewed/distored graphic images is of greater
+concern than moving and resizing shapes that store simple text strings.
+Caption and title shapes are covered in the topic
+<a href="#modifying_text_shapes">Dynamically Modifying Text Shapes.</a>
+</p>
+<p>
+This discussion should be prefaced by noting that when P3ICLI inserts an
+image within a PowerPoint template shape, the shape is <u>not</u> allowed
+to change its size or location.  This behavior is considered a useful
+feature, as it prevents PowerPoint from haphazardly scattering images across a
+slide.  But there's an obvious drawback to this "feature".
+When P3ICLI is used in an automation environment where graphic images are
+created on the fly (e.g., invoking P3ICLI from a
+<a href=
+"http://www.amazon.com/JSL-Companion-Applications-Scripting-Language/dp/1607648806">
+JMP JSL script</a>),
+the aspect ratio of one or more programmatically generated
+images may not adequately match the fixed geometry of a template
+picture shape included on a template slide.  Left uncorrected, the affected
+images appear distorted (stretched too much in either the x or y axis) and
+require manual resizing when P3ICLI exits.  For a large presentation, this
+constitutes annoying scut work.
+</p>
+<p>
+Assuming that the automation environment in question provides access
+to the geometry of programmatically generated images, P3ICLI provides a set of
+commands that move and/or resize picture shapes on the current presentation
+slide. (Note that shapes on the original template slide remain untouched).
+</p>
+<p>
+<b>First Step -- What's My Canvas Look Like?</b>
+</p>
+<ol>
+    <li>invoke P3ICLI</li>
+    <li>insert and/or open a template slide</li>
+    <li>enter this command:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <em class="standout">list geometries</em></li>
+</ol>
+Here's actual example text displayed by P3ICLI:
+<blockquote>
+<pre>
+$ p3icli
+&gt; insert slide 1 from template c:\cm\git\p3icli\test\tmplts\demo.potx
+&gt; list geometries
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,30)
+Curr Slide: pic1 (630,228) @ (54,126)
+Curr Slide: cap1 (630,54) @ (54,384)
+
+</pre>
+</blockquote>
+This template contains one title, one picture, and one
+caption shape and visually looks like so (all shapes are selected on the
+slide to highlight their borders):
+&nbsp;<br />
+&nbsp;<br />
+<center>
+<img src="original_resize_demo_slide.png"
+alt="screen shot of demo slide before shape manipulation occurs" />
+</center>
+<p>
+Both the template and current slide are listed as 720 (width) by 540
+(height) units.
+</p>
+<p>
+<b>Question: Geometry Data Associated with the "list" Command is Scaled How?</b>
+</p>
+Answer:  The numbers displayed by the "list" command are
+<u>integers</u> scaled in
+points, 72 points per inch. So, from the previous example, we see
+that the slide is 10 inches wide and 7.5 inches tall.
+<p>
+<b>Second Step -- Determine Shape Geometries</b>
+</p>
+Before deciding if a picture shape requires a size adjustment after,
+say, inserting a newly generated graphic
+image, you must know the current aspect ratio of the targeted shape.
+Looking at the
+listing above, it can be seen that pic1 is 630 points wide and 228 points
+tall on both the current and template slide.
+Or, 8.75 inches by 3.17 inches (i.e., 630/72 by 228/72).
+<p>
+Note also that pic1 is located at coordinate location (54,126). Given that
+coordinate (0,0) denotes a slides top left corner, it can be determined
+that pic1 is positioned 0.75 inches from the left edge of the slide and
+1.75 inches from the top slide edge (i.e., @ 54/72,126/72).
+</p>
+<p>
+Put more succintly, this symbolic notation
+summarizes the last five sentences:
+</p>
+<blockquote>
+    pic1 (<i>width</i>,<i>height</i>) @ (<i>left</i>,<i>top</i>)
+</blockquote>
+The current aspect ratio of pic1 is 2.76 (630/228), but suppose 2.00
+is desired instead.  This P3ICLI command achieves that effect:
+<blockquote>
+<pre>
+&gt; pic1 size 630,315
+</pre>
+</blockquote>
+Since pic1's height was just increased by 87 points (1.21 in), it would be
+nice to vertically recenter the shape based on its previous location.  That
+requires moving the shape "up" 43 points (87/2).  This P3ICLI command
+gets the job done:
+<blockquote>
+<pre>
+&gt; pic1 move 54,83     # (126 - 43 =&gt; 83)
+</pre>
+</blockquote>
+Without exiting P3ICLI, it's instructive to once again display template and
+current slide geometry data:
+<blockquote>
+<pre>
+&gt; list geometries
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,30)
+Curr Slide: pic1 (630,<b class="bright">315</b>) @ (54,<b class="bright">83</b>)
+Curr Slide: cap1 (630,54) @ (54,384)
+
+</pre>
+</blockquote>
+Pic1 on the current slide indicates the expected geometry, but it remains
+<i>unchanged</i> on the template slide.  This dichotomy is by design.
+The next <em class="standout">duplicate template</em> command will create a
+new slide in the presentation that is populated with pristine copies
+of the original template slide shapes.
+In other words, each
+<em class="standout">duplicate template</em> throws away all changes made
+to the current slide shape(s) via the aforementioned "size" and/or "move"
+commands.
+<p>
+Taking a closer look at the updated geometry data shows a couple of problems.
+The title's shapes bottom edge (30 + 54) overlaps pic1's top edge (83).
+Likewise, pic1's bottom edge (83 + 315) overlaps cap1's top edge (384).
+Here's the visual result (not very appealing):
+</p>
+<center>
+<img src="resized_pic1_demo_slide.png"
+alt="screen shot of demo slide after pic shape manipulation occurs" />
+</center>
+<p>
+So, pic1 has the desired aspect ratio and slide position, but the title
+and cap1 shapes are now "in the way".  The topic
+<a href="#modifying_text_shapes">Dynamically Modifying Text Shapes</a>
+proposes a solution for this problem.
+</p>
+<p>
+<b>Question: Should I Resize/Move a Pic Shape Before or After Adding a
+Graphics Image to Same?</b>
+</p>
+Answer:  Use whichever order produces the best image scaling by your
+version of PowerPoint.  Just make sure that image(s) are added before the
+next <em class="standout">duplicate template</em> command.
+<p>
+<b>Question: Is it Possible to Grab Geometry Data Programmatically?</b>
+</p>
+Answer:  By default, P3ICLI dumps geometry data generated by the "list"
+command onto
+the console screen (stdout). But if the program is invoked with a log file
+command line argument, the output
+goes there instead.  So, if the following actions can be
+mimicked from your automation environment, you're good to go:
+<ol>
+    <li>
+        Create a short P3ICLI script (call it generate_geom_script.txt)
+        that looks something like this:
+        <blockquote>
+        <pre>
+kill ppt discard   # start with guaranteed clean slate
+insert slide 1 from template c:\path\to\my\template\file
+list geometries
+kill ppt discard   # tidy up before exiting
+        </pre>
+        </blockquote>
+    </li>
+    <li>
+        Now invoke P3ICLI from your automation environment with these
+        command line arguments:
+        <blockquote>
+        <pre>
+p3icli -l c:\path\to\geom_data_log_file.txt c:\path\to\generate_geom_script.txt
+        </pre>
+        </blockquote>
+    </li>
+    <li>
+        After P3ICLI exits, use your scripting/programming language to
+        open "geom_data_log_file.txt" and parse its contents.
+    </li>
+</ol>
+<h3>
+<a name="modifying_text_shapes" />Dynamically Modifying Text Shapes
+</h3>
+<center>
+<b class="bright" style="font-size:1.5em;">Caution!</b>
+</center>
+<blockquote>
+    <blockquote style="font-size:.8em;">
+        This is an advanced topic--explore <b>only</b>
+        <b class="bright">after</b> mastering
+        the basics of populating captions, titles, and pictures/graphics
+        on PowerPoint slides.
+    </blockquote>
+</blockquote>
+Although P3ICLI provides commands that support moving and resizing title
+and caption shapes, a la the
+<em class="standout">pic&lt;uint&gt; {move|size}</em>
+commands, it's important to note that <i>resizing</i> caption/title shapes
+does <b>not</b> imply the same semantics as <i>resizing</i> a picture shape.
+<p>
+Caption and title shapes are treated differently than picture shapes when
+text is added via the
+<em class="standout">title &lt;qstring&gt;</em> and
+<em class="standout">cap&lt;uint&gt; &lt;qstring&gt;</em>
+commands.  When text is added, P3ICLI makes no effort to maintain a shape's
+location or size.
+As it turns out,
+template title and caption shapes almost never change
+slide location during text insertion, <b>but</b> PowerPoint <b>will</b>, as
+the need arises,
+expand the size of these shapes to accommodate text that might otherwise
+overflow affected shape frames.  This behavior is considered useful,
+since title and caption shapes transparently accommodate arbitrarily
+large strings of textual data, irrespective of the original shape's size.
+</p>
+<blockquote>
+    <blockquote style="font-size:1.4em;">
+        So, in the larger scheme of things, a
+        caption/title can be moved before or after text insertion;
+        <b>but the effects of shape resizing are only guaranteed to "stick"
+        <i class="bright">after</i> text is inserted.</b>
+    </blockquote>
+</blockquote>
+Returning to the slide manipulated in the topic
+<a href="#modifying_pic_shapes">Dynamically Modifying Picture
+Shapes</a>, the title and cap1 shape must be moved "off" the
+previously resized (and moved) pic1 shape.  Let's move the the title shape
+up 0.25 inches and move cap1 down 0.5 inches.  These commands accomplish
+that task:
+<blockquote>
+<pre>
+&gt; title move 66,12     # (30 - 72 * 0.25 =&gt; 12)
+&gt; cap1 move 54,420     # (384 + 72 * 0.5 =&gt; 420)
+</pre>
+</blockquote>
+These two commands make adjustments such that there are now no
+overlapping slide shapes, as demonstrated here:
+&nbsp;<br />
+&nbsp;<br />
+<center>
+<img src="title_and_caption_moved_demo_slide.png"
+alt="screen shot of demo slide after title and caption moved" />
+</center>
+<h3>
+<a name="office_2013_considerations" />
+Office 2013 (and later) Considerations
+</h3>
+<ul>
+    <li>
+        It's not possible to save a presentation in HTML format.  More
+        precisely, this command elicits a PPT run-time error:
+        <blockquote><code>
+            save as html c:\temp\my_pres.html
+        </code></blockquote>
+        When an alternative save format is desired, specify PDF.
+        <br />&nbsp;
+    </li>
+    <li>
+        Slide size defaults to a 16:9 aspect ratio.  This
+        effect can be reverted back to the pre-Office 2013 default of 4:3
+        under certain circumstances.
+        Refer to the description of the <em class="standout">slide
+        size</em> command for further details.
+    </li>
+</ul>
+<h3>
+<a name="task_scheduler_caveats" />Task Scheduler Hints/Caveats
+</h3>
+<ul>
+    <li>
+      Running P3ICLI under the Windows Task Scheduler is
+      not guaranteed to work on all hosts, since running an Office
+      product under Task Scheduler is not supported by Microsoft
+      (see <a href="http://support.microsoft.com/kb/257757">
+      Microsoft Article 257757</a> for details).  That being said, use
+      of P3ICLI under the Task Scheduler (in conjunction with the -T
+      command line switch) has been successfully tested on Windows XP,
+      Windows 7, Windows 8, and Windows 10.  It works, but is
+      <u>not</u> bulletproof.  Read on for details.
+      <br />&nbsp;
+    </li>
+    <li>
+      Note that after all script(s) are executed, P3ICLI implicitly
+      executes a <em class="standout">kill ppt discard</em> command to
+      avoid stranding "orphan" PowerPoint processes on the host computer.
+      Therefore, all script(s) run under the Task Scheduler
+      <b><u>must</u></b> save all
+      created presentations via the <em class="standout">save as</em>
+      command or they will be lost.
+      <br />&nbsp;
+    </li>
+    <li>
+    Example Task Scheduler Command Line (wait 12 seconds for PPT init):
+    <blockquote>
+        <pre class="plain_code">
+p3icli -l c:\temp\ts_log.txt -T 12000 c:\users\myLoginID\my_bkgrnd_script.txt
+        </pre>
+    </blockquote>
+    </li>
+    <li>
+      Note that when
+      the -T switch is specified, program initialization is periodically
+      annotated in the log (with a timestamp) up to the point at which
+      script processing begins.  After all scripts are processed,
+      annotations resume during P3ICLI's cleanup and shutdown phase.  These
+      annotations serve as a debugging aid for further (future) P3ICLI mods
+      that might make Task Scheduler execution more robust.
+      <br />&nbsp;
+    </li>
+    <li>
+      Despite the fact that the -T option is crafted to prevent stranding
+      "orphan" PowerPoint processes on the host computer,
+      the technique used is not foolproof and eventually something
+      will happen that causes PowerPoint to <u>not</u> exit cleanly when
+      run under the Task Scheduler.  At that point, "interesting" problems
+      crop up until the orphan processes are killed or the host is
+      rebooted.  Such problems include, but are not limited to:
+      <br />&nbsp;
+      <ul>
+        <li>
+          P3ICLI fails to properly connect with PowerPoint during
+          its initialization.
+          <br />&nbsp;
+        </li>
+        <li>
+          Every <em>interactive</em> instance of PowerPoint reports that a
+          presentation has been saved and no matter what steps are taken to
+          remove that saved presentation, it still shows up in the document
+          recovery pane (until the orphan PowerPoint process(es) are
+          killed).
+          <br />&nbsp;
+        </li>
+      </ul>
+    </li>
+    <li>
+        Frequent P3ICLI users become accustomed to writing
+        boilerplate at the beginning of their scripts that looks something
+        like this:
+<blockquote>
+<pre class="highlit_code">
+# begin script
+# begin boilerplate
+kill ppt save               &lt;-- Task Scheduler poison!
+#     or
+kill ppt discard            &lt;-- Also a bad idea under task scheduler
+sleep 500
+copy source format on
+# end boilerplate
+# remainder of script
+# ...
+</pre>
+</blockquote>
+        <p>
+        This idiom works fine when invoking P3ICLI interactively on the
+        Windows desktop, but almost certainly guarantees failure under task
+        scheduler.  Remember, the function of the -T switch is to
+        initialize an instance of PPT, wait several seconds for the system
+        to stabilize, and then run scripts using the instance that was just
+        started.
+        </p>
+        <p>
+        Much care must be taken when starting an Office application under
+        the task scheduler.  Once the Office application is running...don't
+        kill it until all script(s) are complete.
+        </p>
+    </li>
+    <li>
+    <div align="center">
+        <a name="task_scheduler_config" />
+        <b>Figure 4 -- Important Task Scheduler General Settings</b><br />
+        <img src="task_scheduler_config.png"
+             alt="important task scheduler general settings" />
+    </div>
+    </li>
+</ul>
+    &nbsp;<br />
+<h3>
+<a name="fast_PC_considerations" />Fast PC Considerations
+</h3>
+The advent of fast PC hosts configured with SSD storage, muscular CPUs, and
+lots of RAM unmasked P3ICLI stability issues with respect to
+Office 2010 and its successors.
+<p>
+<u>First Area of Concern</u>
+</p>
+<blockquote>
+    P3ICLI eXits when either the -T or -X command line switches are
+    in effect.
+</blockquote>
+<p>
+In this situation, P3ICLI must delay for "awhile" after killing all running
+instances of PowerPoint, before exiting itself.  The length of this delay is,
+by default, configured for 256 milliseconds, but can be changed to a value in
+the range of 0-16000 milliseconds via this command line switch:
+</p>
+<blockquote>
+<pre class="plain_code">
+-Wx:&lt;milliseconds&gt;
+
+Example:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p3icli -X -Wx:400 myscript.txt
+</pre>
+</blockquote>
+This example directs P3ICLI to linger for 400 milliseconds after killing all
+PPT instances.
+In general, the delay at exit only becomes important when running scripts
+back-to-back in an automated scripting environment (e.g., a .bat file) on a
+fast host.
+For example, the delay is important for a .bat file structured like so:
+<blockquote>
+<pre class="plain_code">
+rem begin scripts on thumping fast PC
+p3icli -X -l c:\temp\log1.txt script1.txt
+p3icli -X -l c:\temp\log2.txt script2.txt
+</pre>
+</blockquote>
+Without the default eXit delay of 256 milliseconds inserted at the end of
+script1.txt, script2.txt may generate random PowerPoint errors.
+<p>
+<u>Second Area of Concern</u>
+</p>
+<blockquote>
+    The <em class="standout">insert slide</em> command
+    adds slide(s) to a new presentation when
+    <em class="standout">copy src fmt</em> is
+    <em class="standout">on</em>.
+</blockquote>
+In this scenario, the slide is actually copy-and-pasted
+into the new presentation via the Windows clipboard.  The copy/paste mechanism
+utilized by P3ICLI is Asynchronous in nature and so, when the paste is
+complete,
+P3ICLI must delay for "awhile" until PowerPoint has finished formatting the
+background of the newly inserted slide.
+The length of the delay is,
+by default, configured for 80 milliseconds, but can be changed to a value in
+the range of 0-16000 milliseconds via this command line switch:
+<blockquote>
+<pre class="plain_code">
+-Wa:&lt;milliseconds&gt;
+
+Example:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p3icli -Wa:384 myscript.txt
+</pre>
+</blockquote>
+This example directs P3ICLI to pause for 384  milliseconds after pasting a
+slide into PowerPoint with <em class="standout">copy src fmt on</em>.
+<p>
+</p>
+<u>Environment Variables</u>
+<br />
+The values associated with the -W command line switch
+are also configurable via two environment variables:
+<blockquote>
+    P3ICLI_ASYNC_WAIT<br />
+    P3ICLI_EXIT_WAIT<br />
+</blockquote>
+Initialize either environment variable with an unsigned integer in the range
+0-16000
+to specify the desired delay, in milliseconds.
+<p>
+If both an environment variable and command line switch setting are in
+effect for the same -W parameter, the command line overrides.
+</p>
+<p>
+Finally, if the debug switch (-D) is added to the command line, P3ICLI
+lists the aforementioned wait values in effect at program invocation.
+</p>
+<h3>
+<a name="win10_instability" />PowerPoint Instability On Windows 10
+</h3>
+During stress testing on a Windows 10 host PC, it has been noticed that when
+these three conditions exist:
+<ol>
+  <li>A P3ICLI script specifies <em class="standout">copy src fmt on</em>,
+      and
+  </li>
+  <li>The same script utilizes the <em class="standout">insert slide</em>
+      command rather than <em class="standout">open template</em>, and
+  </li>
+  <li>Windows Explorer (aka File Explorer) is <b>visible</b>.
+  </li>
+</ol>
+Then PowerPoint 2016 exhibits increased instability, especially during the
+execution of long running scripts.  I.E., PowerPoint 2016 more
+frequently pops up this message box:
+<p align="center">
+<img src="ppt_is_sorry.png" alt="PowerPoint is sorry message box" />
+</p>
+<p>
+It is assumed that this instability extends to PowerPoint 2013 and 2010 when
+either are running under the same conditions on a Win10 host,
+but that assumption has not been tested.
+</p>
+<p>
+By default, P3ICLI warns <u>once</u> on a Windows 10 host when conditions 1 and
+3 above are met (in effect).  If this warning is annoying and PowerPoint is
+stable for your scripting needs, kill the warning message by specifying the -Ix
+command line option.
+</p>
+<p>
+Conversely, if increased stability is desirable,
+specify the -Ex command line option.  This option directs
+P3ICLI to automatically close all visible instances of Windows Explorer
+on a Win10 host
+via "End Task" messages when <em class="standout">copy src fmt</em> is
+initially set
+<em class="standout">on</em>.
+</p>
+<p>
+Note that if both -Ix and -Ex are specified on the same command line,
+-Ix overrides.
+</p>
+<p>
+</p>
+<u>Environment Variables</u>
+<br />
+The values associated with the -Ix and -Ex command line options
+are also configurable via two Win10 (or later) environment variables:
+<blockquote>
+    P3ICLI_WDWS_XPLR_IGNORE<br />
+    P3ICLI_WDWS_XPLR_END_TASK<br />
+</blockquote>
+Initialize either environment variable with the values
+{t&nbsp;|&nbsp;f&nbsp;|&nbsp;true&nbsp;|&nbsp;false}
+to achieve the desired effect.
+<p>
+If both an environment variable and command line option are in
+effect for the <b>same</b> -Ix/-Ex parameter, the command line option
+overrides.
+</p>
+<p>
+Finally, if a debug level of -D1 (or higher) is added to the command line,
+P3ICLI lists the aforementioned -Ix/-Ex values in effect at program invocation.
+</p>
+</div>
+</body>
+</html>
