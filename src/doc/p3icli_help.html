@@ -38,7 +38,7 @@ P3ICLI (PowerPoint Picture Insert Command Line Interface) Reference Manual
 P3ICLI (PowerPoint Picture Insert Command Line Interface)<br />Reference Manual
 </h1>
 <h4 align="center">
-Version 3.2
+Version 3.3
 </h4>
 <div class="top">
 <h3>
@@ -389,8 +389,8 @@ The single slide template shown in Figure 3 could be accessed by P3ICLI
 using either of these two equivalent commands:
 </p>
 <blockquote><code>
-insert slide 1 from template c:\path\to\template.ppt<br />
-insert slide "2up, no caps" from template c:\path\to\template.ppt<br />
+insert slide 1 from template c:\path\to\template.pptx<br />
+insert slide "2up, no caps" from template c:\path\to\template.pptx<br />
 &nbsp;<br />
 </code></blockquote>
 <div align="center">
@@ -870,7 +870,7 @@ one command per logical scriptfile line.  Command elements include:
                          <code>
                          encoding utf8
                          <br />
-                         open template c:\temp\mytmplt.ppt
+                         open template c:\temp\mytmplt.pptx
                          <br />
                          cap1 "Production 3-&sigma; limits"
                          <br />
@@ -966,11 +966,11 @@ one command per logical scriptfile line.  Command elements include:
                      Examples:
                      </p>
                      <code>
-                     &nbsp;&nbsp;insert slide 3 from template c:\ppt\tmplt.pot
+                     &nbsp;&nbsp;insert slide 3 from template c:\ppt\tmplt.potx
                      <br />
-                     &nbsp;&nbsp;insert slide 7 from template c:\ppt\tmplt.pot
+                     &nbsp;&nbsp;insert slide 7 from template c:\ppt\tmplt.potx
                      <br />
-                     &nbsp;&nbsp;insert slide "2up" from template \ppt\slds.pot
+                     &nbsp;&nbsp;insert slide "2up" from template c:\ppt\slds.potx
                      </code>
                      <p>
                      Users transitioning to Office 2013/2016 from an earlier
@@ -1276,7 +1276,7 @@ one command per logical scriptfile line.  Command elements include:
                  </p>
                  <p>
                      <code>
-                     &nbsp;&nbsp;save as presentation c:\temp\pres1.ppt<br />
+                     &nbsp;&nbsp;save as presentation c:\temp\pres1.pptx<br />
                      &nbsp;&nbsp;save as pdf c:\temp\pres1.pdf<br />
                      &nbsp;&nbsp;save as html c:\temp\pres1.html
                      </code>
@@ -1333,12 +1333,12 @@ one command per logical scriptfile line.  Command elements include:
                      </p>
                      <blockquote><code>
                      slide size 4:3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 720 by 540<br />
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      # remainder of script ...
                      </code></blockquote>
                      <b class="bright">Incorrect:</b>
                      <blockquote><code>
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      slide size
                      4:3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
                      # remainder of script ...
@@ -1371,12 +1371,12 @@ one command per logical scriptfile line.  Command elements include:
                      </p>
                      <blockquote><code>
                      slide size 16:9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 960 by 540<br />
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      # remainder of script ...
                      </code></blockquote>
                      <b class="bright">Incorrect:</b>
                      <blockquote><code>
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      slide size
                      16:9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
                      # remainder of script ...
@@ -1416,12 +1416,12 @@ one command per logical scriptfile line.  Command elements include:
                      </p>
                      <blockquote><code>
                      slide size a4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# force 780 by 540<br />
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      # remainder of script ...
                      </code></blockquote>
                      <b class="bright">Incorrect:</b>
                      <blockquote><code>
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      slide size
                      a4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# wrong order<br />
                      # remainder of script ...
@@ -1433,7 +1433,7 @@ one command per logical scriptfile line.  Command elements include:
                      </p>
                      <blockquote><code>
                      slide size 595, 842&nbsp;&nbsp;&nbsp;# portrait orientation<br />
-                     insert slide 1 from template c:\temp\tmplt.pot<br />
+                     insert slide 1 from template c:\ppt\tmplt.potx<br />
                      # remainder of script ...
                      </code></blockquote>
                      <b>Note 1:</b>
@@ -1780,7 +1780,7 @@ pic2 c:\temp\baby_smiling2.jpeg
 cap2 "Feb, 2005"
 pic3 c:\temp\baby_pose.jpeg
 cap3 "Blue skies"
-clean slide                  # remove pic4 snd cap4 shapes
+clean slide                  # remove pic4 and cap4 shapes
 #
 # all slide 1 template picture shapes populated
 #
@@ -2061,13 +2061,13 @@ tips that may apply to your environment.
     Beware of this suboptimal script idiom (highlighted in bold font):
 <blockquote>
 <pre class="highlit_code">
-insert slide 1 from template c:\temp\tmplt.ppt
+insert slide 1 from template c:\temp\tmplt.pptx
 pic1 some_graphic.jpg
 cap1 "explanatory text"
-<b>insert slide 1 from template c:\temp\tmplt.ppt</b>
+<b>insert slide 1 from template c:\temp\tmplt.pptx</b>
 pic1 another_graphic.jpg
 cap1 "more explanatory text"
-<b>insert slide 1 from template c:\temp\tmplt.ppt</b>
+<b>insert slide 1 from template c:\temp\tmplt.pptx</b>
 pic1 graphic.jpg
 cap1 "more text"
 </pre>
@@ -2078,7 +2078,7 @@ cap1 "more text"
     class="standout">duplicate template</em>, like so:
 <blockquote>
 <pre class="highlit_code">
-insert slide 1 from template c:\temp\tmplt.ppt
+insert slide 1 from template c:\temp\tmplt.pptx
 pic1 some_graphic.jpg
 cap1 "explanatory text"
 <b>duplicate template</b>

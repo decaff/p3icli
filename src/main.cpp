@@ -792,14 +792,20 @@ main(int argc, char **argv)
         add_log_timestamp("parsing script(s)");
     }
 
-    if (! lexer_configured_correctly())
+    // if debug level > 5, test integrity of flex token table.
+    if ((err->debug_enabled() == true) && (err->get_debug_level() > 5))
     {
-        // Someone's been naughty in lex.l
+        if (! lexer_configured_correctly())
+        {
+            // Someone's been naughty in lex.l
 
-        err->err(
-        "internal error: lexical analyzer incorrectly configured...aborting"
-                );
-        return (1);
+            err->err(
+            "internal error: lexical analyzer incorrectly configured...aborting"
+                    );
+            return (1);
+        }
+        else
+            err->debug("flex configured correctly", 1);
     }
 
     if (argc == 0)

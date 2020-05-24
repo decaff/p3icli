@@ -1,8 +1,6 @@
 /*
  * winutils.cpp -- Odds and Ends windows utilities
- *
  */
-
 
 #include <string.h>
 
@@ -125,7 +123,7 @@ worry_about_wdws_xplr(void)
     // Windows Explorer, as discussed here:
     //
     // https://blogs.msdn.microsoft.com/oldnewthing/20150619-00/?p=45341
-    
+
     static const char *xplr_class1 = "CabinetWClass";
     static const char *xplr_class2 = "ExplorerWClass";
 
@@ -138,7 +136,7 @@ worry_about_wdws_xplr(void)
         if (! hwnd)
         {
             // All instances are gone (or never were).  Mission accomplished.
-            
+
             break;
         }
         if (! ppt->wdws_xplr_end_task())
@@ -147,7 +145,7 @@ worry_about_wdws_xplr(void)
             {
                 // The simple case -- drop a warning in the log (or on stderr
                 // if no log file).
-            
+
                 warned_about_xplr_once = true;  // don't spam warnings
                 err->warn(
                "Windows Explorer is running as a visible process.\n\n"

@@ -63,6 +63,10 @@ is included with the P3ICLI distribution.
 
 Change Log
 ==========
+v3.3 released ??/??/2020
+    - Documentation continues the transition to post-Office 2003 filename
+      suffixes (e.g., .pot to .potx, likewise .ppt to .pptx).
+
 v3.2 released 04/19/2020
     - Support for testing on Windows 7 & 8.1 dropped due to the author's
       lack of interest in either operating system.  It's assumed that
@@ -95,7 +99,7 @@ v3.2 released 04/19/2020
 
       These commands provide automatic cleanup when working with, say,
       a statistics package where temporary image files are created "on
-      the fly" for consumption by  a P3ICLI script (feature suggested
+      the fly" for consumption by a P3ICLI script (feature suggested
       by Georgia Morgan).
     - Added new command line switch -F, which forces image file
       removal when P3ICLI error count at program exit is > 0.

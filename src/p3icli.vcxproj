@@ -127,6 +127,7 @@
     <ClCompile Include="custom_properties.cpp" />
     <ClCompile Include="err.cpp" />
     <ClCompile Include="geom.cpp" />
+    <ClCompile Include="insert_slide.cpp" />
     <ClCompile Include="lex.yy.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="misc.cpp" />
