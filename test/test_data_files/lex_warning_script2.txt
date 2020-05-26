@@ -1,0 +1,13 @@
+# add 3 chars w/ 8th bit set
+ í
+ Ä
+copy source format on
+ ð
+insert slide 1 from template 2pic_intel.pptx
+cap1 "6.66e-12 ± 1.86e-12"
+cap2 "6.56e-12 ± 9.31e-13"
+pic1 boat.bmp
+#
+sleep 7600
+#
+kill ppt discard

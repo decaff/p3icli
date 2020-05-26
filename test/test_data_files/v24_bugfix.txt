@@ -1,0 +1,29 @@
+# test v 2.4 bug fix...
+# 
+# 1) open a single instance of PPT...do not edit anything on the 
+#    displayed default slide
+#
+# 2) run this script and make sure that no runtime error occurs.
+#
+# Colors for the first slide are incorrectly copied by Office 2003 
+# because they include fill properties not supported by PPT 2003
+# automation.
+
+copy src fmt on
+insert slide 1 from template tmplts\intel_slide.pptx
+
+# one title, 2 pics, 2 caps
+title "v24 bug fix test"
+cap1 "a random caption"
+cap2 "kilroy was here"
+pic1 pics\bbd1.jpg
+pic2 pics\coders_lament.png
+
+insert slide 1 from template tmplts\2pic_intel.pptx
+# 2 pics, 2 caps
+cap1 "v24 for the win"
+cap2 "last slide of this test"
+pic1 pics\nikpic2.jpeg
+pic2 pics\redwood_tree.jpg
+
+halt

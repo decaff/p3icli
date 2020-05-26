@@ -1,0 +1,25 @@
+# exercise the bare minimum
+kill ppt discard
+
+# this will error out -- no template available
+custom property "x" = "y"
+
+copy src format on
+insert slide 1 from template test\tmplts\intel_slide.pptx
+custom property "kilroy" =   "was here"
+custom property "kilroy bday"    = "date: 2016/01/31"
+custom property "kilroy id" = 778992
+custom property "kilroy working" =yes
+custom property "kilroy happy" =   no
+custom property "kilroy working" = ""    # delete previous prop
+
+custom property "kilroy working" = ""    # delete again, not an error as
+                                         # of v3.1
+
+custom property "hello" = "world"
+custom property "the beast" = 666
+
+custom property "negative#" = -101
+
+halt
+#tester needs to examine created custom props

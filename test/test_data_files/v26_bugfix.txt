@@ -1,0 +1,29 @@
+# test v 2.6 bug fix...
+# 
+# save as with .pptx should create a presentation with a .pptx suffix,
+# not a .ppt suffix
+#
+
+copy src fmt on
+# both intel slides were created pre-PPT 2013, so
+slide size 4:3
+insert slide 1 from template tmplts\intel_slide.pptx
+
+# one title, 2 pics, 2 caps
+title "v26 bug fix test"
+cap1 "a random caption"
+cap2 "kilroy was here"
+pic1 pics\bbd1.jpg
+pic2 pics\coders_lament.png
+
+insert slide 1 from template tmplts\2pic_intel.pptx
+# 2 pics, 2 caps
+cap1 "v26 for the win"
+cap2 "last slide of this test"
+pic1 pics\nikpic2.jpeg
+pic2 pics\redwood_tree.jpg
+
+save as presentation c:\temp\must_be_pptx_fmt.pptx
+
+# take a peek
+open template c:\temp\must_be_pptx_fmt.pptx

@@ -1,0 +1,19 @@
+copy src fmt on
+    encoding   ansi
+insert slide 1 from template generic_tmplt.pptx
+# ----
+# make title and cap1 blank with null text, ANSI
+# ----
+cap1 ""
+title ""
+duplicate template
+# ----
+# ansi testing all shapes
+# ----
+  encoding utf8
+encoding ansi
+title "ansi: that's all folks plus/minus (±)"
+cap1 "(c1: ansi) how about a copyright (©) symbol? Hmm?"
+cap2 "(c2: ansi) money: yen, euro, and pound: ¥€£"
+cap3 "(c3: ansi) ¿Cuál es Español?"
+pic1 bbd1.jpg

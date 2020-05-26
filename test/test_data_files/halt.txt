@@ -1,0 +1,2 @@
+# twofer -- halt test and last line is not nl-terminated
+halt

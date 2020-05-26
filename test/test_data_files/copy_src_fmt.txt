@@ -1,0 +1,14 @@
+# test some v1.6 p3icli features
+copy src fmt off  # the default
+insert slide 1 from template tmplts\cpy_src_test.pptx
+copy src fmt on
+insert slide 1 from template tmplts\cpy_src_test.pptx
+insert slide 2 from template tmplts\cpy_src_test.pptx
+insert slide 3 from template tmplts\cpy_src_test.pptx
+insert slide 4 from template tmplts\cpy_src_test.pptx
+insert slide 5 from template tmplts\cpy_src_test.pptx
+insert slide 6 from template tmplts\cpy_src_test.pptx
+insert slide 7 from template tmplts\cpy_src_test.pptx
+# next slide will generate a warning on pre-2007 versions of
+# PPT because user-defined texture fills cannot be copied
+insert slide 8 from template tmplts\cpy_src_test.pptx

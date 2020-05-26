@@ -1,0 +1,15 @@
+# exercise insert numeric slide OOR detection
+# cpy_src_test.pptx has 8 slides
+
+kill ppt discard
+third party fix on
+
+copy src fmt off
+insert slide 0 from template cpy_src_test.pptx
+insert slide 10 from template cpy_src_test.pptx
+
+copy src fmt on
+insert slide 0 from template cpy_src_test.pptx
+insert slide 19 from template cpy_src_test.pptx
+
+kill ppt discard

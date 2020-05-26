@@ -1,0 +1,6 @@
+./test_data_files/bom_script1.txt: UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./test_data_files/bom_script2.txt: UTF-8 Unicode (with BOM) text
+0000000    bbef    6bbf    6c69    206c    7070    2074    6964    6373
+        357 273 277   k   i   l   l       p   p   t       d   i   s   c
+0000000    bbef    23bf    230a    6120    5520    4654    382d    4220
+        357 273 277   #  \n   #       a       U   T   F   -   8       B

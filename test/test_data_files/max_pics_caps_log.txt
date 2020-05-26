@@ -1,0 +1,3 @@
+2   
+p3icli: line 51: error: cap reference out of range
+p3icli: line 54: error: pic reference out of range

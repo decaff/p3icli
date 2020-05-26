@@ -1,0 +1,9 @@
+2   
+p3icli: line 2: warning: detected non-token char with high order bit set
+p3icli: line 2: error: syntax error
+p3icli: line 3: error: syntax error
+3   
+p3icli: line 2: warning: detected non-token char with high order bit set
+p3icli: line 2: error: syntax error
+p3icli: line 3: error: syntax error
+p3icli: line 5: error: syntax error

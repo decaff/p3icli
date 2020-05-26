@@ -1,0 +1,2804 @@
+kill ppt discard
+sleep 200
+start ppt minimized
+open template doc\sampleTemplate.potx
+# slide number  1
+title 'slide #1'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  2
+title 'slide #2'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  3
+title 'slide #3'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  4
+title 'slide #4'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  5
+title 'slide #5'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  6
+title 'slide #6'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  7
+title 'slide #7'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  8
+title 'slide #8'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  9
+title 'slide #9'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  10
+title 'slide #10'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  11
+title 'slide #11'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  12
+title 'slide #12'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  13
+title 'slide #13'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  14
+title 'slide #14'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  15
+title 'slide #15'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  16
+title 'slide #16'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  17
+title 'slide #17'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  18
+title 'slide #18'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  19
+title 'slide #19'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  20
+title 'slide #20'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  21
+title 'slide #21'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  22
+title 'slide #22'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  23
+title 'slide #23'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  24
+title 'slide #24'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  25
+title 'slide #25'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  26
+title 'slide #26'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  27
+title 'slide #27'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  28
+title 'slide #28'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  29
+title 'slide #29'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  30
+title 'slide #30'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  31
+title 'slide #31'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  32
+title 'slide #32'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  33
+title 'slide #33'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  34
+title 'slide #34'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  35
+title 'slide #35'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  36
+title 'slide #36'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  37
+title 'slide #37'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  38
+title 'slide #38'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  39
+title 'slide #39'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  40
+title 'slide #40'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  41
+title 'slide #41'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  42
+title 'slide #42'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  43
+title 'slide #43'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  44
+title 'slide #44'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  45
+title 'slide #45'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  46
+title 'slide #46'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  47
+title 'slide #47'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  48
+title 'slide #48'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  49
+title 'slide #49'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  50
+title 'slide #50'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  51
+title 'slide #51'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  52
+title 'slide #52'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  53
+title 'slide #53'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  54
+title 'slide #54'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  55
+title 'slide #55'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  56
+title 'slide #56'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  57
+title 'slide #57'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  58
+title 'slide #58'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  59
+title 'slide #59'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  60
+title 'slide #60'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  61
+title 'slide #61'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  62
+title 'slide #62'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  63
+title 'slide #63'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  64
+title 'slide #64'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  65
+title 'slide #65'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  66
+title 'slide #66'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  67
+title 'slide #67'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  68
+title 'slide #68'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  69
+title 'slide #69'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  70
+title 'slide #70'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  71
+title 'slide #71'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  72
+title 'slide #72'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  73
+title 'slide #73'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  74
+title 'slide #74'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  75
+title 'slide #75'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  76
+title 'slide #76'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  77
+title 'slide #77'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  78
+title 'slide #78'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  79
+title 'slide #79'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  80
+title 'slide #80'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  81
+title 'slide #81'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  82
+title 'slide #82'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  83
+title 'slide #83'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  84
+title 'slide #84'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  85
+title 'slide #85'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  86
+title 'slide #86'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  87
+title 'slide #87'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  88
+title 'slide #88'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  89
+title 'slide #89'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  90
+title 'slide #90'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  91
+title 'slide #91'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  92
+title 'slide #92'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  93
+title 'slide #93'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  94
+title 'slide #94'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  95
+title 'slide #95'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  96
+title 'slide #96'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  97
+title 'slide #97'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  98
+title 'slide #98'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  99
+title 'slide #99'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  100
+title 'slide #100'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  101
+title 'slide #101'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  102
+title 'slide #102'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  103
+title 'slide #103'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  104
+title 'slide #104'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  105
+title 'slide #105'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  106
+title 'slide #106'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  107
+title 'slide #107'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  108
+title 'slide #108'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  109
+title 'slide #109'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  110
+title 'slide #110'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  111
+title 'slide #111'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  112
+title 'slide #112'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  113
+title 'slide #113'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  114
+title 'slide #114'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  115
+title 'slide #115'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  116
+title 'slide #116'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  117
+title 'slide #117'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  118
+title 'slide #118'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  119
+title 'slide #119'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  120
+title 'slide #120'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  121
+title 'slide #121'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  122
+title 'slide #122'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  123
+title 'slide #123'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  124
+title 'slide #124'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  125
+title 'slide #125'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  126
+title 'slide #126'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  127
+title 'slide #127'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  128
+title 'slide #128'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  129
+title 'slide #129'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  130
+title 'slide #130'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  131
+title 'slide #131'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  132
+title 'slide #132'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  133
+title 'slide #133'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  134
+title 'slide #134'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  135
+title 'slide #135'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  136
+title 'slide #136'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  137
+title 'slide #137'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  138
+title 'slide #138'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  139
+title 'slide #139'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  140
+title 'slide #140'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  141
+title 'slide #141'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  142
+title 'slide #142'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  143
+title 'slide #143'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  144
+title 'slide #144'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  145
+title 'slide #145'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  146
+title 'slide #146'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  147
+title 'slide #147'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  148
+title 'slide #148'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  149
+title 'slide #149'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  150
+title 'slide #150'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  151
+title 'slide #151'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  152
+title 'slide #152'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  153
+title 'slide #153'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  154
+title 'slide #154'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  155
+title 'slide #155'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  156
+title 'slide #156'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  157
+title 'slide #157'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  158
+title 'slide #158'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  159
+title 'slide #159'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  160
+title 'slide #160'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  161
+title 'slide #161'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  162
+title 'slide #162'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  163
+title 'slide #163'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  164
+title 'slide #164'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  165
+title 'slide #165'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  166
+title 'slide #166'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  167
+title 'slide #167'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  168
+title 'slide #168'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  169
+title 'slide #169'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  170
+title 'slide #170'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  171
+title 'slide #171'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  172
+title 'slide #172'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  173
+title 'slide #173'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  174
+title 'slide #174'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  175
+title 'slide #175'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  176
+title 'slide #176'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  177
+title 'slide #177'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  178
+title 'slide #178'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  179
+title 'slide #179'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  180
+title 'slide #180'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  181
+title 'slide #181'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  182
+title 'slide #182'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  183
+title 'slide #183'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  184
+title 'slide #184'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  185
+title 'slide #185'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  186
+title 'slide #186'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  187
+title 'slide #187'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  188
+title 'slide #188'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  189
+title 'slide #189'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  190
+title 'slide #190'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  191
+title 'slide #191'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  192
+title 'slide #192'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  193
+title 'slide #193'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  194
+title 'slide #194'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  195
+title 'slide #195'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  196
+title 'slide #196'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  197
+title 'slide #197'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  198
+title 'slide #198'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  199
+title 'slide #199'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  200
+title 'slide #200'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  201
+title 'slide #201'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  202
+title 'slide #202'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  203
+title 'slide #203'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  204
+title 'slide #204'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  205
+title 'slide #205'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  206
+title 'slide #206'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  207
+title 'slide #207'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  208
+title 'slide #208'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  209
+title 'slide #209'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  210
+title 'slide #210'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  211
+title 'slide #211'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  212
+title 'slide #212'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  213
+title 'slide #213'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  214
+title 'slide #214'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  215
+title 'slide #215'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  216
+title 'slide #216'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  217
+title 'slide #217'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  218
+title 'slide #218'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  219
+title 'slide #219'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  220
+title 'slide #220'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  221
+title 'slide #221'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  222
+title 'slide #222'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  223
+title 'slide #223'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  224
+title 'slide #224'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  225
+title 'slide #225'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  226
+title 'slide #226'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  227
+title 'slide #227'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  228
+title 'slide #228'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  229
+title 'slide #229'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  230
+title 'slide #230'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  231
+title 'slide #231'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  232
+title 'slide #232'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  233
+title 'slide #233'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  234
+title 'slide #234'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  235
+title 'slide #235'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  236
+title 'slide #236'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  237
+title 'slide #237'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  238
+title 'slide #238'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  239
+title 'slide #239'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  240
+title 'slide #240'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  241
+title 'slide #241'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  242
+title 'slide #242'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  243
+title 'slide #243'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  244
+title 'slide #244'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  245
+title 'slide #245'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  246
+title 'slide #246'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  247
+title 'slide #247'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  248
+title 'slide #248'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  249
+title 'slide #249'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  250
+title 'slide #250'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  251
+title 'slide #251'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  252
+title 'slide #252'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  253
+title 'slide #253'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  254
+title 'slide #254'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  255
+title 'slide #255'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  256
+title 'slide #256'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  257
+title 'slide #257'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  258
+title 'slide #258'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  259
+title 'slide #259'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  260
+title 'slide #260'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  261
+title 'slide #261'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  262
+title 'slide #262'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  263
+title 'slide #263'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  264
+title 'slide #264'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  265
+title 'slide #265'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  266
+title 'slide #266'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  267
+title 'slide #267'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  268
+title 'slide #268'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  269
+title 'slide #269'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  270
+title 'slide #270'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  271
+title 'slide #271'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  272
+title 'slide #272'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  273
+title 'slide #273'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  274
+title 'slide #274'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  275
+title 'slide #275'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  276
+title 'slide #276'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  277
+title 'slide #277'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  278
+title 'slide #278'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  279
+title 'slide #279'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  280
+title 'slide #280'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  281
+title 'slide #281'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  282
+title 'slide #282'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  283
+title 'slide #283'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  284
+title 'slide #284'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  285
+title 'slide #285'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  286
+title 'slide #286'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  287
+title 'slide #287'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  288
+title 'slide #288'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  289
+title 'slide #289'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  290
+title 'slide #290'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  291
+title 'slide #291'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  292
+title 'slide #292'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  293
+title 'slide #293'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  294
+title 'slide #294'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  295
+title 'slide #295'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  296
+title 'slide #296'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  297
+title 'slide #297'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  298
+title 'slide #298'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  299
+title 'slide #299'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  300
+title 'slide #300'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  301
+title 'slide #301'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  302
+title 'slide #302'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  303
+title 'slide #303'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  304
+title 'slide #304'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  305
+title 'slide #305'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  306
+title 'slide #306'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  307
+title 'slide #307'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  308
+title 'slide #308'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  309
+title 'slide #309'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  310
+title 'slide #310'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  311
+title 'slide #311'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  312
+title 'slide #312'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  313
+title 'slide #313'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  314
+title 'slide #314'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  315
+title 'slide #315'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  316
+title 'slide #316'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  317
+title 'slide #317'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  318
+title 'slide #318'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  319
+title 'slide #319'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  320
+title 'slide #320'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  321
+title 'slide #321'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  322
+title 'slide #322'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  323
+title 'slide #323'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  324
+title 'slide #324'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  325
+title 'slide #325'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  326
+title 'slide #326'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  327
+title 'slide #327'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  328
+title 'slide #328'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  329
+title 'slide #329'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  330
+title 'slide #330'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  331
+title 'slide #331'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  332
+title 'slide #332'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  333
+title 'slide #333'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  334
+title 'slide #334'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  335
+title 'slide #335'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  336
+title 'slide #336'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  337
+title 'slide #337'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  338
+title 'slide #338'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  339
+title 'slide #339'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  340
+title 'slide #340'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  341
+title 'slide #341'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  342
+title 'slide #342'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  343
+title 'slide #343'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  344
+title 'slide #344'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  345
+title 'slide #345'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  346
+title 'slide #346'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  347
+title 'slide #347'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  348
+title 'slide #348'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  349
+title 'slide #349'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  350
+title 'slide #350'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  351
+title 'slide #351'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  352
+title 'slide #352'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  353
+title 'slide #353'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  354
+title 'slide #354'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  355
+title 'slide #355'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  356
+title 'slide #356'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  357
+title 'slide #357'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  358
+title 'slide #358'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  359
+title 'slide #359'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  360
+title 'slide #360'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  361
+title 'slide #361'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  362
+title 'slide #362'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  363
+title 'slide #363'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  364
+title 'slide #364'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  365
+title 'slide #365'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  366
+title 'slide #366'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  367
+title 'slide #367'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  368
+title 'slide #368'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  369
+title 'slide #369'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  370
+title 'slide #370'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  371
+title 'slide #371'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  372
+title 'slide #372'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  373
+title 'slide #373'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  374
+title 'slide #374'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  375
+title 'slide #375'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  376
+title 'slide #376'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  377
+title 'slide #377'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  378
+title 'slide #378'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  379
+title 'slide #379'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  380
+title 'slide #380'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  381
+title 'slide #381'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  382
+title 'slide #382'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  383
+title 'slide #383'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  384
+title 'slide #384'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  385
+title 'slide #385'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  386
+title 'slide #386'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  387
+title 'slide #387'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  388
+title 'slide #388'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  389
+title 'slide #389'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  390
+title 'slide #390'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  391
+title 'slide #391'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  392
+title 'slide #392'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  393
+title 'slide #393'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  394
+title 'slide #394'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  395
+title 'slide #395'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  396
+title 'slide #396'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  397
+title 'slide #397'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  398
+title 'slide #398'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  399
+title 'slide #399'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template
+# slide number  400
+title 'slide #400'
+pic1 c:\temp\baby_smiling1.jpeg
+pic2 c:\temp\baby_smiling2.jpeg
+pic3 c:\temp\baby_pose.jpeg
+clean slide
+duplicate template

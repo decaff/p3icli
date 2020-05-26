@@ -1,0 +1,14 @@
+﻿#
+# a UTF-8 Byte Order Mark (bom) is prepended to this script and it caused
+# earlier versions of p3icli to exit as soon as the first char of the script
+# was read by flex and then passed to byacc
+#
+copy source format on
+insert slide 1 from template tmplts\2pic_intel.pptx
+cap1 "messing w/ a utf-8 file"
+cap2 "script includes a prepended BOM"
+pic1 pics\boat.bmp
+#
+sleep 700
+#
+kill ppt discard

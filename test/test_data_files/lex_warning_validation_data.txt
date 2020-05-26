@@ -1,0 +1,16 @@
+./test_data_files/lex_warning_script1.txt: UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./test_data_files/lex_warning_script2.txt: ISO-8859 text
+0000000    bbef    23bf    6120    6464    3220    6320    6168    7372
+        357 273 277   #       a   d   d       2       c   h   a   r   s
+0000020    7720    202f    7438    2068    6962    2074    6573    0d74
+              w   /       8   t   h       b   i   t       s   e   t  \r
+0000040    200a    adc3    0a0d    c320    0d84    200a    0a0d    6f63
+         \n     303 255  \r  \n     303 204  \r  \n      \r  \n   c   o
+0000000    2023    6461    2064    2033    6863    7261    2073    2f77
+          #       a   d   d       3       c   h   a   r   s       w   /
+0000020    3820    6874    6220    7469    7320    7465    200a    0aed
+              8   t   h       b   i   t       s   e   t  \n     355  \n
+0000040    c420    630a    706f    2079    6f73    7275    6563    6620
+            304  \n   c   o   p   y       s   o   u   r   c   e       f
+0000060    726f    616d    2074    6e6f    200a    0af0    6e69    6573
+          o   r   m   a   t       o   n  \n     360  \n   i   n   s   e

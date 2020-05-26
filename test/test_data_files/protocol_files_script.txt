@@ -1,0 +1,42 @@
+# Don't complain if user specifies a file that uses file:// http:// or 
+# https:// protocol prefixes.  Powerpoint can actually do the right thing in
+# this case.
+
+copy src fmt on
+open template tmplts\intel_slide.pptx
+
+# some error cases first
+title "no such file:// and http:// tests"
+pic1 file:////c:/your/mom.jpeg
+pic2 http://www.nowwhat_.com/sludge.png
+
+clean slide
+dup template
+
+title "no such https:// tests"
+title "no such https:// tests"
+pic1 https://www.thenwhat_.com/gothere.gif
+
+clean slide
+dup template
+
+#now, real live tests
+title "http:// tests"
+pic1 http://cmcode.us/test_pics/crank icon.png
+cap1 "Crank"
+pic2 http://cmcode.us/test_pics/coders lament.png
+cap2 "Coder's Lament"
+#
+dup template
+title "file:// tests"
+pic1 file:////c:/temp/hubble.jpg
+cap1 "Hubble in orbitt"
+pic2 file:////c:/temp/genius.png
+cap2 "Genius"
+#
+dup template
+title "https:// tests"
+pic1 https://wp.nathabblog.com/wp-content/uploads/2019/06/Annas_Becky-Matsubara_flickr_Web.jpg
+cap1 "Humming Bird"
+pic2  https://feederwatch.org/wp-content/uploads/2016/09/CaliforniaScrub-Jay.jpg
+cap2 "Scrub Jay"

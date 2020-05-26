@@ -1,0 +1,62 @@
+# make sure p3icli can process 20 caps and 20 pics
+
+open template max_pics_caps.potx
+cap1 "c1 txt"
+cap2 "c2 txt"
+cap3 "c3 txt"
+cap4 "c4 txt"
+cap5 "c5 txt"
+
+cap6  "c6 txt"
+cap7  "c7 txt"
+cap8  "c8 txt"
+cap9  "c9 txt"
+cap10 "c10 txt"
+
+cap11 "c11 txt"
+cap12 "c12 txt"
+cap13 "c13 txt"
+cap14 "c14 txt"
+cap15 "c15 txt"
+
+cap16 "c16 txt"
+cap17 "c17 txt"
+cap18 "c18 txt"
+cap19 "c19 txt"
+cap20 "c20 txt"
+
+pic1  pic1.png
+pic2  pic2.png
+pic19 pic19.png
+pic20 pic20.png
+
+pic3  pic_n.png
+pic4  pic_n.png
+pic5  pic_n.png
+pic6  pic_n.png
+pic7  pic_n.png
+pic8  pic_n.png
+pic9  pic_n.png
+pic10  pic_n.png
+pic11  pic_n.png
+pic12  pic_n.png
+pic13  pic_n.png
+pic14  pic_n.png
+pic15  pic_n.png
+pic16  pic_n.png
+pic17  pic_n.png
+pic18  pic_n.png
+
+# this should cause an error...
+cap21 "cap #21 is one too many"
+
+# this should cause a max pic error...
+pic21 pic_n.png
+
+title "make sure all 20 caps and pics are addressable"
+
+# don't step on our precious testing template
+save as presentation c:\temp\max_caps_pics_result.pptx
+
+# reopen results as a "template" for easy diagnostics
+open template c:\temp\max_caps_pics_result.pptx

@@ -1,0 +1,2 @@
+1   
+p3icli: line 5: error: internal state indicates no PPT automation connection, no action taken

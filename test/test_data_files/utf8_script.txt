@@ -1,0 +1,40 @@
+copy src fmt on
+encoding utf8
+insert slide 1 from template tmplts\generic_tmplt.pptx
+# ----
+# make title and cap1 blank with null text, utf8
+# ----
+  encoding utf8
+title ""
+cap1 ""
+
+# ----
+# 16-bit utf8 testing all shapes
+# ----
+duplicate template
+title "utf8:  ¿Se recomienda precaución?"
+cap1 "(c1: utf8) Production 3-σ limits"
+cap3 "(c3: utf8) Elem of (∈) "
+cap2 "(c2: utf8) Integrate thrice ... ∫ ∬ ∭"
+pic1 pics\coders_lament.png
+
+
+# ----
+# >16-bit utf8 testing all shapes (ignore results on PPT 2003)
+# And it looks like PPT 2013 can't handle these codes (whereas
+# Excel and Word 2013 can).  Odd and/or bug.  You decide.
+# ----
+duplicate template
+encoding utf8
+pic1 pics\turtle.jpg
+cap1 "(c1: utf8) >16-bit chars: (delta) 𝝺  (mu) 𝝻"
+cap2 "(c2: utf8) >16-bit chars: 𝚽 (phi) 𝚿 (psi)"
+cap3 "(c3: utf8) >16-bit chars: 𝚯 𝚫 𝚪 (theta, delta, gamma)"
+title "utf8: > 16-bit chars: (omega) 𝛀 𝛁 (alpha)"
+
+# utf8 stuff from documentation
+encoding utf8
+duplicate template
+cap1 'The Empty Set symbol looks like this: ∅'
+title "This is a pair of scissors: ✂"
+clean slide

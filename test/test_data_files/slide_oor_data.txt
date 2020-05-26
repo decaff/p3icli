@@ -1,0 +1,13 @@
+5   
+p3icli: line 6: error: slide number must be > 0
+p3icli: line 7: error: slide 15 out-of-range, valid range is 1 to 8
+PPT: line 7: error: Selection.SlideRange : Invalid request.  Nothing appropriate is currently selected.
+p3icli: line 10: error: slide number must be > 0
+PPT: line 11: error: Slides.InsertFromFile : Integer out of range. 9 is not in SlideStart's valid range of 1 to 8.
+6   
+p3icli: line 8: error: slide number must be > 0
+p3icli: line 9: error: slide 10 out-of-range, valid range is 1 to 8
+PPT: line 9: error: Selection.SlideRange : Invalid request.  Nothing appropriate is currently selected.
+p3icli: line 12: error: slide number must be > 0
+p3icli: line 13: error: slide 19 out-of-range, valid range is 1 to 8
+PPT: line 13: error: Selection.SlideRange : Invalid request.  Nothing appropriate is currently selected.
