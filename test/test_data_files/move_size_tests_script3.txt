@@ -1,0 +1,13 @@
+open template max_pics_caps.potx
+pics root <none>    # The original intent was to exercise pic commands with
+                    # pure garbage arguments, not something that looks like
+                    # a path (due to the use of "pics root" in an init file).
+# syntax errors
+pic20   # oops
+  pic8     move 
+     pic9    size 
+ pic14 move 1444444444
+   pic11 size what?,311
+pic4   move e,a
+pic7   size 3,445,
+kill ppt discard

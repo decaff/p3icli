@@ -1,0 +1,182 @@
+# begin script
+#
+# Note that there are 3 commands that stop p3icli:  halt, exit, quit .
+# Only one of these commands can be used in this script (at the very end).
+#
+# Note also that "save as pdf" is flagged as an error by PPT pre-2013.
+
+kill ppt discard
+kill ppt discard
+kill ppt discard
+kill ppt discard
+sleep 300
+start ppt
+sleep 200
+kill ppt discard
+start ppt minimized
+#
+insert slide 1 from template doc\portfolio.potx
+title "National Sales Figures"
+pic1 c:\temp\national_sales_figures.png
+clean slide      # not really necessary
+clean caps
+clean pics
+kill ppt discard
+#
+open template doc\sampleTemplate.potx
+# populate slide #1 => 3 pics
+title "What a cute baby!"
+duplicate template
+dup template
+pic2 <cleaned>
+remove comments   # there are no comment shapes (should not induce error)
+save as presentation c:\temp\delete_me.pptx
+kill ppt save      # this command is pretty silly
+
+#
+# save a presentation in html format
+#
+open template doc\sampleTemplate.potx
+# populate slide #1 => 3 pics
+title "What a cute baby!"
+duplicate template
+pic2 c:\temp\national_sales_figures.png
+dup template
+pic3 c:\temp\oregon_sales_figures.jpeg
+save as html c:\temp\delete_me.html
+
+# insert named slide test
+insert slide '  bite me ' from template test\tmplts\junk.potx
+# don't worry about leading white space...should not matter
+insert slide 'bite me' from template test\tmplts\junk.potx
+insert slide "3up, 1 cap" from template test\tmplts\junk.potx
+
+# some caption tests and a quick check of the encoding command
+kill ppt discard
+insert slide 1 from template test\tmplts\junk.potx
+encoding ansi
+cap1 <cleaned>
+cap2 "stuff"
+cap3 'more stuff'
+encoding utf8
+cap1 "Production 3-σ limits"
+title "¿Se recomienda precaución?"
+  encoding       ansi
+
+# do some embedded spaces tests
+kill ppt discard
+open template test\tmplts\some gaps in name\jj.potx
+pic1 pics\dir with spaces\felix.jpeg
+pic2 pics\dir with spaces\lunar rover.jpg
+
+kill ppt discard
+insert slide 1 from template test\tmplts\some gaps in name\some template.potx
+
+# v1.6 feature
+copy source format on
+copy source format   off
+copy src format   off
+copy src format   on
+copy  src  fmt   on
+copy  src  fmt   off
+copy  source  fmt on
+copy  source  fmt   off
+
+kill ppt discard
+
+# need a template with a title and at least 2 caps and 2 pics
+insert slide 1 from template test\tmplts\junk.potx
+
+# exercise the syntax of v2.1 features
+
+# the next command will generate output on the screen
+list geometries
+
+
+pic1 size 70  ,  70   # a nice little square
+pic1 move 325,126    # center horizontally on the slide
+
+pic3 size  500, 200
+
+# move it to the lower left corner
+pic3 move  0  ,340
+
+
+title "I'm on the move"
+title  size  500,25  
+title  move  0 , 515    # lower left corner
+
+  title     move  75      ,      35
+
+cap1 "I'll be moved as well..."
+cap1  move 360   ,  270     # move to center of slide
+cap1  size  140, 60
+  cap1  move  290 , 240     # that should center the cap1 shape
+                            # horizontally and vertically...
+
+# the next command will generate output on the screen
+    list  geometries  "A geometries listing label" # how does it look now?
+
+# exercise the syntax of v2.2 (and 3.1) features
+   slide size     4:3
+slide   size   default
+  slide          size 16:9
+
+
+# exercise the syntax of v2.5 features
+
+# Text custom property
+custom property "My Name" = "my text value"
+
+# Number custom property
+custom property "My Number" = 3456
+
+# Yes/No custom property
+custom property "My Bool Name(T)" = yes
+custom property "My Bool Name(F)" = no
+
+# Date custom property
+custom property "My Date" = "date: 2015/12/15"
+
+    
+# delete a custom property
+custom property "My Name" = ""
+
+third party fix on
+    third    party fix            off
+
+
+# v3.2 features ...
+slide size         a4
+slide size a4
+slide size     120 ,  95
+slide size     130,195
+slide size     44,55
+slide size 96     ,99
+
+dif on
+dif off
+
+delete image files      on
+delete   image   files     off
+
+ignore c:\temp\yourmom.txt
+
+   ignore               c:\temp\even\more\of\yourmom.txt            
+
+sleep 5000
+kill ppt discard
+
+# -------------------
+# v3.3 features ....
+# -------------------
+
+pics     root c:\temp
+             templates root  c:\Windows
+        pics     root           <none>
+
+             templates       root    <none>
+
+# finally.... die ... too bad that "exit" and "quit" cannot be
+# tested as well.  Do that in other script(s).
+halt

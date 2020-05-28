@@ -1,0 +1,22 @@
+kill ppt discard
+open template intel_slide.pptx
+#
+# Make sure that negative args passed to the "pic<uint> size" command are
+# trapped.  Negative args are legit for the "pic<uint> move" command in
+# order to support rotated title shapes.
+#
+title "negative pic test"
+pic1 move -1 , 0
+pic1 move -20 , 73
+# random
+# comment
+pic1 size 5,-1
+pic1   size  15,   -10
+pic1 size -10,-9
+pic1 move -37444, -22
+pic1 move -20, -9
+# make sure pic1 is still there, you know?
+pic1 c:\temp\baby_on_stomach.jpeg
+sleep 4000
+pic1 size -7   , -2
+kill ppt discard

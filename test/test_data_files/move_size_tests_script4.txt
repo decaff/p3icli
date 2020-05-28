@@ -1,0 +1,13 @@
+open template max_pics_caps.potx
+# syntax errors
+cap05   # oops
+  cap7     move 
+     cap11    size 
+ cap4 move 5
+   cap13 size 311,??and?
+# next line is not an error...
+cap9   move 0  ,   0
+
+cap9   move   ,   0 # but this is
+cap17   size 445,  # oh darn
+kill ppt discard

@@ -1,0 +1,14 @@
+0   
+p3icli: line 1: warning: Windows Explorer is running as a visible process.
+
+                 Explorer may cause PPT instability if a P3ICLI script uses
+                 the command "copy src fmt on" . Refer to the help topic 
+                        "PowerPoint Instability On Windows 10"
+                 in the reference manual for further details.  Pay attention
+                 to the discussion of P3ICLI commandline switches that either
+                 suppress this warning or automatically kill Windows Explorer.
+
+#begin no wdws explr warning test, pt1
+#end no wdws explr warning test, pt1
+#begin no wdws explr warning test, pt2
+#end no wdws explr warning test, pt2

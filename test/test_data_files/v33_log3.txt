@@ -1,0 +1,21 @@
+2   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: true
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: line 13: debug: pics root reset
+p3icli: line 14: error: syntax error
+p3icli: line 23: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 26: debug: Expanded path: c:\temp\genius.png
+p3icli: line 29: debug: Expanded path: c:\temp\mega_corp1_sales.gif
+p3icli: line 32: debug: Expanded path: c:\temp\oregon_sales_figures.jpeg
+p3icli: line 36: debug: pics root reset
+p3icli: line 40: warning: stat("genius.png") failed: No such file or directory
+PPT: line 40: error: The specified file wasn't found.
+p3icli: line 55: debug: Expanded path: ..\test\pics\coders_lament.png
+p3icli: line 58: debug: Expanded path: ..\test\pics\bbd1.jpg
+p3icli: line 61: debug: Expanded path: ..\test\pics\bernie_and_bird.jpg
+p3icli: line 69: debug: Expanded path: ..\test\pics\pic1.png
+p3icli: line 72: debug: Expanded path: ..\test\pics\pic2.png
+p3icli: line 75: debug: Expanded path: ..\test\pics\nebraska_map.gif
+p3icli: debug: emptied clipboard

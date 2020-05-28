@@ -1,0 +1,160 @@
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: true
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: true
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: true
+p3icli: debug: config: Ignore wdws eXplr: true
+usage: p3icli [-hvDEFISX] [-W{a|x}:msec] [-T msec] [-V vrsnfile] [-l logfile] [scriptfile...]
+
+where:
+
+  -h            print this help message
+  -v            print version and exit
+  -D[n]         enable internal debug msgs at optional level "n" (integer)
+  -Ex           send 'End task' msg to windows eXplorer on Win10 host
+  -F            dif cmd: Force image file deletion if number of errors > 0
+  -Ix           Ignore windows eXplorer on Win10 host
+  -S            dump accepted syntax on stdout and exit
+  -X            execute "kill ppt discard" after all scripts are processed.
+                Note that -T implies -X .
+  -T msec       assumes p3icli is running under the Task scheduler, which
+                implies that before any script file(s) are processed:
+
+                   1) a single instance of PowerPoint is started, and
+                   2) that (new) PPT instance is allowed msec of time to
+                      cleanly initialize
+
+  -Wa:msec      Wait msec of time after sending Asynchronous PPT command
+  -Wx:msec      Wait msec of time at eXit when -X switch specified
+  -V vrsnfile   write version in vrsnfile and exit
+  -l logfile    record errors in logfile instead of stderr
+
+  scriptfile    one or more file of commands to be executed.  If not
+                specified, commands are read from stdin.
+
+The file "p3icli_help.html", included with this program's distribution,
+provides further information, including valid script syntax.
+
+Example Usage (process one script, error(s) listed on stderr):
+    p3icli my_script.txt
+
+Example Usage (process two scripts, error(s) listed in log file):
+    p3icli -l c:\temp\p3icli_log.txt script1.txt script2.txt
+usage: p3icli [-hvDEFISX] [-W{a|x}:msec] [-T msec] [-V vrsnfile] [-l logfile] [scriptfile...]
+
+where:
+
+  -h            print this help message
+  -v            print version and exit
+  -D[n]         enable internal debug msgs at optional level "n" (integer)
+  -Ex           send 'End task' msg to windows eXplorer on Win10 host
+  -F            dif cmd: Force image file deletion if number of errors > 0
+  -Ix           Ignore windows eXplorer on Win10 host
+  -S            dump accepted syntax on stdout and exit
+  -X            execute "kill ppt discard" after all scripts are processed.
+                Note that -T implies -X .
+  -T msec       assumes p3icli is running under the Task scheduler, which
+                implies that before any script file(s) are processed:
+
+                   1) a single instance of PowerPoint is started, and
+                   2) that (new) PPT instance is allowed msec of time to
+                      cleanly initialize
+
+  -Wa:msec      Wait msec of time after sending Asynchronous PPT command
+  -Wx:msec      Wait msec of time at eXit when -X switch specified
+  -V vrsnfile   write version in vrsnfile and exit
+  -l logfile    record errors in logfile instead of stderr
+
+  scriptfile    one or more file of commands to be executed.  If not
+                specified, commands are read from stdin.
+
+The file "p3icli_help.html", included with this program's distribution,
+provides further information, including valid script syntax.
+
+Example Usage (process one script, error(s) listed on stderr):
+    p3icli my_script.txt
+
+Example Usage (process two scripts, error(s) listed in log file):
+    p3icli -l c:\temp\p3icli_log.txt script1.txt script2.txt
+usage: p3icli [-hvDEFISX] [-W{a|x}:msec] [-T msec] [-V vrsnfile] [-l logfile] [scriptfile...]
+
+where:
+
+  -h            print this help message
+  -v            print version and exit
+  -D[n]         enable internal debug msgs at optional level "n" (integer)
+  -Ex           send 'End task' msg to windows eXplorer on Win10 host
+  -F            dif cmd: Force image file deletion if number of errors > 0
+  -Ix           Ignore windows eXplorer on Win10 host
+  -S            dump accepted syntax on stdout and exit
+  -X            execute "kill ppt discard" after all scripts are processed.
+                Note that -T implies -X .
+  -T msec       assumes p3icli is running under the Task scheduler, which
+                implies that before any script file(s) are processed:
+
+                   1) a single instance of PowerPoint is started, and
+                   2) that (new) PPT instance is allowed msec of time to
+                      cleanly initialize
+
+  -Wa:msec      Wait msec of time after sending Asynchronous PPT command
+  -Wx:msec      Wait msec of time at eXit when -X switch specified
+  -V vrsnfile   write version in vrsnfile and exit
+  -l logfile    record errors in logfile instead of stderr
+
+  scriptfile    one or more file of commands to be executed.  If not
+                specified, commands are read from stdin.
+
+The file "p3icli_help.html", included with this program's distribution,
+provides further information, including valid script syntax.
+
+Example Usage (process one script, error(s) listed on stderr):
+    p3icli my_script.txt
+
+Example Usage (process two scripts, error(s) listed in log file):
+    p3icli -l c:\temp\p3icli_log.txt script1.txt script2.txt
+usage: p3icli [-hvDEFISX] [-W{a|x}:msec] [-T msec] [-V vrsnfile] [-l logfile] [scriptfile...]
+
+where:
+
+  -h            print this help message
+  -v            print version and exit
+  -D[n]         enable internal debug msgs at optional level "n" (integer)
+  -Ex           send 'End task' msg to windows eXplorer on Win10 host
+  -F            dif cmd: Force image file deletion if number of errors > 0
+  -Ix           Ignore windows eXplorer on Win10 host
+  -S            dump accepted syntax on stdout and exit
+  -X            execute "kill ppt discard" after all scripts are processed.
+                Note that -T implies -X .
+  -T msec       assumes p3icli is running under the Task scheduler, which
+                implies that before any script file(s) are processed:
+
+                   1) a single instance of PowerPoint is started, and
+                   2) that (new) PPT instance is allowed msec of time to
+                      cleanly initialize
+
+  -Wa:msec      Wait msec of time after sending Asynchronous PPT command
+  -Wx:msec      Wait msec of time at eXit when -X switch specified
+  -V vrsnfile   write version in vrsnfile and exit
+  -l logfile    record errors in logfile instead of stderr
+
+  scriptfile    one or more file of commands to be executed.  If not
+                specified, commands are read from stdin.
+
+The file "p3icli_help.html", included with this program's distribution,
+provides further information, including valid script syntax.
+
+Example Usage (process one script, error(s) listed on stderr):
+    p3icli my_script.txt
+
+Example Usage (process two scripts, error(s) listed in log file):
+    p3icli -l c:\temp\p3icli_log.txt script1.txt script2.txt

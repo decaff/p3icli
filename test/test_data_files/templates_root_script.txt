@@ -1,0 +1,76 @@
+# For each instance of the string toupper(_root), sed will substitute:
+#    $p3icli_root_dos_subst
+# For each instance of the string toupper(_x2root), sed will substitute:
+#    $p3icli_root_dos_subst             (with slashes suitable for a qstring)
+# For each instance of the string toupper(_tmplt), sed will substitute:
+#    $p3icli_root_dos_subst\test\tmplts
+# For each instance of the string toupper(_x2tmplt), sed will substitute:
+#    $p3icli_root_dos_subst\test\tmplts (with slashes suitable for a qstring)
+# For each instance of the string toupper(_test), sed will substitute:
+#    $p3icli_root_dos_subst\test
+# For each instance of the string toupper(_x2test), sed will substitute:
+#    $p3icli_root_dos_subst\test         (with slashes suitable for a qstring)
+
+# -----------  some simple stuff first...test
+templates root <none>
+       templates         root                     # syntax error
+
+pics root _ROOT\test\pics
+
+    templates        # syntax error
+  templates root _ROOT\     # exercise code that worries about trailing '\'
+copy src fmt on
+# ------------------------- slide #1 -----------------------------
+# 3 pics, 3 caps, 1 title
+insert slide 1 from template test\tmplts\some_slides.pptx
+    title "templates root folder is _X2ROOT\\"
+
+    pic1  pics_that_must_be_copied_to_temp\genius.png
+    cap1 "genius"
+
+    pic2 pics_that_must_be_copied_to_temp\mega_corp1_sales.gif
+    cap2 "silver"
+
+    pic3 pics_that_must_be_copied_to_temp\oregon_sales_figures.jpeg
+    cap3 "Oregon GDP"
+# ------------------------- slide #2 -----------------------------
+# 1 pic, 3 caps, 1 title
+templates root _TEST
+    insert slide 1 from template tmplts\generic_tmplt.pptx
+    title "templates root folder is _X2TEST"
+
+    pic1 blue_boobie.jpg
+    cap1 "birds with blue feet"
+    clean slide
+# ------------------------- slide #3 -----------------------------
+# 4 pic, 4 caps, 1 title
+templates root _TMPLT
+    insert slide 2 from template some_slides.pptx
+    title "templates root folder is _X2TMPLT"
+
+    pic1 pic1.png
+    cap1 "pic1 of '4'"
+
+    pic2 pic2.png
+    cap2 'pic2 of "4"'
+
+    pic3 nebraska_map.gif
+    cap3 "Nebraska"
+
+    pic4 tnc_oregon.jpeg
+    cap4 "TNC Oregon"
+# ------------------------- slide #4 -----------------------------
+templates root <none>
+# this will fail
+    insert slide 1 from template generic_tmplt.pptx
+
+# 1 pic, 1 cap, 1 title
+    insert slide 1 from template c:\temp\demo.potx
+    title "templates root folder <none>"
+
+    pic1 haystack_rock.jpg
+    cap1 "haystack rock"
+
+save as presentation c:\temp\junk.pptx
+# open for a quick peek
+open template c:\temp\junk.pptx

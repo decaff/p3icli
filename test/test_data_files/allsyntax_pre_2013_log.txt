@@ -1,0 +1,35 @@
+0   
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,72) @ (66,30)
+Tmplt Slide: pic1 (264,168) @ (54,126)
+Tmplt Slide: pic3 (342,168) @ (360,126)
+Tmplt Slide: cap1 (222,60) @ (84,348)
+Tmplt Slide: cap2 (318,36) @ (372,318)
+Tmplt Slide: cap3 (228,48) @ (420,396)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,72) @ (66,30)
+Curr Slide: pic1 (264,168) @ (54,126)
+Curr Slide: pic3 (342,168) @ (360,126)
+Curr Slide: cap1 (222,60) @ (84,348)
+Curr Slide: cap2 (318,36) @ (372,318)
+Curr Slide: cap3 (228,48) @ (420,396)
+
+A geometries listing label
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,72) @ (66,30)
+Tmplt Slide: pic1 (264,168) @ (54,126)
+Tmplt Slide: pic3 (342,168) @ (360,126)
+Tmplt Slide: cap1 (222,60) @ (84,348)
+Tmplt Slide: cap2 (318,36) @ (372,318)
+Tmplt Slide: cap3 (228,48) @ (420,396)
+
+A geometries listing label
+Curr Slide: bounds (720,540)
+Curr Slide: title (500,25) @ (75,35)
+Curr Slide: pic1 (70,70) @ (325,126)
+Curr Slide: pic3 (500,200) @ (0,340)
+Curr Slide: cap1 (140,60) @ (290,240)
+Curr Slide: cap2 (318,36) @ (372,318)
+Curr Slide: cap3 (228,48) @ (420,396)
+

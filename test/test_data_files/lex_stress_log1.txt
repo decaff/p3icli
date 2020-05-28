@@ -1,0 +1,8 @@
+2   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: opening init file: .p3iclirc
+p3icli: .p3iclirc(line 4): error: syntax error
+p3icli: line 5: error: syntax error

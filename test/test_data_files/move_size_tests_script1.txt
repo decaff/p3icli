@@ -1,0 +1,16 @@
+kill ppt discard
+copy src fmt on
+open template no_title_test.pptx
+pics root <none>    # The original intent was to exercise pic commands with
+                    # pure garbage arguments, not something that looks like
+                    # a path (due to the use of "pics root" in an init file).
+# next 3 lines should error, 'cause slide has no title
+title "hello there"
+title move 1,1
+title size 400,50
+# no cap9, cap19, pic18, or pic8 on this slide
+cap9 move 3,3
+pic8 move 200,200
+cap19 size 300,300
+pic18 move 400,200
+kill ppt discard

@@ -1,0 +1,10 @@
+kill ppt discard   # start with guaranteed clean slate
+slide size 4:3     # should not matter for pre-Office 2013 PPT
+insert slide 1 from template test\tmplts\demo.potx
+list geometries
+pic1 size 630,315
+pic1 move 54,83     # (126 - 43 => 83)
+title move 66,12     # (30 - 72 * 0.25 => 12)
+cap1 move 54,420     # (384 + 72 * 0.5 => 420)
+list geometries
+kill ppt discard   # tidy up before exiting

@@ -1,0 +1,10 @@
+open template max_pics_caps.potx
+# syntax errors
+title   # oops
+title move 
+title size 
+title move 1
+title size ,311
+title   move 199    ,
+title   size xx,3
+kill ppt discard

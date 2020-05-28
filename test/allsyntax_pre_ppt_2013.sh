@@ -1,11 +1,17 @@
 #!/bin/bash
+
+# test almost all syntax accepted by p3icli...can't test:
 #
-# Exercise code that places UTF-8 data in caption and title shapes.
-# This is necessarily a visual (eyeball) test.
+# 1) all variations of {halt | exit | quit}, and
+# 2) features that predate this version of PPT (i.e., "save as pdf").
 #
-logfile="c:/temp/utf8_log.txt"
-testdata="test_data_files/utf8_log.txt"
-script="test_data_files/utf8_script.txt"
+# only relevant for PPT pre-2013.
+#
+# This is a self-checking test.
+
+logfile="c:/temp/allsyntax_log.txt"
+testdata="test_data_files/allsyntax_pre_2013_log.txt"
+script="test_data_files/allsyntax_pre_2013_script.txt"
 
 rm -f $logfile
 
@@ -21,10 +27,8 @@ if [ $? -ne 0 ] ; then
     exit 1
 fi
 
-# kill all instances of ppt
-p3icli -X <<ALLDONE
-    halt
-ALLDONE
+p3icli -X << CLEAN_UP
+CLEAN_UP
 
 # --------------------------------------------------------------------------
 # Create an init file that portably specifies the root folder for test
@@ -34,16 +38,12 @@ ALLDONE
 source tools/p3icli_root_path.sh
 
 echo "pics root ${p3icli_root_dos_echo}\test"      >  $HOME/.p3iclirc
-echo "templates root ${p3icli_root_dos_echo}\test" >> $HOME/.p3iclirc
+echo "templates root ${p3icli_root_dos_echo}"      >> $HOME/.p3iclirc
 # --------------------------------------------------------------------------
-
-echo starting powerpoint...
-cmd /c 'start powerpnt'
-sleep 2
 
 p3icli -l $logfile $script
 
-if [ $? -ne 0 ] ; then
+if [ $? -ne 0 ] ; then 
     echo "unexpected non-zero status...test failed"
     tools/delete_init_file.sh     # clean up
     cat $logfile
@@ -52,12 +52,10 @@ fi
 
 tools/delete_init_file.sh     # clean up
 
-diff -bu $logfile $testdata
+diff -bu $testdata $logfile
 if [ $? -ne 0 ] ; then
-    echo "test failed!!"
+    echo 'test failed!!'
     exit 1
 fi
 echo test passed
-echo "need to validate this script"
-cat -n $script
 exit 0

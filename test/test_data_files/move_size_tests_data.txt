@@ -1,0 +1,67 @@
+7   
+p3icli: line 8: error: template title shape not found, title not added
+p3icli: line 9: error: template title shape not found
+p3icli: line 10: error: template title shape not found
+p3icli: line 12: error: cap9 not found in template shapes collection
+p3icli: line 13: error: pic8 not found in template shapes collection
+p3icli: line 14: error: cap19 not found in template shapes collection
+p3icli: line 15: error: pic18 not found in template shapes collection
+7   
+p3icli: line 3: error: syntax error
+p3icli: line 4: error: syntax error
+p3icli: line 5: error: syntax error
+p3icli: line 6: error: syntax error
+p3icli: line 7: error: syntax error
+p3icli: line 8: error: syntax error
+p3icli: line 9: error: syntax error
+8   
+p3icli: line 6: error: syntax error
+p3icli: line 7: warning: stat("move") failed: No such file or directory
+PPT: line 7: error: The specified file wasn't found.
+p3icli: line 8: warning: stat("size") failed: No such file or directory
+PPT: line 8: error: The specified file wasn't found.
+p3icli: line 9: warning: stat("move 1444444444") failed: No such file or directory
+PPT: line 9: error: The specified file wasn't found.
+p3icli: line 10: warning: stat("size what?,311") failed: No such file or directory
+PPT: line 10: error: The specified file wasn't found.
+p3icli: line 11: warning: stat("move e,a") failed: No such file or directory
+PPT: line 11: error: The specified file wasn't found.
+p3icli: line 12: error: pic<ui> size <ui>,<ui> <garbage>
+p3icli: line 12: error: syntax error
+p3icli: warning: giving up, too many errors....
+7   
+p3icli: line 3: error: syntax error
+p3icli: line 4: error: syntax error
+p3icli: line 5: error: syntax error
+p3icli: line 6: error: syntax error
+p3icli: line 7: error: syntax error
+p3icli: line 11: error: syntax error
+p3icli: line 12: error: syntax error
+0   
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (649,41) @ (42,12)
+Tmplt Slide: pic1 (276,246) @ (42,72)
+Tmplt Slide: pic2 (330,246) @ (360,74)
+Tmplt Slide: cap1 (276,30) @ (42,336)
+Tmplt Slide: cap2 (330,30) @ (360,336)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (300,50) @ (0,0)
+Curr Slide: pic2 (380,280) @ (320,260)
+Curr Slide: cap1 (400,50) @ (0,200)
+
+4   
+p3icli: line 8: error: size dimensions must be >= 0
+p3icli: line 9: error: size dimensions must be >= 0
+p3icli: line 10: error: size dimensions must be >= 0
+p3icli: line 14: error: size dimensions must be >= 0
+4   
+p3icli: line 11: error: size dimensions must be >= 0
+p3icli: line 12: error: size dimensions must be >= 0
+p3icli: line 13: error: size dimensions must be >= 0
+p3icli: line 19: error: size dimensions must be >= 0
+4   
+p3icli: line 13: error: size dimensions must be >= 0
+p3icli: line 14: error: size dimensions must be >= 0
+p3icli: line 15: error: size dimensions must be >= 0
+p3icli: line 21: error: size dimensions must be >= 0

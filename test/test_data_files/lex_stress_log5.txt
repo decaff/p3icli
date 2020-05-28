@@ -1,0 +1,8 @@
+7   
+p3icli: .p3iclirc(line 9): error: syntax error
+p3icli: test_data_files/lex_stress_script_b.txt(line 14): error: internal state indicates no existing template, no action taken
+p3icli: test_data_files/lex_stress_script_b.txt(line 26): error: syntax error
+p3icli: test_data_files/lex_stress_script_b.txt(line 39): error: syntax error
+p3icli: test_data_files/lex_stress_script_b.txt(line 39): error: unterminated string detected
+p3icli: test_data_files/lex_stress_script_a.txt(line 17): error: syntax error
+p3icli: test_data_files/lex_stress_script_a.txt(line 26): error: internal state indicates no PPT automation connection, no action taken

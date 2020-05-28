@@ -1,0 +1,21 @@
+0   
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,30)
+Curr Slide: pic1 (630,228) @ (54,126)
+Curr Slide: cap1 (630,54) @ (54,384)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,12)
+Curr Slide: pic1 (630,315) @ (54,83)
+Curr Slide: cap1 (630,54) @ (54,420)
+

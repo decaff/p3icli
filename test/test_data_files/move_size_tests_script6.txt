@@ -1,0 +1,19 @@
+kill ppt discard
+open template intel_slide.pptx
+# Make sure that negative args passed to the "title size" command are trapped.
+# Negative args are legit for the "title move" command in order to support
+# rotated title shapes.
+title move -1 , 5
+title move -20 , 5
+title size 5,-1
+title   size  15,   -1000
+title size -10,-9
+# afadf asdfaf
+title move -647, -22        # just more stuff...and this is legit
+title move -4647, -2        # also legit
+title size -7   , -11
+# make sure title is still addressable
+title move -11 , -33
+title " I've been moved off the slide...help"
+sleep 2000
+kill ppt discard

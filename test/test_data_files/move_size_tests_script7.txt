@@ -1,0 +1,20 @@
+kill ppt discard
+open template intel_slide.pptx
+#
+# Make sure that negative args passed to the "cap<uint> size" command are
+# trapped.  Negative args are legit for the "cap<uint> move" command in
+# order to support rotated caption shapes.
+
+title "negative cap test"
+cap1 move -1 , 5
+cap1 move -20009 , 53032
+cap1 size 5,-1
+cap1   size  15,   -1000
+cap1 size -10,-9
+cap1 move -647, -228
+cap1 move -14, -12
+# make sure cap1 is still here... (i.e., not nuked by PPT)
+   cap1   "almost done with this test!"
+sleep 2000
+cap1 size -7   , -200004
+kill ppt discard

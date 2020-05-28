@@ -1,0 +1,24 @@
+3   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: true
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: line 15: debug: templates root reset
+p3icli: line 16: error: syntax error
+p3icli: line 20: error: syntax error
+p3icli: line 25: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 28: debug: Expanded path: ..\test\pics\pics_that_must_be_copied_to_temp\genius.png
+p3icli: line 31: debug: Expanded path: ..\test\pics\pics_that_must_be_copied_to_temp\mega_corp1_sales.gif
+p3icli: line 34: debug: Expanded path: ..\test\pics\pics_that_must_be_copied_to_temp\oregon_sales_figures.jpeg
+p3icli: line 39: debug: Expanded path: ..\test\tmplts\generic_tmplt.pptx
+p3icli: line 42: debug: Expanded path: ..\test\pics\blue_boobie.jpg
+p3icli: line 48: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 51: debug: Expanded path: ..\test\pics\pic1.png
+p3icli: line 54: debug: Expanded path: ..\test\pics\pic2.png
+p3icli: line 57: debug: Expanded path: ..\test\pics\nebraska_map.gif
+p3icli: line 60: debug: Expanded path: ..\test\pics\tnc_oregon.jpeg
+p3icli: line 63: debug: templates root reset
+p3icli: line 65: warning: stat("generic_tmplt.pptx") failed: No such file or directory
+PPT: line 65: error: 
+p3icli: line 71: debug: Expanded path: ..\test\pics\haystack_rock.jpg
+p3icli: debug: emptied clipboard

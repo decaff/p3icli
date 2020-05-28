@@ -1,0 +1,6 @@
+5   
+p3icli: line 11: error: pic reference out of range
+p3icli: line 12: error: pic reference out of range
+p3icli: line 13: error: pic reference out of range
+p3icli: line 15: error: pic9 not found in template shapes collection
+p3icli: line 19: error: pic1 not found in template shapes collection

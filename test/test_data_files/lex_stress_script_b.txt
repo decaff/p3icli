@@ -1,0 +1,40 @@
+                                      
+# ------------------------------------------------------------------------
+# Just a bunch of commands and maybe an error to exercise the lexer.  This
+# script doesn't accomplish anything else, but is necessary in light of the
+# changes made in v3.3 to correctly reset the lexer's input stream when
+# switching between files and devices.
+# 
+# ------------------------------------------------------------------------
+
+copy source format off
+
+       start ppt
+
+custom property "sludge"="oil"    # error if no presentation?
+                                  # as a matter of fact, yes!
+    sleep 1100
+             kill ppt discard
+
+             copy src fmt on
+
+encoding        utf8
+
+    ignore c:\rootlevel.jpeg
+
+# a deliberate error
+    insert slide 1 from
+
+
+  delete image files off
+
+  dif on
+
+
+    ignore c:\temp\whatnow.bmp
+
+    kill ppt save     # save nothing
+
+# not likely
+           hello, there!  "
+exit

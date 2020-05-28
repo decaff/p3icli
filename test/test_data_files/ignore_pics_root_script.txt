@@ -1,0 +1,77 @@
+# Ensure that the "ignore" command honors "pics root"
+
+# Here are a list of files that can be used as guinea pigs:
+
+# c:/temp/p3icli_del_imgs_dir/redwood_tree.jpg
+# c:/temp/p3icli_del_imgs_dir/coders_lament.png
+# c:/temp/p3icli_del_imgs_dir/turtle.jpg
+# c:/temp/p3icli_del_imgs_dir/haystack_rock.jpg
+# c:/temp/p3icli_del_imgs_dir/pic_n.png
+# c:/temp/p3icli_del_imgs_dir/pic20.png
+# c:/temp/p3icli_del_imgs_dir/pic19.png
+# c:/temp/p3icli_del_imgs_dir/roses.jpg
+# c:/temp/p3icli_del_imgs_dir/nikpic2.jpeg
+# c:/temp/p3icli_del_imgs_dir/pic1.png
+# c:/temp/p3icli_del_imgs_dir/pic2.png
+# c:/temp/p3icli_del_imgs_dir/bbd1.jpg
+# c:/temp/p3icli_del_imgs_dir/multnomah_falls.png
+# c:/temp/p3icli_del_imgs_dir/blue_boobie.jpg
+
+dif on
+
+pics root <none>
+
+open template tmplts\ppt_test.potx
+
+title "slide 1 (unrealistic corner cases)"
+
+# bye bye redwood tree (actually, this deletion is bog standard "dif on"
+# behavior...not a corner case).
+pic1 c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+
+pics root c:\temp
+
+# Most users would not gen up paths like this...too much typing. The partial
+# path in the ignore command below works because ignore tries to save:
+#
+#      <pics root path> + <leaf path>
+#
+pic2    p3icli_del_imgs_dir\coders_lament.png
+ignore  p3icli_del_imgs_dir\coders_lament.png       # will actually survive
+
+# Sure, why not?
+ignore  c:\temp\p3icli_del_imgs_dir\turtle.jpg
+pic3    p3icli_del_imgs_dir\turtle.jpg
+
+# this usage is bonkers (given the above pics root command), but legit.
+pic4    c:\temp\p3icli_del_imgs_dir\haystack_rock.jpg
+
+# But this command is wrong and haystack rock will die because a full
+# path to pic4 cannot be created given the root folder and the leaf
+# path specified in the ignore command.  See comment above vis a vis pic2.
+ignore  haystack_rock.jpg
+
+  dup template
+
+# now run some realistic tests
+title "slide 2 -- realistic tests"
+pics root c:\temp\p3icli_del_imgs_dir
+
+ignore nikpic2.jpeg
+pic1   nikpic2.jpeg
+
+pic2   pic2.png
+# will die......
+
+pic3   roses.jpg
+# will actually live (see below)
+
+# blue boobie goes away
+pic4   blue_boobie.jpg
+
+  sleep 1750         # give tester a peek
+
+save as presentation c:\temp\junk.pptx
+kill ppt discard
+
+ignore Roses.jpg     # saved by the bell

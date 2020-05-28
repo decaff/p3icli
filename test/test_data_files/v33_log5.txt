@@ -1,0 +1,27 @@
+0   
+===== original set of pic files in test dir ==========
+bbd1.jpg
+blue_boobie.jpg
+coders_lament.png
+haystack_rock.jpg
+multnomah_falls.png
+nikpic2.jpeg
+pic1.png
+pic19.png
+pic2.png
+pic20.png
+pic_n.png
+redwood_tree.jpg
+roses.jpg
+turtle.jpg
+===== current set of pic files in test dir ===========
+bbd1.jpg
+coders_lament.png
+multnomah_falls.png
+nikpic2.jpeg
+pic1.png
+pic19.png
+pic20.png
+pic_n.png
+roses.jpg
+turtle.jpg

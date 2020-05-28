@@ -1,0 +1,23 @@
+kill ppt discard
+open template intel_slide.pptx
+# make sure we can manipulate cleaned shapes
+title ""       # can't clean a title...that seems like an oversight
+cap1   <cleaned>
+   pic2  <cleaned>
+
+clean slide
+
+title move 0,0
+ title size  300,50
+ title "I moved to 0,0 -> resized to 300,50"
+
+     cap1 move 0, 200
+     cap1 size 400,50
+     cap1 "I moved to 0,270 -> resized to 400,50"
+
+          pic2 move 320, 260
+          pic2 size 380, 280
+          pic2 nikpic2.jpeg
+
+list geometries
+kill ppt discard
