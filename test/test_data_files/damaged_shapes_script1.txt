@@ -1,0 +1,7 @@
+kill ppt discard
+open template tmplts\incomplete_shapes.pptx
+cap3 "has trailing spaces following tag..should be okay"
+sleep 7000   #take a peek at cap3
+cap2 "this should fail"
+cap1 "and this as well"
+kill ppt discard

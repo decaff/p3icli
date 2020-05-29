@@ -1,0 +1,29 @@
+0   
+p3icli: debug: config: wait after async cmd: 129
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: wait after async cmd: 75
+p3icli: debug: config: wait at exit: 256
+p3icli: Error: Env Var P3ICLI_ASYNC_WAIT: not a valid unsigned integer
+p3icli: debug: config: wait after async cmd: 0
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: wait after async cmd: 16000
+p3icli: debug: config: wait at exit: 256
+p3icli: Error: Env Var P3ICLI_ASYNC_WAIT: not a valid unsigned integer
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 381
+p3icli: Error: Env Var P3ICLI_EXIT_WAIT: valid range is 0 to 16000
+p3icli: Error: Env Var P3ICLI_EXIT_WAIT: not a valid unsigned integer
+p3icli: debug: config: wait after async cmd: 77
+p3icli: debug: config: wait at exit: 55
+p3icli: debug: config: wait after async cmd: 308
+p3icli: debug: config: wait at exit: 55
+p3icli: debug: config: wait after async cmd: 77
+p3icli: debug: config: wait at exit: 255
+p3icli: debug: config: wait after async cmd: 291
+p3icli: debug: config: wait at exit: 255
+p3icli: debug: config: wait after async cmd: 77
+p3icli: debug: config: wait at exit: 55

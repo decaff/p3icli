@@ -1,0 +1,58 @@
+# begin script
+copy src fmt on
+
+insert slide 1 from template tmplts\some_slides.pptx
+# populate slide #1: title, 3 pics, 3 caps
+title "task scheduler copy fmt on"
+pic1 pics\bbd1.jpg
+cap1 "first pic of first slide"
+pic2 pics\nebraska_map.gif
+cap2 "2nd pic of first slide"
+clean slide      # nuke pic3 & cap3
+save as presentation c:\temp\ts_example1.pptx
+
+# --------------------------------
+
+# switch to next template: 2 pics, 2 caps, no title
+insert slide 1 from template tmplts\2pic_intel.pptx
+pic1 pics\nikpic2.jpeg
+pic2 pics\mom.jpg
+cap1 "beginning of this presentation...whee"
+cap2 "cute kids"
+
+# now 4 pics, 4 caps, title
+insert slide 2 from template tmplts\some_slides.pptx
+pic4 pics\coders_lament.png
+cap4 "my code!"
+pic3 pics\redwood_tree.jpg
+cap3 "big tree"
+pic1 c:\temp\ts_settings.png
+cap1 "how to set up task scheduler"
+pic2 c:\temp\genius.png
+cap2 "aol & win8"
+title "slide #2 of this test"
+#
+insert slide 2 from template tmplts\some_slides.pptx
+pic1 pics\multnomah_falls.png
+cap1 "the falls"
+pic2 pics\haystack_rock.jpg
+cap2 "haystack"
+pic3 pics\blue_boobie.jpg
+cap3 "birds with blue feet"
+pic3 pics\bernie_and_bird.jpg
+cap3 "bernie in Portland"
+title "slide #3 of this test"
+clean slide      # pic4 and cap4
+#
+# now 5 pics, 5 caps, title
+insert slide 3 from template tmplts\some_slides.pptx
+pic1 pics\pic1.png
+pic2 pics\pic2.png
+pic3 pics\humpback whale.jpg
+cap3 "whale"
+pic4 pics\tnc_oregon.jpeg
+cap4 "TNC"
+pic5 pics\pic_n.png
+title "final slide (#4) of this test"
+clean caps    # unused caps
+save as presentation c:\temp\ts_example2.pptx

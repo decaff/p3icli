@@ -1,0 +1,37 @@
+# make sure p3icli can resize shapes with locked aspect ratios
+# (issue discovered by GZ in v2.02 -- not released to public)
+
+kill ppt discard
+open template locked_shapes.potx
+
+list geometries
+
+cap1 "move to bottom edge of slide"
+cap1 move 54,486
+cap1 size 650,50
+cap1 move 54, 490
+cap1 "moved and resized!"
+
+list geometries
+
+title "moved above cap1"
+title move 32,400
+title size 590,72
+title move 72, 430
+title "moved and resized above cap1"
+
+list geometries
+
+# pic shapes with locked aspect ratios are the most worrisome
+# test case...try both cases (manipulate shape before and after pic insert)
+pic1 pics\nikpic2.jpeg
+pic1 move 0,0
+pic1 size 600,300
+list geometries
+
+pic1 move 72, 36
+pic1 size 500,400
+pic1 c:\temp\salem_cust1.png
+list geometries
+
+kill ppt discard

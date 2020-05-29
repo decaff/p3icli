@@ -1,0 +1,5 @@
+kill ppt discard
+open template tmplts\incomplete_shapes.pptx
+pic1 pics\pic20.png    # should go down in flames
+pic2 pics\pic19.png    # ditto
+kill ppt discard

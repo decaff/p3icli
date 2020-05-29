@@ -1,0 +1,61 @@
+kill ppt discard
+
+# move and resize 6 pic shapes
+open template test\tmplts\geom_test.potx
+
+# 6 pics available for manipulation: pic1, pic2, pic3, pic4, pic19, pic20
+
+# Initial coordinates:
+# Tmplt Slide: bounds (720,540)
+# Tmplt Slide: title (612,60) @ (72,30)
+# Tmplt Slide: pic1 (156,90) @ (72,96)
+# Tmplt Slide: pic2 (114,114) @ (54,282)
+# Tmplt Slide: pic3 (228,84) @ (456,126)
+# Tmplt Slide: pic4 (216,108) @ (462,270)
+# Tmplt Slide: pic19 (198,84) @ (228,210)
+# Tmplt Slide: pic20 (167,132) @ (270,348)
+
+
+# move 1, 2, 19, and 20 into the slide corners...
+
+title "slide geom is 720 x 540"
+
+pic1   move 0,   0     #easy :-)
+pic2   move 606 ,0     # 720 - 114
+pic19  move 0,   456   # 540 - 84
+pic20  move 553 ,408   # 720-167, 540 - 132
+
+# tweak some shapes wrt their sizes
+
+pic3 size 200, 200  # a square, it will remain in upper left corner
+
+pic4 size 362, 181  # a nice rect
+
+pic1 size   156, 156  # a square
+
+pic20 size  234, 132  # a nice rect
+
+# put 20 back in the rh corner...it bounces around when resized
+pic20 move 486 , 408  # 720 - 234, 540-132
+
+# put 3 and 4 sort of in the middle of the slide
+pic3  move 31,180
+pic4  move 330  , 180
+
+#
+#insert pics in 4 and 20 to make sure they maintain shape and posn
+#
+
+pic4 test\pics\bbd1.jpg
+pic20 c:\temp\pdx_cust2.png
+
+# ck geometries
+list geometries
+
+save as presentation c:\temp\pic_geom.pptx
+kill ppt discard
+open template c:\temp\pic_geom.pptx
+
+# ck geometries
+list geometries
+

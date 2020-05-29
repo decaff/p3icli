@@ -1,0 +1,3 @@
+0   
+p3icli: debug: P3ICLI_MAX_CONNECT_LIMIT => 4
+p3icli: debug: P3ICLI_MAX_KILL_LIMIT => 2

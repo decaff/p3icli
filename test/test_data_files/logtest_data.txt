@@ -1,0 +1,4 @@
+3   
+p3icli: line 14: error: slide 6 out-of-range, valid range is 1 to 5
+p3icli: line 16: error: syntax error
+p3icli: line 17: error: syntax error

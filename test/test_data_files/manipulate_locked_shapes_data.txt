@@ -1,0 +1,51 @@
+0   
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,30)
+Curr Slide: pic1 (630,228) @ (54,126)
+Curr Slide: cap1 (630,54) @ (54,384)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (612,54) @ (66,30)
+Curr Slide: pic1 (630,228) @ (54,126)
+Curr Slide: cap1 (650,50) @ (54,490)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (590,72) @ (72,430)
+Curr Slide: pic1 (630,228) @ (54,126)
+Curr Slide: cap1 (650,50) @ (54,490)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (590,72) @ (72,430)
+Curr Slide: pic1 (600,300) @ (0,0)
+Curr Slide: cap1 (650,50) @ (54,490)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (612,54) @ (66,30)
+Tmplt Slide: pic1 (630,228) @ (54,126)
+Tmplt Slide: cap1 (630,54) @ (54,384)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (590,72) @ (72,430)
+Curr Slide: pic1 (500,400) @ (72,36)
+Curr Slide: cap1 (650,50) @ (54,490)
+

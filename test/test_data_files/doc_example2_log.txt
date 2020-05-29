@@ -1,0 +1,8 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: line 8: debug: Expanded path: ..\doc\portfolio.potx
+p3icli: line 17: debug: Expanded path: ..\doc\portfolio.potx
+p3icli: line 22: debug: Expanded path: ..\doc\portfolio.potx

@@ -1,0 +1,51 @@
+# primarily want to exercise a lot of use of kill ppt command
+kill ppt discard
+third party fix on
+insert slide 1 from template tmplts\intel_slide.pptx
+title "starting v30 tests"
+cap2 "whee..."
+insert slide 1 from template tmplts\geom_test.potx
+title "rolling...rolling"
+save as presentation c:\temp\junk.pptx
+kill ppt save
+
+third party fix off
+copy src fmt on
+insert slide 1 from template tmplts\intel_slide.pptx
+title "more v30 tests"
+cap2 "whee..."
+insert slide 1 from template tmplts\geom_test.potx
+title "rolling...rolling...rolling"
+pic1 pics\shuttle.jpg
+insert slide 4 from template tmplts\junk3.potx
+title "hey there"
+pic1 pics\boat.bmp
+kill ppt discard
+kill ppt save
+
+start ppt
+kill ppt discard
+kill ppt discard
+kill ppt discard
+
+start ppt
+insert slide 1 from template tmplts\intel_slide.pptx
+title "more v30 tests"
+cap2 "whee..."
+insert slide 1 from template tmplts\geom_test.potx
+title "rolling...rolling...rolling"
+pic1 pics\shuttle.jpg
+insert slide 4 from template tmplts\junk3.potx
+title "hey there"
+pic1 pics\boat.bmp
+insert slide 3 from template tmplts\junk3.potx
+title "let's call this a wrap"
+cap1 "how about an embedded \" lexing test"
+cap2 'another embedded \' lexing test'
+pic1 pics\turtle.jpg
+save as presentation c:\temp\junk.pptx
+kill ppt discard
+kill ppt save
+kill ppt discard
+kill ppt save
+kill ppt discard

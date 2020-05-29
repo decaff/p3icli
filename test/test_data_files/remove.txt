@@ -1,0 +1,18 @@
+ copy src fmt on
+# test the "remove comments" feature using induction
+insert slide 1 from template junk3.potx
+remove comments
+insert slide 2 from template junk3.potx
+remove comments
+insert slide 3 from template junk3.potx
+remove comments
+insert slide 4 from template junk3.potx
+remove comments
+insert slide 5 from template junk3.potx
+remove comments
+# next cmd -> error (no template slide #6)
+insert slide 6 from template junk3.potx
+# 2 syntax errors
+remove 
+remove cmts
+

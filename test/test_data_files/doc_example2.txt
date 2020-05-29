@@ -1,0 +1,34 @@
+# begin script
+kill ppt discard
+# On a very slow host, killing PPT and immediately attempting to restart it
+# occasionally causes the PPT automation server to _not_ start.
+# So wait a bit.
+sleep 200
+#
+insert slide 1 from template doc\portfolio.potx
+title "National Sales Figures"
+pic1 c:\temp\national_sales_figures.png
+clean slide      # not really necessary
+#
+dup template     # create another slide with just one rectangle shape
+title "Oregon Sales Figures"
+pic1 c:\temp\oregon_sales_figures.jpeg
+#
+insert slide 2 from template doc\portfolio.potx
+title "Largest Two National Customers"
+pic1 c:\temp\mega_corp1_sales.gif
+pic2 c:\temp\mega_corp2_sales.gif
+#
+insert slide 3 from template doc\portfolio.potx
+title "Largest Three Oregon Customers"
+pic1 c:\temp\pdx_cust1.png
+pic2 c:\temp\pdx_cust2.png
+pic3 c:\temp\salem_cust1.png
+#
+save as presentation c:\temp\sales_summary.pptx
+
+
+#
+# Take a peek @ the result
+#
+open template c:\temp\sales_summary.pptx

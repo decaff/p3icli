@@ -1,0 +1,21 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: opening init file: .p3iclirc
+p3icli: line 4: debug: Expanded path: ..\test\tmplts\intel_slide.pptx
+p3icli: line 7: debug: Expanded path: ..\test\tmplts\geom_test.potx
+p3icli: line 14: debug: Expanded path: ..\test\tmplts\intel_slide.pptx
+p3icli: line 17: debug: Expanded path: ..\test\tmplts\geom_test.potx
+p3icli: line 19: debug: Expanded path: ..\test\pics\shuttle.jpg
+p3icli: line 20: debug: Expanded path: ..\test\tmplts\junk3.potx
+p3icli: line 22: debug: Expanded path: ..\test\pics\boat.bmp
+p3icli: line 32: debug: Expanded path: ..\test\tmplts\intel_slide.pptx
+p3icli: line 35: debug: Expanded path: ..\test\tmplts\geom_test.potx
+p3icli: line 37: debug: Expanded path: ..\test\pics\shuttle.jpg
+p3icli: line 38: debug: Expanded path: ..\test\tmplts\junk3.potx
+p3icli: line 40: debug: Expanded path: ..\test\pics\boat.bmp
+p3icli: line 41: debug: Expanded path: ..\test\tmplts\junk3.potx
+p3icli: line 45: debug: Expanded path: ..\test\pics\turtle.jpg
+p3icli: debug: emptied clipboard

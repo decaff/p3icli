@@ -1,0 +1,17 @@
+8   
+p3icli: line 3: error: template cap ref "cap1_you say" is invalid, ignoring
+p3icli: line 3: error: template cap ref "cap2e3" is invalid, ignoring
+p3icli: line 5: error: template cap ref "cap1_you say" is invalid, ignoring
+p3icli: line 5: error: template cap ref "cap2e3" is invalid, ignoring
+p3icli: line 5: error: cap2 not found in template shapes collection
+p3icli: line 6: error: template cap ref "cap1_you say" is invalid, ignoring
+p3icli: line 6: error: template cap ref "cap2e3" is invalid, ignoring
+p3icli: line 6: error: cap1 not found in template shapes collection
+p3icli: warning: giving up, too many errors....
+6   
+p3icli: line 3: error: template pic ref "pic1 crud" is invalid, ignoring
+p3icli: line 3: error: template pic ref "pic2s" is invalid, ignoring
+p3icli: line 3: error: pic1 not found in template shapes collection
+p3icli: line 4: error: template pic ref "pic1 crud" is invalid, ignoring
+p3icli: line 4: error: template pic ref "pic2s" is invalid, ignoring
+p3icli: line 4: error: pic2 not found in template shapes collection
