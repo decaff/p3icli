@@ -1,0 +1,46 @@
+5   
+p3icli: line 2: error: slide size argument must be >= 0
+p3icli: line 3: error: slide size argument must be >= 0
+p3icli: line 4: error: syntax error
+p3icli: line 5: error: syntax error
+p3icli: line 6: error: syntax error
+Tmplt Slide: bounds (72,72)
+Tmplt Slide: title (54,9) @ (9,11)
+Tmplt Slide: pic1 (60,34) @ (5,25)
+
+Curr Slide: bounds (72,72)
+Curr Slide: title (54,9) @ (9,11)
+Curr Slide: pic1 (60,34) @ (5,25)
+
+Tmplt Slide: bounds (270,72)
+Tmplt Slide: title (202,9) @ (33,11)
+Tmplt Slide: pic1 (227,34) @ (21,25)
+
+Curr Slide: bounds (270,72)
+Curr Slide: title (202,9) @ (33,11)
+Curr Slide: pic1 (227,34) @ (21,25)
+
+Tmplt Slide: bounds (800,72)
+Tmplt Slide: title (600,9) @ (100,11)
+Tmplt Slide: pic1 (674,34) @ (62,25)
+
+Curr Slide: bounds (800,72)
+Curr Slide: title (600,9) @ (100,11)
+Curr Slide: pic1 (674,34) @ (62,25)
+
+Tmplt Slide: bounds (72,502)
+Tmplt Slide: title (54,68) @ (9,82)
+Tmplt Slide: pic1 (60,240) @ (5,178)
+
+Curr Slide: bounds (72,502)
+Curr Slide: title (54,68) @ (9,82)
+Curr Slide: pic1 (60,240) @ (5,178)
+
+Tmplt Slide: bounds (595,842)
+Tmplt Slide: title (446,115) @ (74,137)
+Tmplt Slide: pic1 (501,404) @ (46,300)
+
+Curr Slide: bounds (595,842)
+Curr Slide: title (446,115) @ (74,137)
+Curr Slide: pic1 (501,404) @ (46,300)
+

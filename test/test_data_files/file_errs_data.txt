@@ -1,0 +1,11 @@
+5   
+p3icli: line 19: warning: stat("c:\program files\drew5.jpeg") failed: No such file or directory
+PPT: line 19: error: The specified file wasn't found.
+p3icli: line 29: warning: stat("\\yadda-yadda-no-way-no-how\cdrv\temp\_not_a_jpeg.jpeg") failed: No such file or directory
+PPT: line 29: error: The specified file wasn't found.
+p3icli: line 35: warning: stat("a plain old leaf file that should not exist.bmp") failed: No such file or directory
+PPT: line 35: error: The specified file wasn't found.
+p3icli: line 47: warning: stat("f:\no_such_root_folder\we hope\abc.pptx") failed: No such file or directory
+PPT: line 47: error: Slides.InsertFromFile : Failed.
+p3icli: line 49: warning: stat("your mom does not work here.gif") failed: No such file or directory
+PPT: line 49: error: 

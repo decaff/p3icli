@@ -1,0 +1,57 @@
+# This is the simplest exercise of p3icli slide insertion logic under the
+# task scheduler:
+#
+#   1) copy src fmt is off
+#   2) 3rd party fix is off
+#
+# begin script
+
+insert slide 1 from template doc\sampleTemplate.potx
+# populate slide #1 => 3 pics
+title "What a cute baby!"
+pic1 c:\temp\baby_smiling1.jpeg
+cap1 "Say Cheese!"
+pic2 c:\temp\baby_smiling2.jpeg
+cap2 "Feb, 2005"
+pic3 c:\temp\baby_pose.jpeg
+cap3 "Blue skies"
+clean slide                  # remove pic4 and cap4 shapes
+#
+# all slide 1 template picture shapes populated
+#
+duplicate template           # create and move to next slide
+# populate slide #2 => 3 pics
+title "Happy Baby"
+pic1 c:\temp\baby_pout.jpeg
+cap1 "Are we done, yet?"
+pic3 c:\temp\baby_drool1.jpeg
+cap3 "Can we talk?"
+pic4 c:\temp\baby_on_stomach.jpeg
+cap4 "Just for fun"
+clean slide                  # remove pic2 shape
+save as presentation c:\temp\example.pptx
+
+
+# --------------------------------
+
+insert slide 1 from template doc\portfolio.potx
+title "National Sales Figures"
+pic1 c:\temp\national_sales_figures.png
+clean slide      # not really necessary
+#
+dup template     # create another slide with just one rectangle shape
+title "Oregon Sales Figures"
+pic1 c:\temp\oregon_sales_figures.jpeg
+#
+insert slide 2 from template doc\portfolio.potx
+title "Largest Two National Customers"
+pic1 c:\temp\mega_corp1_sales.gif
+pic2 c:\temp\mega_corp2_sales.gif
+#
+insert slide 3 from template doc\portfolio.potx
+title "Largest Three Oregon Customers"
+pic1 c:\temp\pdx_cust1.png
+pic2 c:\temp\pdx_cust2.png
+pic3 c:\temp\salem_cust1.png
+#
+save as presentation c:\temp\sales_summary.pptx

@@ -1,0 +1,44 @@
+slide size 4:3
+copy src fmt off
+third party fix on
+
+# presentation no. 1:  5 slides
+insert slide 1 from template tmplts\geom_test.potx
+insert slide 1 from template tmplts\max_pics_caps.potx
+insert slide 2 from template tmplts\mult_intel.pptx
+insert slide 4 from template tmplts\mult_intel.pptx
+insert slide 5 from template tmplts\mult_intel.pptx
+save as presentation c:\temp\v27_cat3_3.pptx
+
+# presentation no. 2:  1 slide
+# 2 caps, 2 pics
+insert slide 1 from template tmplts\2pic_intel.pptx
+cap1 "fill cap1 shape"
+cap2 "fill cap2 shape"
+pic1 pics\pic1.png
+pic2 pics\pic2.png
+save as presentation c:\temp\v27_cat3_1.pptx
+
+# presentation no. 3:  2 slides
+# 1 title
+insert slide 1 from template tmplts\mult_intel.pptx
+title "cat 3 test for v27 bug fix, 2 slides"
+# 2 pics, 1 cap
+insert slide 3 from template tmplts\mult_intel.pptx
+cap1 "This presentation is complete"
+pic1 pics\bbd1.jpg
+pic2 pics\coders_lament.png
+save as presentation c:\temp\v27_cat3_2.pptx
+
+# presentation no. 4:  6 slides
+# 1 title
+insert slide 1 from template tmplts\mult_intel.pptx
+title "cat 3 test for v27 bug fix, 6 slides"
+# unnamed slide from junk.potx
+insert slide 3 from template tmplts\junk.potx
+insert slide 1 from template tmplts\intel_slide.pptx
+insert slide 1 from template tmplts\max_pics_caps_p3i_compat.potx
+insert slide 1 from template tmplts\ppt_test.potx
+insert slide 4 from template tmplts\mult_intel.pptx
+save as presentation c:\temp\v27_cat3_4.pptx
+kill ppt discard

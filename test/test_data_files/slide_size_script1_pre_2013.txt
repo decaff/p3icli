@@ -1,0 +1,14 @@
+# force 16:9 slide size ratio and record slide geometries of all
+# slides in the slide_size_wide.pptx template
+
+kill ppt discard
+slide size default    # meaningless
+slide size 16:9
+copy src fmt on
+insert slide 1 from template tmplts\slide_size_wide.pptx
+list geometries
+insert slide 2 from template tmplts\slide_size_wide.pptx
+list geometries
+insert slide 3 from template tmplts\slide_size_wide.pptx
+list geometries
+

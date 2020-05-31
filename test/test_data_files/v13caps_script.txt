@@ -1,0 +1,28 @@
+# test some v1.3 p3icli features
+kill ppt discard
+insert slide "  off slide, No pics, 2 caps       " from template tmplts\junk.potx
+cap1 "stuff from hell"
+title "cap test"
+cap2 <cleaned>
+cap2 <cleaned>
+cap2 "????"
+clean caps
+clean pics
+duplicate template
+cap10 "now what?"
+clean slide
+cap0 "kiss off"
+cap21 "kiss off"
+cap-1 'kiss off'
+cap1 'this should failed, it was cleaned'
+#
+insert slide '  bite me ' from template tmplts\junk.potx
+insert slide 3 from template tmplts\junk.potx
+insert slide '3up, 1 cap' from template tmplts\junk.potx
+insert slide ' iNDUCTION slide' from template tmplts\junk.potx
+# next comment tag should not be removed
+insert slide 5 from template tmplts\junk.potx
+
+# save and re-open to view the results
+save as presentation c:\temp\junk.pptx
+open template c:\temp\junk.pptx

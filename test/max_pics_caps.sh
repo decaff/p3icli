@@ -35,7 +35,7 @@ p3icli -l $logfile $script
 diff -bu $testdata $logfile
 if [ $? -ne 0 ] ; then
     echo "test failed!!"
-    #tools/delete_init_file.sh     # clean up
+    tools/delete_init_file.sh     # clean up
     exit 1
 else
     rm -f $logfile

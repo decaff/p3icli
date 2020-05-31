@@ -1,0 +1,14 @@
+# force what PPT thinks is a4 slide size ratio and record slide geometries
+# of all slides in the slide_size.pptx template
+
+kill ppt discard
+slide size default    # meaningless
+slide size a4
+copy src fmt on
+insert slide 1 from template tmplts\slide_size.pptx
+list geometries
+insert slide 2 from template tmplts\slide_size.pptx
+list geometries
+insert slide 3 from template tmplts\slide_size.pptx
+list geometries
+

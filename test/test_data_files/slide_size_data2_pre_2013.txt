@@ -1,0 +1,33 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (459,72) @ (139,30)
+Tmplt Slide: pic1 (621,378) @ (58,138)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (459,72) @ (139,30)
+Curr Slide: pic1 (621,378) @ (58,138)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (450,54) @ (-148,240)
+Tmplt Slide: pic1 (495,252) @ (175,42)
+Tmplt Slide: pic2 (495,180) @ (175,318)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (450,54) @ (-148,240)
+Curr Slide: pic1 (495,252) @ (175,42)
+Curr Slide: pic2 (495,180) @ (175,318)
+
+Tmplt Slide: bounds (720,540)
+Tmplt Slide: title (450,49) @ (438,221)
+Tmplt Slide: pic1 (270,246) @ (31,12)
+Tmplt Slide: pic2 (297,246) @ (319,8)
+Tmplt Slide: pic3 (585,270) @ (31,270)
+
+Curr Slide: bounds (720,540)
+Curr Slide: title (450,49) @ (438,221)
+Curr Slide: pic1 (270,246) @ (31,12)
+Curr Slide: pic2 (297,246) @ (319,8)
+Curr Slide: pic3 (585,270) @ (31,270)
+

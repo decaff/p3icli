@@ -1,0 +1,35 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: line 8: debug: resized presentation
+Tmplt Slide: bounds (780,540)
+Tmplt Slide: title (663,72) @ (71,30)
+Tmplt Slide: pic1 (695,378) @ (58,138)
+
+Curr Slide: bounds (780,540)
+Curr Slide: title (663,72) @ (71,30)
+Curr Slide: pic1 (695,378) @ (58,138)
+
+Tmplt Slide: bounds (780,540)
+Tmplt Slide: title (450,78) @ (-153,216)
+Tmplt Slide: pic1 (513,252) @ (188,42)
+Tmplt Slide: pic2 (552,180) @ (175,318)
+
+Curr Slide: bounds (780,540)
+Curr Slide: title (450,78) @ (-153,216)
+Curr Slide: pic1 (513,252) @ (188,42)
+Curr Slide: pic2 (552,180) @ (175,318)
+
+Tmplt Slide: bounds (780,540)
+Tmplt Slide: title (450,71) @ (493,213)
+Tmplt Slide: pic1 (318,246) @ (0,0)
+Tmplt Slide: pic2 (318,246) @ (344,0)
+Tmplt Slide: pic3 (598,270) @ (52,270)
+
+Curr Slide: bounds (780,540)
+Curr Slide: title (450,71) @ (493,213)
+Curr Slide: pic1 (318,246) @ (0,0)
+Curr Slide: pic2 (318,246) @ (344,0)
+Curr Slide: pic3 (598,270) @ (52,270)
+
+p3icli: debug: emptied clipboard

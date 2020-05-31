@@ -1,0 +1,5 @@
+4   
+p3icli: line 14: error: cap reference out of range
+p3icli: line 15: error: cap reference out of range
+p3icli: line 16: error: cap reference out of range
+p3icli: line 17: error: cap1 not found in template shapes collection

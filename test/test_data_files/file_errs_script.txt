@@ -1,0 +1,49 @@
+# test file errors/warnings
+
+# WRT slide 3 below, you will need to edit this script and substitute
+# a UNC path for your network that:
+#
+#    a) is a valid hostname, and
+#    b) _NOT_ the current test host (that's cheating), and
+#    b) points to a readable image
+#
+# The point of the UNC path test is to ensure that p3icli and PPT
+# process _nonlocal_ UNC filenmes correctly (w/o reporting an error).
+
+start ppt
+open template tmplts\ppt_test.potx
+
+title 'slide #1'
+pic1 pics\pic1.png
+# pic2 file path doesn't exist -> should get warning and error
+pic2 c:\program files\drew5.jpeg
+clean slide
+
+dup template
+title "slide #2"
+pic4 pics\nikole4.jpg
+pic1 pics\blue_boobie.jpg
+
+# Next pic spec is assumed to be a bogus UNC path
+# (i.e., elicit a warning and error).
+pic2 \\yadda-yadda-no-way-no-how\cdrv\temp\_not_a_jpeg.jpeg
+duplicate template
+
+title "slide #3"
+pic3 pics\nikpic2.jpeg
+
+pic1 a plain old leaf file that should not exist.bmp
+
+# -------------------- Manual Intervention required here -------------------
+# Filename specified below for pic2 _must_ exist(!) to ensure that UNC file
+# paths work.  Vary hostname and image path as necessary so that a valid,
+# readable image is specified.
+pic2 \\i3\temp\hubble.jpg
+# --------------------------------------------------------------------------
+clean slide
+duplicate template
+
+# and now, 2 garbage templates
+insert slide 1 from template f:\no_such_root_folder\we hope\abc.pptx
+
+open template your mom does not work here.gif

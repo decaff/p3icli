@@ -24,7 +24,8 @@ rm -f c:/temp/damaged_shapes_log_file.txt
 rm -f c:/temp/damaged_shapes_log_file[12].txt
 rm -f c:/temp/doc_example[12]_log.txt
 rm -f c:/temp/doc_example_log_edited.txt
-rm -f c:/temp/file_errs_log_file.txt
+rm -f c:/temp/file_errs_log.txt
+rm -f c:/temp/file_errs_log_edited.txt
 rm -f c:/temp/geom_data_log_file.txt
 rm -f c:/temp/geom_log.txt
 rm -f c:/temp/init_files_log[12345].txt
@@ -48,11 +49,13 @@ rm -f c:/temp/v19_log.txt
 rm -f c:/temp/v24log.txt
 rm -f c:/temp/v26log.txt
 rm -f c:/temp/v27_cat[123]_log.txt
+rm -f c:/temp/v27_cat_log_edited.txt
 rm -f c:/temp/v30_log_edited.txt
 rm -f c:/temp/v30_log.txt
 rm -f c:/temp/v30_log_1[abcd].txt
 rm -f c:/temp/v30_fix_1_log.txt c:/temp/v30_fix_1_log_edited.txt
 rm -f c:/temp/v30_fix_2[ab]_log.txt
+rm -f c:/temp/v30_fix_2a_log_edited.txt
 rm -f c:/temp/v30_fix_3_log.txt c:/temp/v30_fix_3_log_edited.txt
 rm -f c:/temp/v31_log.txt
 rm -f c:/temp/v31_win10_log.txt

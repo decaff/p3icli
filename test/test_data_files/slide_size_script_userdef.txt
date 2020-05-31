@@ -1,0 +1,50 @@
+# start with garbage to test lexer
+slide size 33,-75
+slide size -200  , 88
+slide size your , 55
+slide size hello   , world
+slide size 800, fin the garbage tests
+
+# now do real work...
+#
+# first test that anything below 72 is silently clipped
+#
+kill ppt discard
+slide size       71,40
+insert slide 1 from template tmplts\slide_size_user_defined.pptx
+list geometries
+
+#exit
+
+# but a 72 dim is aok
+kill ppt discard
+slide size 270     , 72
+insert slide 1 from template tmplts\slide_size_user_defined.pptx
+list geometries
+
+#exit
+
+kill ppt discard
+slide size 800  , 20
+insert slide 1 from template tmplts\slide_size_user_defined.pptx
+list geometries
+
+# exit
+
+kill ppt discard
+slide size 39  , 502
+insert slide 1 from template tmplts\slide_size_user_defined.pptx
+list geometries
+
+#exit
+
+# finally, specify A4 geometry in *portrait* mode
+# (from the docu)
+kill ppt discard
+slide size 595, 842
+insert slide 1 from template tmplts\slide_size_user_defined.pptx
+list geometries
+
+#exit
+
+kill ppt discard

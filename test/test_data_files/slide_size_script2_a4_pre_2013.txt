@@ -1,0 +1,15 @@
+# make sure a4 slide size is not sticky, I guess
+
+kill ppt discard
+slide     size     a4        # will be turned off muy pronto!
+slide size default
+copy src fmt off
+insert slide 1 from template tmplts\slide_size_wide.pptx
+list geometries
+insert slide 2 from template tmplts\slide_size_wide.pptx
+list geometries
+insert slide 3 from template tmplts\slide_size_wide.pptx
+list geometries
+
+# that's all folks
+kill ppt discard
