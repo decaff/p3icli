@@ -1,0 +1,47 @@
+# simple script to make sure that toggling dif on/off does not
+# accidentally remove files.
+
+# Here are a list of files that can be used as guinea pigs:
+
+#    c:/temp/p3icli_del_imgs_dir/redwood_tree.jpg
+#    c:/temp/p3icli_del_imgs_dir/coders_lament.png
+#    c:/temp/p3icli_del_imgs_dir/turtle.jpg
+#    c:/temp/p3icli_del_imgs_dir/shuttle.jpg
+#    c:/temp/p3icli_del_imgs_dir/oregon_sales_figures.jpeg
+#    c:/temp/p3icli_del_imgs_dir/boat.bmp
+
+dif on
+
+open template test\tmplts\ppt_test.potx
+
+dif off
+
+title "slide 1 (v32)"
+pic1 c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+
+ pic2 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+
+pic3    c:\temp\p3icli_del_imgs_dir\turtle.jpg
+  pic4    c:\temp\p3icli_del_imgs_dir\shuttle.jpg
+
+  dup template
+
+  delete image files on
+
+    title "slide 1 -- empty (v32)"
+
+  dup template    # empty slide here
+
+title "slide 3 (v32)"
+
+  delete image files off
+
+  pic1  c:\temp\p3icli_del_imgs_dir\oregon_sales_figures.jpeg
+  pic2     c:\temp\p3icli_del_imgs_dir\boat.bmp
+
+pic4    c:\temp\p3icli_del_imgs_dir\turtle.jpg
+  pic3    c:\temp\p3icli_del_imgs_dir\shuttle.jpg
+
+  sleep 500  # give tester a peek
+  save as presentation c:\temp\junk.pptx
+  kill ppt discard

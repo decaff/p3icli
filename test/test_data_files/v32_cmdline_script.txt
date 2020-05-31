@@ -1,0 +1,178 @@
+# Exercise the -F cmdline switch.  This is just v32_script8.txt with a
+# syntax error inserted in the middle of the script.
+
+# Here are a list of files that can be used as guinea pigs:
+
+#    c:/temp/p3icli_del_imgs/redwood_tree.jpg
+#    c:/temp/p3icli_del_imgs/coders_lament.png
+#    c:/temp/p3icli_del_imgs/turtle.jpg
+#    c:/temp/p3icli_del_imgs/shuttle.jpg
+#    c:/temp/p3icli_del_imgs/oregon_sales_figures.jpeg
+#    c:/temp/p3icli_del_imgs/blue_boobie.jpg
+#    c:/temp/p3icli_del_imgs/haystack_rock.jpg
+#    c:/temp/p3icli_del_imgs/hubble.jpg
+#    c:/temp/p3icli_del_imgs/pic_n.png
+#    c:/temp/p3icli_del_imgs/pic20.png
+#    c:/temp/p3icli_del_imgs/multnomah_falls.png
+#    c:/temp/p3icli_del_imgs/nebraska_map.gif
+#    c:/temp/p3icli_del_imgs/pic19.png
+#    c:/temp/p3icli_del_imgs/tnc_oregon.jpeg
+#    c:/temp/p3icli_del_imgs/roses.jpg
+#    c:/temp/p3icli_del_imgs/nikpic2.jpeg
+#    c:/temp/p3icli_del_imgs/pic1.png
+#    c:/temp/p3icli_del_imgs/pic2.png
+#    c:/temp/p3icli_del_imgs/Humbpack Whale.jpg
+#    c:/temp/p3icli_del_imgs/bbd1.jpg
+#    c:/temp/p3icli_del_imgs/bernie_and_bird.jpg
+#    c:/temp/p3icli_del_imgs/diver and whale shark.png
+
+kill ppt discard
+
+copy src fmt on
+
+# delete all image files unless otherwise protected with "ignore"
+
+     delete image files  on
+
+
+# --------------------------------------------------
+# 5 rects, 5 caps, 1 title
+# --------------------------------------------------
+
+insert slide 3 from template tmplts\some_slides.pptx
+
+title "slide 1 -- watch 5/5 pic files disappear"
+
+pic1 c:\temp\p3icli_del_imgs_dir\pic1.png
+cap1 "pic 1"
+
+pic2 c:\temp\p3icli_del_imgs_dir\pic2.png
+cap2 "pic 2"
+
+pic3 c:\temp\p3icli_del_imgs_dir\humpback whale.jpg
+cap3 "Humpback Whale"
+
+pic4 c:\temp\p3icli_del_imgs_dir\nikpic2.jpeg
+cap4 "Nikpic2"
+
+pic5 c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+cap5 "Redwood tree"
+
+dup template
+
+title "slide 2 -- watch 1/5 pic files disappear"
+
+pic1 c:\temp\p3icli_del_imgs_dir\oregon_sales_figures.jpeg
+cap1 "oregon sales figures"
+
+pic2 c:\temp\p3icli_del_imgs_dir\hubble.jpg
+cap2 "Hubble"
+
+pic3 c:\temp\p3icli_del_imgs_dir\pic19.png
+cap3 "pic19"
+
+pic4 c:\temp\p3icli_del_imgs_dir\nebraska_map.gif
+cap4 "nebraska"
+
+pic5 c:\temp\p3icli_del_imgs_dir\tnc_oregon.jpeg
+cap5 "tnc"
+
+# deliberate misspell
+ignore c:\temp\p3icli_del_imgs_dir\sshuttle.jpg
+ignore c:\temp\p3icli_del_imgs_dir\shuttle.png    # incorrect suffix
+ignore c:\temp\p3icli_del_imgs_dir\huttle.jpg
+ignore c:\temp\p3icli_del_imgs_dir\shtl.jpg
+ignore c:\temp\p3icli_del_imgs_dir\shut.jpg
+
+ignore c:\temp\p3icli_del_imgs_dir\Nebraska_Map.gif
+ignore c:\temp\p3icli_del_imgs_dir\Oregon_Sales_Figures.jpeg
+ignore c:\temp\p3icli_del_imgs_dir\hubble.jpg
+ignore c:\temp\p3icli_del_imgs_dir\Hubble.jpg
+ignore c:\temp\p3icli_del_imgs_dir\PIC19.png
+ignore c:\temp\p3icli_del_imgs_dir\HubBle.jpg
+
+# ------ Switch it up and use an intel slide -------
+
+# --------------------------------------------------
+# 2 rects, 2 caps, no title (1st pic disappears)
+# --------------------------------------------------
+insert slide 1 from template tmplts\2pic_intel.pptx
+cap1 "pic1 (turtle) will disappear"
+cap2 "pic2 (roses) will stick around"
+pic1 c:\temp\p3icli_del_imgs_dir\turtle.jpg
+pic2 c:\temp\p3icli_del_imgs_dir\roses.jpg
+ignore c:\temp\p3icli_del_imgs_dir\Roses.png
+ignore c:\temp\p3icli_del_imgs_dir\Roses.jpeg
+ignore c:\temp\p3icli_del_imgs_dir\Roses.jpg
+# incorrect suffix :-)
+ignore c:\temp\p3icli_del_imgs_dir\turtle.png
+
+duplicate template
+
+ignore c:\temp\p3icli_del_imgs_dir\shuttlee.jpg  # misspell
+pic1 c:\temp\p3icli_del_imgs_dir\diver and whale shark.png
+pic2 c:\temp\p3icli_del_imgs_dir\shuttle.Jpg
+cap1 "pic1 (diver) saved"
+cap2 "pic2 (shuttle) disappears"
+ignore c:\temp\p3icli_del_imgs_dir\diver        and whale shark.png
+ignore c:\temp\p3icli_del_imgs_dir\diverand whale shark.png
+ignore c:\temp\p3icli_del_imgs_dir\Diver and Whale Shark.png
+
+# deliberate syntax error injected, which will either cause
+# all files queued up for deletion processed as per the state
+# of the -F command line switch.  If -F is not specified, no files
+# are deleted.
+your mom
+
+# --------------------------------------------------
+# 4 rects, 4 caps, 1 title
+# --------------------------------------------------
+insert slide 2 from template tmplts\some_slides.pptx
+
+title "slide 5 -- watch 2/4 pic files disappear"
+
+# bye
+pic1 c:\temp\p3icli_del_imgs_dir\pic20.png
+cap1 "pic20"
+
+ignore c:\temp\p3icli_del_imgs_dir\haystack_RocK.jpg
+pic2 c:\temp\p3icli_del_imgs_dir\haystack_RocK.jpg
+cap2 "haystack rock (saved)"
+
+#this pic will go away
+pic3 c:\temp\p3icli_del_imgs_dir\bBd1.jpg
+cap3 "happy bday"
+
+pic4 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+cap4 "coders lament (saved)"
+ignore c:\temp\p3icli_del_imgs_dir\coders_lament.png
+
+
+ignore  c:\temp\p3icli_del_imgs_dir\multnomah_falls.png
+
+duplicate template
+
+title "slide 6 -- watch 3/4 pic files disappear"
+
+pic1 c:\temp\p3icli_del_imgs_dir\pic_n.png
+cap1 "pic n"
+
+pic2 c:\temp\p3icli_del_imgs_dir\bernie_and_bird.jpg
+cap2 "bernie"
+
+pic4 c:\temp\p3icli_del_imgs_dir\multnomah_falls.png
+cap4 "multonomah falls (saved)"
+
+   pic3  c:\temp\p3icli_del_imgs_dir\Blue_Boobie.jpg
+ cap3 "blue boobie"
+
+clean slide
+
+
+
+
+# time to button up and quit
+
+  sleep 750  # give tester a peek
+
+ save as presentation c:\temp\junk.pptx

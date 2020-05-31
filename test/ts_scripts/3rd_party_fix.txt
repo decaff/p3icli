@@ -1,0 +1,41 @@
+# begin script
+third party fix off
+third party fix on
+
+# intel_slide.pptx and 2pic_intel.pptx were originally created with
+# a 4:3 slide size geometry.  Keep that for appearances sake.
+slide size 4:3
+insert slide 1 from template tmplts\intel_slide.pptx
+# populate single slide: title, 2 pics, 2 caps
+title "task scheduler third party fix on"
+pic1 c:\temp\hubble.jpg
+cap1 "first pic of first slide"
+pic2 c:\temp\genius.png
+cap2 "2nd pic of first slide"
+save as presentation c:\temp\ts_3rd_example1.pptx
+
+
+# --------------------------------
+
+# switch to next template: 2 pics, 2 caps
+insert slide 1 from template tmplts\2pic_intel.pptx
+pic1 pics\nikpic2.jpeg
+pic2 pics\mom.jpg
+cap1 "beginning of this presentation...whee"
+cap2 "cute kids"
+#
+insert slide 1 from template tmplts\2pic_intel.pptx
+pic1 c:\temp\ts_settings.png
+pic2 c:\temp\genius.png
+clean slide      # smoke the captions
+#
+insert slide 1 from template tmplts\2pic_intel.pptx
+pic2 pics\boat.bmp
+pic1 pics\turtle.jpg
+#
+insert slide 1 from template tmplts\2pic_intel.pptx
+cap1 "end of this presentation...whee"
+pic1 pics\coders_lament.png
+pic2 pics\redwood_tree.jpg
+cap2 "time to exit"
+save as presentation c:\temp\ts_3rd_example2.pptx

@@ -1,0 +1,14 @@
+0   
+===== original set of pic files in test dir ==========
+boat.bmp
+coders_lament.png
+oregon_sales_figures.jpeg
+redwood_tree.jpg
+shuttle.jpg
+turtle.jpg
+===== current set of pic files in test dir ===========
+boat.bmp
+oregon_sales_figures.jpeg
+redwood_tree.jpg
+shuttle.jpg
+turtle.jpg

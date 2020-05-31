@@ -3,7 +3,7 @@
 # Nuke the p3icli init files stored in one of these 3 locations:
 #
 #     $HOME/.p3iclirc
-#     $HOME/p3icli_init.txt
+#     $HOME/_p3iclirc
 #     $USERPROFILE/p3icli_init.txt
 #
 # It's presumed that:
@@ -14,7 +14,7 @@
 # Given a) & b) above, nuking all init files is fair game.
 
 init_file1="$HOME/.p3iclirc"
-init_file2="$HOME/p3icli_init.txt"
+init_file2="$HOME/_p3iclirc"
 init_file3="$USERPROFILE/p3icli_init.txt"
 
 if [ -z ${HOME+x} ]

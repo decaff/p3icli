@@ -1,0 +1,19 @@
+0   
+p3icli: info: [XX/XX XX:XX:XX.XXX] : try to start PPT via PATH env var
+p3icli: info: [XX/XX XX:XX:XX.XXX] : PPT start via PATH env var failed (not an error)
+p3icli: info: [XX/XX XX:XX:XX.XXX] : try to start PPT via registry-extracted path
+p3icli: info: [XX/XX XX:XX:XX.XXX] : PPT started via registry path...now sleeping
+p3icli: info: [XX/XX XX:XX:XX.XXX] : Sleep complete, command line wait Time complete
+p3icli: info: [XX/XX XX:XX:XX.XXX] : initializing COM
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: info: [XX/XX XX:XX:XX.XXX] : COM initialization complete
+p3icli: info: [XX/XX XX:XX:XX.XXX] : stripping blank slide
+p3icli: info: [XX/XX XX:XX:XX.XXX] : blank slide deleted
+p3icli: info: [XX/XX XX:XX:XX.XXX] : parsing script(s)
+p3icli: info: [XX/XX XX:XX:XX.XXX] : all script(s) completed...killing ppt
+p3icli: info: [XX/XX XX:XX:XX.XXX] : ppt killed
+p3icli: info: [XX/XX XX:XX:XX.XXX] : freeing acquired resources...
+p3icli: debug: emptied clipboard
+p3icli: info: [XX/XX XX:XX:XX.XXX] : exiting p3icli...
+p3icli: debug: exit: sleeping for 256 msecs

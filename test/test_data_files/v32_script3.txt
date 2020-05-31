@@ -1,0 +1,61 @@
+# simple script to test "dif on" with the removal of two files, one of
+# which is readonly
+# 
+
+# Here are a list of files that can be used as guinea pigs:
+
+#    c:/temp/p3icli_del_imgs_dir/redwood_tree.jpg
+#    c:/temp/p3icli_del_imgs_dir/coders_lament.png
+#    c:/temp/p3icli_del_imgs_dir/turtle.jpg
+#    c:/temp/p3icli_del_imgs_dir/shuttle.jpg
+#    c:/temp/p3icli_del_imgs_dir/oregon_sales_figures.jpeg
+#    c:/temp/p3icli_del_imgs_dir/boat.bmp
+
+kill ppt discard
+
+# default when p3icli starts is "dif off"
+
+# 4 rects, 4 caps, 1 title
+open template doc\sampleTemplate.potx
+
+
+title "slide 1 -- watch one pic file disappear"
+#this pic should be safe
+pic1 c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+cap1 "a big tree"
+
+dif on
+
+# this pic should be gone.
+ pic2 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+ cap2 "good question"
+
+# this pic should be gone.
+# however, this file is made readonly before this script starts, so
+# file removal will fail (and will be flagged at p3icli exit).
+ pic3 c:\temp\p3icli_del_imgs_dir\boat.bmp
+ cap3 "boat me"
+ cap4 "just for completeness sake"
+
+ # exercise the C++ hashing code
+ pic2 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+
+
+  dup template
+
+    title "slide 2 -- say goodbye"
+
+ pic1 <cleaned>
+ pic2 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+ cap2 "where's that bug?"
+ pic2 <cleaned>
+ pic3 <cleaned>
+ pic4 <cleaned>
+ cap1 "I'm cap1"
+ cap3 "I'm cap3"
+ cap4 "I'm cap4"
+
+  sleep 750  # give tester a peek
+
+save as presentation c:\temp\junk.pptx
+kill ppt discard

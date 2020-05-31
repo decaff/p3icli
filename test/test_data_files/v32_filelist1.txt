@@ -1,0 +1,6 @@
+pics/redwood_tree.jpg
+pics/coders_lament.png
+pics/turtle.jpg
+pics/shuttle.jpg
+pics/oregon_sales_figures.jpeg
+pics/boat.bmp

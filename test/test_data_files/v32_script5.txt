@@ -1,0 +1,170 @@
+# Simple script to test "dif on" with the removal of 10 files
+# out of 19 referenced.  The ignore command is exercised somewhat as well.
+# 
+
+# Here are a list of files that can be used as guinea pigs:
+
+#    c:/temp/p3icli_del_imgs/redwood_tree.jpg
+#    c:/temp/p3icli_del_imgs/coders_lament.png
+#    c:/temp/p3icli_del_imgs/turtle.jpg
+#    c:/temp/p3icli_del_imgs/shuttle.jpg
+#    c:/temp/p3icli_del_imgs/oregon_sales_figures.jpeg
+#    c:/temp/p3icli_del_imgs/blue_boobie.jpg
+#    c:/temp/p3icli_del_imgs/haystack_rock.jpg
+#    c:/temp/p3icli_del_imgs/hubble.jpg
+#    c:/temp/p3icli_del_imgs/pic_n.png
+#    c:/temp/p3icli_del_imgs/pic20.png
+#    c:/temp/p3icli_del_imgs/multnomah_falls.png
+#    c:/temp/p3icli_del_imgs/nebraska_map.gif
+#    c:/temp/p3icli_del_imgs/pic19.png
+#    c:/temp/p3icli_del_imgs/tnc_oregon.jpeg
+#    c:/temp/p3icli_del_imgs/roses.jpg
+#    c:/temp/p3icli_del_imgs/nikpic2.jpeg
+#    c:/temp/p3icli_del_imgs/pic1.png
+#    c:/temp/p3icli_del_imgs/pic2.png
+#    c:/temp/p3icli_del_imgs/bbd1.jpg
+#    c:/temp/p3icli_del_imgs/bernie_and_bird.jpg
+
+kill ppt discard
+
+copy src fmt on
+delete image files              on
+
+# --------------------------------------------------
+# 4 rects, 4 caps, 1 title
+# --------------------------------------------------
+insert slide 2 from template test\tmplts\some_slides.pptx
+
+
+title "slide 1 -- watch 3/4 pic files disappear"
+#this pic will go away
+pic1 c:\temp\p3icli_del_imgs_dir\Bbd1.jpg
+cap1 "happy bday"
+
+
+pic2 c:\temp\p3icli_del_imgs_dir\Haystack_Rock.jpg
+# gone
+cap2 "haystack rock"
+
+# also gone
+pic3 c:\temp\p3icli_del_imgs_dir\tnc_oregon.jpeg
+cap3 "TNC"
+
+dif off
+
+# this pic survives
+pic4 c:\temp\p3icli_del_imgs_dir\pic20.png
+cap4 "pic20"
+
+
+# --------------------------------------------------
+# 3 pics, 3 caps, 1 title
+# --------------------------------------------------
+insert slide 1 from template test\tmplts\some_slides.pptx
+
+    title "slide 2 -- 1/3 pic files disappear"
+
+dif on
+
+pic1 c:\temp\p3icli_del_imgs_dir\blue_boobie.jpg
+ cap1 "blue boobie"
+
+# protect the roses
+ ignore             c:\temp\p3icli_del_imgs_dir\Roses.jpg
+
+    pic2 c:\temp\p3icli_del_imgs_dir\roses.jpg
+cap2 "roses"
+
+pic3 c:\temp\p3icli_del_imgs_dir\turtlE.jpg
+          cap3 "a big turtle"
+
+# protect the turtle after the fact
+ignore c:\temp\p3icli_del_imgs_dir\turTLe.jpg
+
+duplicate template
+
+# --------------------------------------------------
+# 3 pics, 3 caps, 1 title
+# --------------------------------------------------
+delete image files off
+title "slide 3 -- 3/3 pic files retained"
+pic1 c:\temp\p3icli_del_imgs_dir\nebraska_map.gif
+cap1 "nebraska"
+
+pic2 c:\temp\p3icli_del_imgs_dir\shuttle.jpg
+cap2 "Space Shuttle"
+
+pic3 c:\temp\p3icli_del_imgs_dir\pic19.png
+cap3 "pic19"
+
+
+# --------------------------------------------------
+# 5 rects, 5 caps, 1 title
+# --------------------------------------------------
+dif on
+
+      # random exercising of ignore code
+      ignore c:\temp\p3icli_del_imgs_dir\multnomah_falls.png
+
+insert slide 3 from template test\tmplts\some_slides.pptx
+
+title "slide 4 -- watch 2/5 pic files disappear"
+
+pic1 c:\temp\p3icli_del_imgs_dir\bernie_and_bird.jpg
+cap1 "Bernie and bird"
+
+ignore c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+pic2 c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+cap2 "Redwood tree"
+
+# save this one at end of script
+pic3 c:\temp\p3icli_del_imgs_dir\pic_n.png
+cap3 "pic n"
+
+pic4 c:\temp\p3icli_del_imgs_dir\nikpic2.jpeg
+cap4 "Nikpic2"
+
+pic5 c:\temp\p3icli_del_imgs_dir\multnomah_falls.png
+    ignore c:\temp\p3icli_del_imgs_dir\multnomah_falls.png
+cap5 "Multnomah Falls"
+
+dif off
+
+# --------------------------------------------------
+# 4 rects, 4 caps, 1 title
+# --------------------------------------------------
+insert slide 2 from template test\tmplts\some_slides.pptx
+
+dif off
+
+title "slide 5 -- watch 4/4 pic files disappear"
+
+  dif on
+
+pic1 c:\temp\p3icli_del_imgs_dir\pic1.png
+cap1 "pic 1"
+pic2 c:\temp\p3icli_del_imgs_dir\pic2.png
+cap2 "pic 2"
+
+pic3 c:\temp\p3icli_del_imgs_dir\coders_lament.png
+cap3 "coders lament"
+
+pic4 c:\temp\p3icli_del_imgs_dir\oregon_sales_figures.jpeg
+cap4 "oregon sales figures"
+
+
+# late save
+ignore c:\temp\p3icli_del_imgs_dir\Pic_N.png
+
+# no such files
+ignore c:\temp\p3icli_del_imgs_dir\your_mom.png
+ignore c:\temp\p3icli_del_imgs_dir\his_mom.png
+
+# note that c:\temp\p3icli_del_imgs_dir\hubble.jpg is
+# never referenced by this script.
+
+# time to button up and quit
+
+  sleep 750  # give tester a peek
+
+ save as presentation c:\temp\junk.pptx

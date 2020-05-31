@@ -1,0 +1,17 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\boat.bmp
+===== original set of pic files in test dir ==========
+boat.bmp
+coders_lament.png
+oregon_sales_figures.jpeg
+redwood_tree.jpg
+shuttle.jpg
+turtle.jpg
+===== current set of pic files in test dir ===========
+coders_lament.png
+oregon_sales_figures.jpeg
+shuttle.jpg
+turtle.jpg

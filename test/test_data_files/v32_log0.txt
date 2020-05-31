@@ -1,0 +1,10 @@
+8   
+p3icli: line 1: error: syntax error
+p3icli: line 3: error: syntax error
+p3icli: line 4: error: syntax error
+p3icli: line 7: error: syntax error
+p3icli: line 8: error: syntax error
+p3icli: line 9: error: syntax error
+p3icli: line 16: error: syntax error
+p3icli: line 17: error: syntax error
+p3icli: warning: giving up, too many errors....

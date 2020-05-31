@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Establishes necessary conditions and command line switches to
-# task_sched_cpy_fmt.txt from the Windows task scheduler.
+# Establishes necessary conditions and command line switches to execute
+# 3rd_party_fix.txt from the Windows task scheduler.
 
 # Note that evaluation of the pass/fail status of running
-# task_sched_cpy_fmt.txt is strictly visual.  Obviously, a non-zero
+# 3rd_party_fix.txt is strictly visual.  Obviously, a non-zero
 # exit code returned by p3icli is a FAILURE.  But beyond that,
 # the results of the presentations created by p3icli must be eyeballed
 # as either satisfactory or unsatisfactory.
 
-logfile="c:/temp/ts_copy_src_fmt_log.txt"
-script="./task_sched_cpy_fmt.txt"
-created_pres1=" c:/temp/ts_example1.pptx"
-created_pres2=" c:/temp/ts_example2.pptx"
+logfile="c:/temp/ts_3rd_party_log.txt"
+script="./3rd_party_fix.txt"
+created_pres1=" c:/temp/ts_3rd_example1.pptx"
+created_pres2=" c:/temp/ts_3rd_example2.pptx"
 
 rm -f $logfile $created_pres1 $created_pres2
 
@@ -62,10 +62,10 @@ echo "pics root ${p3icli_root_dos_echo}\test"      >  $HOME/.p3iclirc
 echo "templates root ${p3icli_root_dos_echo}\test" >> $HOME/.p3iclirc
 # --------------------------------------------------------------------------
 
-../p3icli -T 14000 -l $logfile $script
+../p3icli -T 13000 -l $logfile $script
 exit_code=$?
 if [ $exit_code -ne 0 ] ; then
     echo 'p3icli exited with error(s)'
 fi
-tools/delete_init_file.sh     # clean up
+../tools/delete_init_file.sh     # clean up
 exit $exit_code

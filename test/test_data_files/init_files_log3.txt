@@ -1,0 +1,11 @@
+3   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: opening init file: p3icli_init.txt
+p3icli: p3icli_init.txt(line 1): error: syntax error
+p3icli: p3icli_init.txt(line 3): debug: pics root reset
+p3icli: p3icli_init.txt(line 4): error: syntax error
+p3icli: p3icli_init.txt(line 5): error: syntax error
+p3icli: p3icli_init.txt(line 6): debug: templates root reset

@@ -1,0 +1,34 @@
+# v31 custom prop features
+
+copy src format on
+insert slide 1 from template tmplts\2pic_intel.pptx
+custom property "prop name not there" =   ""
+
+custom property "sludge too large" =  2147483648
+custom property "sludge too small" =  -2147483649
+
+custom property "num max" =  2147483647
+custom property "num min" =  -2147483648
+
+# ppt displays neg ints < -999999 as floating point...test this quirk
+custom property "num min exact" =  -999999
+custom property "num min fp flip" =  -1000000
+
+custom property "modified num" = -1
+custom property "modified num" = -2
+custom property "modified num" = -3
+
+custom property "modified text" = "stuff"
+custom property "modified text" = "for"
+custom property "modified text" = "sale"
+
+custom property "modified date" = "date: February 1, 2017"
+custom property "modified date" = "date: 2/2/2017"
+custom property "modified date" = "date: Feb 3, 2017"
+
+custom property "modified yes/no" = yes
+custom property "modified yes/no" = no
+
+custom property "dave's not here" =   ""
+
+ quit

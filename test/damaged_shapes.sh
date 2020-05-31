@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # make sure that incorrectly specified pic and cap shape tags are flagged.
 # this is a self-checking test...must run multiple times to catch all

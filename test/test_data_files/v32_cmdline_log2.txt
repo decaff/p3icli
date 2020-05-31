@@ -1,0 +1,51 @@
+1   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: line 125: error: syntax error
+p3icli: debug: emptied clipboard
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\pic1.png
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\pic2.png
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\humpback whale.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\nikpic2.jpeg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\redwood_tree.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\tnc_oregon.jpeg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\turtle.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\shuttle.Jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\pic20.png
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\bBd1.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\pic_n.png
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\bernie_and_bird.jpg
+p3icli: debug: image file deleted: c:\temp\p3icli_del_imgs_dir\Blue_Boobie.jpg
+===== original set of pic files in test dir ==========
+Humpback Whale.jpg
+bbd1.jpg
+bernie_and_bird.jpg
+blue_boobie.jpg
+coders_lament.png
+diver and whale shark.png
+haystack_rock.jpg
+hubble.jpg
+multnomah_falls.png
+nebraska_map.gif
+nikpic2.jpeg
+oregon_sales_figures.jpeg
+pic1.png
+pic19.png
+pic2.png
+pic20.png
+pic_n.png
+redwood_tree.jpg
+roses.jpg
+shuttle.jpg
+tnc_oregon.jpeg
+turtle.jpg
+===== current set of pic files in test dir ===========
+coders_lament.png
+diver and whale shark.png
+haystack_rock.jpg
+hubble.jpg
+multnomah_falls.png
+nebraska_map.gif
+oregon_sales_figures.jpeg
+pic19.png
+roses.jpg

@@ -1,0 +1,10 @@
+4   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: line 5: debug: Attempt to delete nonexistent cust prop: "prop name not there"
+p3icli: line 7: error: invalid numerical value: Result too large
+p3icli: line 7: error: syntax error
+p3icli: line 8: error: invalid numerical value: Result too large
+p3icli: line 8: error: syntax error
+p3icli: line 32: debug: Attempt to delete nonexistent cust prop: "dave's not here"
+p3icli: debug: emptied clipboard

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Tests:
 #     + At debug level > 5, the flex token table sorting is tested for

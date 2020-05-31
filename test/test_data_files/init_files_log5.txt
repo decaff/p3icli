@@ -1,0 +1,27 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: config: End task wdws eXplr: false
+p3icli: debug: config: Ignore wdws eXplr: false
+p3icli: debug: opening init file: p3icli_init.txt
+p3icli: line 4: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 7: debug: Expanded path: ..\test\pics\bbd1.jpg
+p3icli: line 9: debug: Expanded path: ..\test\pics\nebraska_map.gif
+p3icli: line 17: debug: Expanded path: ..\test\tmplts\2pic_intel.pptx
+p3icli: line 18: debug: Expanded path: ..\test\pics\nikpic2.jpeg
+p3icli: line 19: debug: Expanded path: ..\test\pics\mom.jpg
+p3icli: line 24: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 25: debug: Expanded path: ..\test\pics\coders_lament.png
+p3icli: line 27: debug: Expanded path: ..\test\pics\redwood_tree.jpg
+p3icli: line 35: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 36: debug: Expanded path: ..\test\pics\multnomah_falls.png
+p3icli: line 38: debug: Expanded path: ..\test\pics\haystack_rock.jpg
+p3icli: line 40: debug: Expanded path: ..\test\pics\blue_boobie.jpg
+p3icli: line 42: debug: Expanded path: ..\test\pics\bernie_and_bird.jpg
+p3icli: line 48: debug: Expanded path: ..\test\tmplts\some_slides.pptx
+p3icli: line 49: debug: Expanded path: ..\test\pics\pic1.png
+p3icli: line 50: debug: Expanded path: ..\test\pics\pic2.png
+p3icli: line 51: debug: Expanded path: ..\test\pics\humpback whale.jpg
+p3icli: line 53: debug: Expanded path: ..\test\pics\tnc_oregon.jpeg
+p3icli: line 55: debug: Expanded path: ..\test\pics\pic_n.png
+p3icli: debug: emptied clipboard
