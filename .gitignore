@@ -7,6 +7,7 @@ obj
 stash
 
 diffs.txt
+make_dist.sh
 p3icli*.exe
 p3icli*.tgz
 *.bak
