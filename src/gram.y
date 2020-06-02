@@ -40,12 +40,13 @@ static int             halt(P3ICLI_CMD_DATA *);
 %token <val> COPY SRC FMT ON OFF GEOMETRIES LIST DEFAULT RECTANGULAR PDF
 %token <val> CUSTOM PROPERTY YES NO THIRD PARTY FIX UTF8 ANSI ENCODING
 %token <val> SIZE MOVE WIDESCREEN A4 DELETE IMAGE FILES DIF IGNORE
+%token <val> TEMPLATES ROOT
 
 %type  <val> start_pptarg
 
 %type  <tag> slide_type
 
-%token <str> FILENAME QSTRING
+%token <str> FILENAME QSTRING FOLDER
 
 %token <nums> PICREF_SIZE PICREF_MOVE
 
@@ -168,6 +169,14 @@ cmd     : /* ignore empty commands */ { cmd.fn = dummy; }
         | IGNORE FILENAME             {
                                         cmd.fn          = ignore_image_file;
                                         cmd.u1.filename = $2;
+                                      }
+        | PICS ROOT FOLDER            {
+                                        cmd.fn          = set_pics_root_path;
+                                        cmd.u1.filename = $3;
+                                      }
+        | TEMPLATES ROOT FOLDER       {
+                                        cmd.fn          = set_tmplts_root_path;
+                                        cmd.u1.filename = $3;
                                       }
         ;
 
@@ -420,4 +429,14 @@ stdin_prompt(void)
         fputs("> ", stdout);
         fflush(stdout);
     }
+}
+
+/*
+ * When switching the scanner's input sources (files, devices, etc.),
+ * reset the state that tests whether or not a prompt is required.
+ */
+void
+reset_parser_prompt_state(void)
+{
+    input_isatty = -1;
 }

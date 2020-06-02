@@ -10,6 +10,7 @@
 #include "err.h"
 #include "purgepics.h"
 #include "semantics.h"
+#include "rootpath.h"
 
 #include <algorithm>
 
@@ -142,7 +143,11 @@ delete_image_files(P3ICLI_CMD_DATA *cmd)
 int
 ignore_image_file(P3ICLI_CMD_DATA *cmd)
 {
-    purgepics->ignore_image_file(cmd->u1.filename);
+    // the "ignore <filename>" command should honor the current value of
+    // "pics root <path>" (if any).
+    const char *full_path = rootpath->expand_pics_path(cmd->u1.filename);
+
+    purgepics->ignore_image_file(full_path);
     return (P3ICLI_CONTINUE);
 }
 

@@ -43,7 +43,7 @@ mklower(char *s)
     for (sp = s; *sp; sp++)
     {
         if (isupper(*sp))
-        *sp = (char) tolower(*sp);
+            *sp = (char) tolower(*sp);
     }
     return (s);
 }
@@ -121,7 +121,7 @@ static const char FILE_PREFIX[]  = "file://";
 static const char HTTP_PREFIX[]  = "http://";
 static const char HTTPS_PREFIX[] = "https://";
 
-static bool
+int
 is_web_based_file(const char *fname)
 {
     if (fname[0] == 'h' || fname[0] == 'H')
@@ -151,7 +151,7 @@ is_web_based_file(const char *fname)
         return ((strlen(fname) >= sizeof(FILE_PREFIX)) &&
                 (_strnicmp(FILE_PREFIX, fname, sizeof(FILE_PREFIX)-1) == 0));
     }
-    return (false);
+    return (FALSE);
 }
 
 int
@@ -352,113 +352,6 @@ binary_backoff_wait(unsigned long *wait_msecs, const char* debug_tag)
     err->debug(msg, RQRD_DEBUG_LVL);
     Sleep((DWORD) *wait_msecs);
     *wait_msecs *= 2;
-}
-
-// Possible function return values:
-//     F -- no value specified via env var
-//     T -- valid rslt returned by reference
-int
-grab_numeric_val_from_env_var(const char*   varname,
-                              unsigned long minvalue,
-                              unsigned long maxvalue,
-                              unsigned long *rslt)
-{
-    char *opt = getenv(varname);
-    int  rc   = FALSE;
-
-    if (! opt)
-        return (rc);
-
-    char *cp = opt;
-    while (isspace(*cp))
-        cp++;
-    if (! *cp)
-    {
-        // blank string or empty string...don't care
-
-        return (rc);
-    }
-
-    int valid;
-    unsigned long tmp = atoul(opt, 10, &valid);
-    if (! valid)
-    {
-        fprintf(stderr,
-                "%s: Error: Env Var %s: not a valid unsigned integer\n",
-                progname,
-                varname);
-        exit(1);
-    }
-    if (! (tmp >= minvalue && tmp <= maxvalue))
-    {
-        fprintf(stderr,
-                "%s: Error: Env Var %s: valid range is %lu to %lu\n",
-                progname,
-                varname,
-                minvalue,
-                maxvalue);
-        exit(1);
-    }
-    *rslt = tmp;
-    return (TRUE);
-}
-
-// Possible function return values:
-//     F -- no value specified via env var
-//     T -- valid rslt returned by reference
-//
-// Valid boolean values are (case insensitive):  {t,f,true,false}
-int
-grab_bool_val_from_env_var(const char* varname, int *rslt)
-{
-    char *opt = getenv(varname);
-    int rc    = FALSE;
-
-    if (! opt)
-        return (rc);
-
-    char *cp = trim(opt);
-    if (! *cp)
-    {
-        // blank string or empty string...don't care
-
-        return (rc);
-    }
-
-    char *var_value = mklower(cp);
-    rc = TRUE;
-    if (! var_value[1])
-    {
-        // single char value
-
-        if (var_value[0] == 'f')
-        {
-            *rslt = FALSE;
-            return (rc);
-        }
-        else if (var_value[0] == 't')
-        {
-            *rslt = TRUE;
-            return (rc);
-        }
-    }
-    else if (strcmp(var_value, "false") == 0)
-    {
-       *rslt = FALSE;
-       return (rc);
-    }
-    else if (strcmp(var_value, "true") == 0)
-    {
-       *rslt = TRUE;
-       return (rc);
-    }
-
-    // bad env var value
-    fprintf(stderr,
-            "%s: Error: Env Var %s: value must be one of {t,f,true,false}\n",
-            progname,
-            varname);
-    exit(1);
 }
 
 }   // extern "C"

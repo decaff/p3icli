@@ -6,7 +6,8 @@ bin
 obj
 stash
 
-diffs.txt
+diffs*.txt
+diffs*.sh
 make_dist.sh
 p3icli*.exe
 p3icli*.tgz

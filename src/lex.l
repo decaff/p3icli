@@ -79,6 +79,7 @@ static KYWD keywds[] =
     { "property",     PROPERTY },
     { "quit",         HALT },      /* re-use of byacc token */
     { "remove",       REMOVE },
+    { "root",         ROOT },
     { "save",         SAVE },
     { "size",         SIZE },
     { "sleep",        SLEEP },
@@ -87,6 +88,7 @@ static KYWD keywds[] =
     { "src",          SRC },
     { "start",        START },
     { "template",     TEMPLATE },
+    { "templates",    TEMPLATES },
     { "third",        THIRD },
     { "title",        TITLE },
     { "yes",          YES },
@@ -247,7 +249,7 @@ reset_lex_input_state(void)
 
 %}
 
-%x FNAME DUP_TMPLT PICREF_ARG
+%x FNAME DUP_TMPLT PICREF_ARG FPATH
 
 cleaned   \<cleaned\>
 number     -?[0-9]+
@@ -361,6 +363,20 @@ utf8                 { return (UTF8); }
                                case DUPLICATE:
                                    BEGIN DUP_TMPLT;
                                    break;
+                               case ROOT:
+                                   /*
+                                    * this token must be followed by an
+                                    * unquoted folder path, which must be
+                                    * delimited by whitespace.
+                                    */
+
+                                   ch = input();
+                                   if (isspace(ch))
+                                       BEGIN FPATH;
+                                   else
+                                       tokval = P3ICLI_ERR_TOK;
+                                   unput(ch);
+                                   break;
                                default:
                                    break;
                            }
@@ -411,6 +427,13 @@ utf8                 { return (UTF8); }
                      }
 <FNAME>(.|\n)        { BEGIN 0; return (yytext[0]); }
 
+
+<FPATH>[^#\n]*       {
+                       BEGIN 0;
+                       yylval.str = xstrdup(trim(yytext));
+                       return (strlen(yylval.str) ? FOLDER : P3ICLI_ERR_TOK);
+                     }
+<FPATH>(.|\n)        { BEGIN 0; return (yytext[0]); }
 
                      /*
                       * The DUP_TMPLT hack exists because the command

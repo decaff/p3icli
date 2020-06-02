@@ -31,6 +31,7 @@
 #include "semantics.h"
 #include "autowrap.h"
 #include "purgepics.h"
+#include "rootpath.h"
 
 const int  CAPREFLEN  = sizeof(P3ICLI_CAPREF) - 1;
 const int  MSOCOMMENT = 4;              // identifies msoComment shape
@@ -109,7 +110,8 @@ kill_ppt(P3ICLI_CMD_DATA *cmd)
 int
 open_tmplt(P3ICLI_CMD_DATA *cmd)
 {
-    (void) is_a_file(cmd->u1.filename, P3ICLI_IF_NOT_FILE_WARN);
+    const char *full_path = rootpath->expand_tmplts_path(cmd->u1.filename);
+    (void) is_a_file(full_path, P3ICLI_IF_NOT_FILE_WARN);
     if (ppt->start_instance())    // attach to or start PPT
     {
         /*
@@ -160,7 +162,7 @@ open_tmplt(P3ICLI_CMD_DATA *cmd)
         tcontrol->delete_orphan_tmplt();
 
         Presentations pres(ppt->app().GetPresentations());
-        (void) pres.Open(cmd->u1.filename, true, true, true);  // LEAK
+        (void) pres.Open(full_path, true, true, true);  // LEAK
 
         tcontrol->added_tmplt();
         (void) tcontrol->duplicate_tmplt(false);
@@ -312,8 +314,9 @@ set_caption(P3ICLI_CMD_DATA *cmd)
 int
 insert_pic(P3ICLI_CMD_DATA *cmd)
 {
-    long i, shape_count;
-    bool is_protected_picref;
+    const char *full_path;
+    long        i, shape_count;
+    bool        is_protected_picref;
 
     if (! ppt->must_have_app_connected())
         return (P3ICLI_CONTINUE);
@@ -321,7 +324,10 @@ insert_pic(P3ICLI_CMD_DATA *cmd)
         return (P3ICLI_CONTINUE);
     is_protected_picref = (strcmp(cmd->u1.filename, P3ICLI_PROTECTED) == 0);
     if (! is_protected_picref)
-        (void) is_a_file(cmd->u1.filename, P3ICLI_IF_NOT_FILE_WARN);
+    {
+        full_path = rootpath->expand_pics_path(cmd->u1.filename);
+        (void) is_a_file(full_path, P3ICLI_IF_NOT_FILE_WARN);
+    }
     DocumentWindow wdw(ppt->app().GetActiveWindow());
     Selection sel(wdw.GetSelection());
     SlideRange range(sel.GetSlideRange());
@@ -374,7 +380,7 @@ insert_pic(P3ICLI_CMD_DATA *cmd)
                 else
                     rotation = 0.0;
                 shape.Delete();  // bye bye
-                Shape newshape(shapes.AddPicture(cmd->u1.filename,
+                Shape newshape(shapes.AddPicture(full_path,
                                                  FALSE,
                                                  TRUE,
                                                  left,
@@ -385,7 +391,7 @@ insert_pic(P3ICLI_CMD_DATA *cmd)
                 // PPT copied image into pic shape. Does user want to queue
                 // image file for removal at program exit?
                 if (semstate->rmv_image_files())
-                    purgepics->rmv_later(cmd->u1.filename);
+                    purgepics->rmv_later(full_path);
 
                 if (rotation != 0.0 && ppt->pptversion() >= 10.0)
                 {
@@ -586,6 +592,8 @@ remove_comments(P3ICLI_CMD_DATA *cmd /* unused */)
 // delete  image files        semantics are located in purgepics.cpp
 // insert  slide <uint>       semantics are located in insert_slide.cpp
 // insert  slide <qstring>    semantics are located in insert_slide.cpp
+// pics root <path>           semantics are located in rootpath.cpp
+// templates root <path>      semantics are located in rootpath.cpp
 //
 // additional misc semantics are located in semantics_misc.cpp
 

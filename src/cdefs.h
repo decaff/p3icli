@@ -137,17 +137,12 @@ extern void          binary_backoff_wait(unsigned long *msecs, const char *tag);
 extern void          emit_accepted_syntax(void);
 extern void          emit_env_var_names(FILE *);
 extern int           exec_semantics(P3ICLI_CMD_DATA *);
-extern int           grab_bool_val_from_env_var(const char *varname, int *bval);
-extern int           grab_numeric_val_from_env_var(
-                                      const char    *varname,
-                                      unsigned long minvalue,
-                                      unsigned long maxvalue,
-                                      unsigned long *result
-                                                  );
 extern int           is_a_file(const char *, P3ICLI_FILE_STATUS action);
+extern int           is_web_based_file(const char *fname);
 extern int           lexer_configured_correctly(void);
 extern char          *mklower(char *s);
 extern void          reset_lex_input_state(void);
+extern void          reset_parser_prompt_state(void);
 extern int           start_ppt_instance_and_wait(unsigned long);
 extern void          stdin_prompt(void);
 extern void          syntax_error(const char *msg, int syserrno);
@@ -156,6 +151,7 @@ extern void          warning_msg(const char *msg, int syserrno);
 extern void          *xmalloc(size_t n);       /* aborts if out of mem */
 extern char          *xstrdup(const char *);   /* aborts if out of mem */
 extern int           yylex();
+extern void          yyrestart(FILE *input_file);
 extern int           yyparse();
 
 /* --------------------------- grammar semantic actions ----------- */
@@ -177,9 +173,11 @@ extern int           set_caption(P3ICLI_CMD_DATA *);
 extern int           set_cap_geometry(P3ICLI_CMD_DATA *);
 extern int           set_custom_property(P3ICLI_CMD_DATA *);
 extern int           set_pic_geometry(P3ICLI_CMD_DATA *);
+extern int           set_pics_root_path(P3ICLI_CMD_DATA *);
+extern int           set_slide_size(P3ICLI_CMD_DATA *);
 extern int           set_title(P3ICLI_CMD_DATA *);
 extern int           set_title_geometry(P3ICLI_CMD_DATA *);
-extern int           set_slide_size(P3ICLI_CMD_DATA *);
+extern int           set_tmplts_root_path(P3ICLI_CMD_DATA *);
 extern int           start_ppt(P3ICLI_CMD_DATA *);
 extern int           third_party_fix(P3ICLI_CMD_DATA *);
 extern int           tidy_tmplt(P3ICLI_CMD_DATA *);

@@ -13,17 +13,24 @@
 #include "semantics.h"
 #include "tempname.h"
 #include "geom.h"
+#include "rootpath.h"
 
 const int MAX_PASTE_LIMIT = 4;
 
-static bool insert_named_tmplt_slide(P3ICLI_CMD_DATA *, Presentations &);
+static bool insert_named_tmplt_slide(
+                                  P3ICLI_CMD_DATA *,
+                                  const char *src_tmplt_path,
+                                  Presentations &
+                                    );
 static void insert_numeric_tmplt_slide_cpy_src_fmt(
-                                                P3ICLI_CMD_DATA *,
+                                                long slide_idx,
+                                                const char *src_tmplt_path,
                                                 _Presentation &dstpres,
                                                 Slides &dstslides
                                                   );
 static void insert_numeric_tmplt_slide_via_copy_paste(
-                                                P3ICLI_CMD_DATA *,
+                                                long slide_idx,
+                                                const char *src_tmplt_path,
                                                 _Presentation &dstpres,
                                                 Slides &dstslides
                                                      );
@@ -377,7 +384,7 @@ pause_for_failed_slide_paste(void)
 // returns true if desired slide inserted...otherwise, GotoSlide()
 // throws exception.
 static bool
-insert_numeric_tmplt_slide(P3ICLI_CMD_DATA *cmd)
+insert_numeric_tmplt_slide(long slide_idx, const char *tmplt_path)
 {
     _Presentation pres(ppt->app().GetActivePresentation());
     Slides slides(pres.GetSlides());
@@ -385,7 +392,10 @@ insert_numeric_tmplt_slide(P3ICLI_CMD_DATA *cmd)
     {
         // user wants src slide contents & background copied to destination.
 
-        insert_numeric_tmplt_slide_cpy_src_fmt(cmd, pres, slides);
+        insert_numeric_tmplt_slide_cpy_src_fmt(slide_idx,
+                                               tmplt_path,
+                                               pres,
+                                               slides);
     }
     else
     {
@@ -396,8 +406,7 @@ insert_numeric_tmplt_slide(P3ICLI_CMD_DATA *cmd)
             // Let PPT do all the work
 
             long after_idx = slides.GetCount();
-            long slide_idx = cmd->long_val;
-            slides.InsertFromFile(cmd->u1.filename,
+            slides.InsertFromFile(tmplt_path,
                                   after_idx,
                                   slide_idx,
                                   slide_idx);
@@ -408,7 +417,10 @@ insert_numeric_tmplt_slide(P3ICLI_CMD_DATA *cmd)
             // directly copying a slide from one presentation to another.
             // So workaround the problem using copy and paste.
 
-            insert_numeric_tmplt_slide_via_copy_paste(cmd, pres, slides);
+            insert_numeric_tmplt_slide_via_copy_paste(slide_idx,
+                                                      tmplt_path,
+                                                      pres,
+                                                      slides);
         }
     }
 
@@ -438,12 +450,14 @@ insert_numeric_tmplt_slide(P3ICLI_CMD_DATA *cmd)
 
 // returns true if found desired slide
 static bool
-insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd, Presentations &allpres)
+insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd,
+                         const char      *tmplt_path,
+                         Presentations   &allpres)
 {
     char buf[528];
     long i, j, slide_count, cmt_count;
 
-    _Presentation pres(allpres.Open(cmd->u1.filename, true, true, false));
+    _Presentation pres(allpres.Open(tmplt_path, true, true, false));
     CString target_name(cmd->u2.slidename);
     target_name.TrimLeft();
     target_name.TrimRight();
@@ -467,7 +481,7 @@ insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd, Presentations &allpres)
                 cmd->long_val = i; // index of slide with matching
                                    // comment string
                 pres.Close();
-                (void) insert_numeric_tmplt_slide(cmd);
+                (void) insert_numeric_tmplt_slide(cmd->long_val, tmplt_path);
                 strip_slide_comment(target_name);
                 return (true);
             }
@@ -480,7 +494,7 @@ insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd, Presentations &allpres)
               sizeof(buf),
               "Named slide \"%s\" not found in \"%s\"",
               cmd->u2.slidename,
-              cmd->u1.filename);
+              tmplt_path);
     err->err(buf, IS_PGM, 0);
     return (false);
 }
@@ -489,17 +503,15 @@ insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd, Presentations &allpres)
 // clipboard to effect the presentation update (slower and much more
 // complex).
 static void
-insert_numeric_tmplt_slide_via_copy_paste(P3ICLI_CMD_DATA *cmd,
+insert_numeric_tmplt_slide_via_copy_paste(long            slide_idx,
+                                          const char      *src_tmplt,
                                           _Presentation   &dstpres,
                                           Slides          &dstslides)
 {
-    long        slide_idx = cmd->long_val;
-    const char* filename  = cmd->u1.filename;
-
     // open (src) presentation containing src slide and paste it
     // into the currently active (dst) presentation.
     Presentations allpres(ppt->app().GetPresentations());
-    _Presentation srcpres(allpres.Open(filename, TRUE, FALSE, FALSE));
+    _Presentation srcpres(allpres.Open(src_tmplt, TRUE, FALSE, FALSE));
     if (dst_presentation_disappeared(dstpres, dstslides))
     {
         // Due to an interesting PPT "optimization", it was necessary to
@@ -510,7 +522,7 @@ insert_numeric_tmplt_slide_via_copy_paste(P3ICLI_CMD_DATA *cmd,
         // So, once more, open the src presentation.  This time, we should
         // be operating with distinct source and destination presentations.
 
-        srcpres = allpres.Open(filename, TRUE, FALSE, FALSE);
+        srcpres = allpres.Open(src_tmplt, TRUE, FALSE, FALSE);
     }
     Slides srcslides(srcpres.GetSlides());
 
@@ -541,19 +553,18 @@ insert_numeric_tmplt_slide_via_copy_paste(P3ICLI_CMD_DATA *cmd,
 // Any PPT issues will throw an exception.
 static void
 insert_numeric_tmplt_slide_cpy_src_fmt(
-                            P3ICLI_CMD_DATA *cmd,
+                            long slide_idx,
+                            const char *src_tmplt_path,
                             _Presentation & dstpres,  // dst presentation
                             Slides & dstslides        // dst slides collctn
                                       )
 {
-    char        msg[256];
-    long        slide_idx = cmd->long_val;
-    const char* filename  = cmd->u1.filename;
+    char msg[256];
 
     // Part 1 : open (src) presentation containing src slide and paste it
     //          into the currently active (dst) presentation.
     Presentations allpres(ppt->app().GetPresentations());
-    _Presentation srcpres(allpres.Open(filename, TRUE, FALSE, FALSE));
+    _Presentation srcpres(allpres.Open(src_tmplt_path, TRUE, FALSE, FALSE));
     if (dst_presentation_disappeared(dstpres, dstslides))
     {
         // Due to an interesting PPT "optimization", it was necessary to
@@ -564,7 +575,7 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         // So, once more, open the src presentation.  This time, we should
         // be operating with distinct source and destination presentations.
 
-        srcpres = allpres.Open(filename, TRUE, FALSE, FALSE);
+        srcpres = allpres.Open(src_tmplt_path, TRUE, FALSE, FALSE);
     }
     Slides srcslides(srcpres.GetSlides());
 
@@ -827,12 +838,14 @@ extern "C" {
 int
 insert_tmplt_slide(P3ICLI_CMD_DATA *cmd)
 {
-    bool slide_inserted = false;
+    const char *full_path;
+    bool        slide_inserted = false;
 
     // kill unmodified copy of existing template, if any
     tcontrol->delete_orphan_tmplt();
 
-    (void) is_a_file(cmd->u1.filename, P3ICLI_IF_NOT_FILE_WARN);
+    full_path = rootpath->expand_tmplts_path(cmd->u1.filename);
+    (void) is_a_file(full_path, P3ICLI_IF_NOT_FILE_WARN);
     if (ppt->start_instance())    // attach to or start PPT
     {
         Presentations allpres(ppt->app().GetPresentations());
@@ -894,15 +907,16 @@ insert_tmplt_slide(P3ICLI_CMD_DATA *cmd)
                 geom_slide->make_slide_cust_geom();
         }
 
+        long slide_idx = cmd->long_val;
         if (cmd->tag == P3ICLI_NUMERIC_SLIDE)
-            slide_inserted = insert_numeric_tmplt_slide(cmd);
+            slide_inserted = insert_numeric_tmplt_slide(slide_idx, full_path);
         else
-            slide_inserted = insert_named_tmplt_slide(cmd, allpres);
+            slide_inserted = insert_named_tmplt_slide(cmd, full_path, allpres);
     }
     if (slide_inserted)
     {
         // logic behind next two lines of code is described in the
-        // function open_tmplt() above.
+        // function open_tmplt(), in file semantics.cpp .
 
         tcontrol->added_tmplt();
         (void) tcontrol->duplicate_tmplt(false);

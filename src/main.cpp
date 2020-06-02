@@ -1,6 +1,6 @@
 /*
- * p3icli.cpp -- main module of the PowerPoint Picture Insert Command Line
- *               Interface application.
+ * main.cpp -- main module of the PowerPoint Picture Insert Command Line
+ *             Interface application.
  */
 
 #include "p3icli.h"       // this comes first or get a lot of bizarre errors
@@ -19,6 +19,8 @@
 #include "winutils.h"
 #include "purgepics.h"
 #include "geom.h"
+#include "rootpath.h"
+#include "envvars.h"
 
 extern "C" {
 char *progname;
@@ -31,26 +33,6 @@ static bool            kill_PPT_at_exit          = false;
 static bool            force_pic_purge           = false;
 static bool            start_single_PPT_instance = false;
 
-static bool            wait_exit_set   = false, wait_async_set   = false;
-static unsigned long   wait_exit_msecs = 0,     wait_async_msecs = 0;
-
-static bool            wdws_xplr_end_task     = false;
-static bool            wdws_xplr_end_task_set = false;
-
-static bool            wdws_xplr_ignore       = true;
-static bool            wdws_xplr_ignore_set   = false;
-
-// Don't [let the user] be stupid.  - S. Twain
-const  unsigned long   WAIT_OPTION_MAX_VAL = 16000;    // msecs
-
-// Couple WAIT env var names
-const char*            WAIT_ASYNC_ENV_VAR  = "P3ICLI_ASYNC_WAIT";
-const char*            WAIT_EXIT_ENV_VAR   = "P3ICLI_EXIT_WAIT";
-
-// Couple Windows Explorer env var names
-const char*            WDWS_XPLR_END_TASK_ENV_VAR = "P3ICLI_WDWS_XPLR_END_TASK";
-const char*            WDWS_XPLR_IGNORE_ENV_VAR   = "P3ICLI_WDWS_XPLR_IGNORE";
-
 static void            cleanup(void);
 static void            usage(int rc);
 
@@ -60,25 +42,8 @@ error_reports          *err;
 semantics_state        *semstate;
 purge_pics             *purgepics;
 geom                   *geom_slide;
-
-/* ------------------------------------------------------------------- */
-
-extern "C" {
-
-void
-emit_env_var_names(FILE *fp)
-{
-    fputs(WAIT_ASYNC_ENV_VAR, fp);
-    fputs("\n", fp);
-    fputs(WAIT_EXIT_ENV_VAR, fp);
-    fputs("\n", fp);
-    fputs(WDWS_XPLR_END_TASK_ENV_VAR, fp);
-    fputs("          (Win10 or later, only)\n",fp);
-    fputs(WDWS_XPLR_IGNORE_ENV_VAR, fp);
-    fputs("            (Win10 or later, only)\n",fp);
-}
-
-}   // end extern "C"
+root_path              *rootpath;
+env_vars               *envvars;
 
 /* ------------------------------------------------------------------- */
 
@@ -128,25 +93,70 @@ parse_wait_vals(const char *cmdline_wait_str)
                 WAIT_OPTION_MAX_VAL);
         exit(1);
     }
+
+    // Command line value overrides env var value (if any)
     if (option == 'a')
-    {
-        wait_async_set   = true;
-        wait_async_msecs = wait_msecs;
-    }
+        envvars->wait_async_msecs_upd(wait_msecs);
     else
+        envvars->wait_exit_msecs_upd(wait_msecs);
+}
+
+static void
+prepare_for_next_script()
+{
+    fclose(yyin);
+    reset_parser_prompt_state();
+    reset_lex_input_state();
+    err->lineno_valid(false);
+    err->set_script_file("");
+}
+
+// Returns false if error noted
+static bool
+maybe_parse_init_file_as_script(FILE *logfd)
+{
+    char       buf[FILENAME_MAX + 256];
+    const char *init_fname = envvars->lookup_init_file_path();
+
+    if (! init_fname)
+        return (true);
+
+    if (err->debug_enabled())
     {
-        wait_exit_set   = true;
-        wait_exit_msecs = wait_msecs;
+        _snprintf(buf, sizeof(buf), "opening init file: %s", init_fname);
+        err->debug(buf, INIT_FILE_DBG_LVL);
     }
+
+    if ((yyin = fopen(init_fname, "r")) == NULL)
+    {
+        _snprintf(buf,
+                  sizeof(buf),
+                  "unable to open init file \"%s\"",
+                  init_fname);
+        err->err(buf, IS_PGM, errno);
+        if (logfd)
+        {
+            // Error msg was just written to logfile.  Also echo fatal
+            // condition in user's face.
+
+            fprintf(stderr, "%s: %s: %s\n", progname, buf, strerror(errno));
+        }
+        return (false);
+    }
+    err->lineno_valid(true);
+    err->set_script_file(init_fname);
+    yyparse();        // parse input stream
+    prepare_for_next_script();
+    return (true);
 }
 
 static void
 wait_option_housekeeping()
 {
-    if (wait_exit_set)
-        ppt->set_wait_at_pgm_exit(wait_exit_msecs);
-    if (wait_async_set)
-        ppt->set_wait_after_cb_cmd(wait_async_msecs);
+    if (envvars->wait_exit_set())
+        ppt->set_wait_at_pgm_exit(envvars->wait_exit_msecs());
+    if (envvars->wait_async_set())
+        ppt->set_wait_after_cb_cmd(envvars->wait_async_msecs());
     if (err->debug_enabled() == true)
     {
         char msg[256];
@@ -170,10 +180,10 @@ windows_explorer_housekeeping()
     if (! IsWdws10AndLater())
         return;
 
-    if (wdws_xplr_end_task_set)
-        ppt->set_wdws_xplr_end_task(wdws_xplr_end_task);
-    if (wdws_xplr_ignore_set)
-        ppt->set_wdws_xplr_ignore(wdws_xplr_ignore);
+    if (envvars->wdws_xplr_end_task_set())
+        ppt->set_wdws_xplr_end_task(envvars->wdws_xplr_end_task());
+    if (envvars->wdws_xplr_ignore_set())
+        ppt->set_wdws_xplr_ignore(envvars->wdws_xplr_ignore());
     if (err->debug_enabled() == true)
     {
         char msg[256];
@@ -188,40 +198,6 @@ windows_explorer_housekeeping()
                   "config: Ignore wdws eXplr: %s",
                   ppt->wdws_xplr_ignore() ? "true" : "false");
         err->debug(msg, 1);
-    }
-}
-
-static void
-collect_env_var_options()
-{
-    if (grab_numeric_val_from_env_var(WAIT_EXIT_ENV_VAR,
-                                      0,
-                                      WAIT_OPTION_MAX_VAL,
-                                      &wait_exit_msecs))
-    {
-        wait_exit_set = true;
-    }
-    if (grab_numeric_val_from_env_var(WAIT_ASYNC_ENV_VAR,
-                                      0,
-                                      WAIT_OPTION_MAX_VAL,
-                                      &wait_async_msecs))
-    {
-        wait_async_set = true;
-    }
-    if (IsWdws10AndLater())
-    {
-        int bval;
-
-        if (grab_bool_val_from_env_var(WDWS_XPLR_END_TASK_ENV_VAR, &bval))
-        {
-            wdws_xplr_end_task_set = true;
-            wdws_xplr_end_task     = (bval == TRUE);   // kill devStudio wrng
-        }
-        if (grab_bool_val_from_env_var(WDWS_XPLR_IGNORE_ENV_VAR, &bval))
-        {
-            wdws_xplr_ignore_set = true;
-            wdws_xplr_ignore     = (bval == TRUE);   // kill devStudio wrng
-        }
     }
 }
 
@@ -513,6 +489,16 @@ cleanup(void)
         delete geom_slide;
         geom_slide = NULL;
     }
+    if (rootpath)
+    {
+        delete rootpath;
+        rootpath = NULL;
+    }
+    if (envvars)
+    {
+        delete envvars;
+        envvars = NULL;
+    }
     if (ole_initialized)
         CoUninitialize();
 
@@ -590,7 +576,17 @@ main(int argc, char **argv)
     if ((cp = strstr(progname, ".exe")) != NULL)
         *cp = '\0';  // strip progname suffix
 
-    collect_env_var_options();
+    // Boot up env vars
+    envvars = new env_vars;
+    if (! envvars)
+    {
+        fputs("heap exhausted...giving up", stderr);
+        return (1);
+    }
+
+    // Record prefs from env vars, if any.  Command line switch values can
+    // override these prefs.
+    envvars->collect_env_var_options();
 
     // primitive cmd line parsing (getopt not available in MS land)
     argv++;
@@ -629,7 +625,7 @@ main(int argc, char **argv)
             {
                 if (! (option[1] == 'x' && option[2] == '\0'))
                     usage(1);
-                wdws_xplr_end_task_set = wdws_xplr_end_task = true;
+                envvars->wdws_xplr_end_task_upd(true);
                 argv++;
                 continue;
             }
@@ -637,7 +633,7 @@ main(int argc, char **argv)
             {
                 if (! (option[1] == 'x' && option[2] == '\0'))
                     usage(1);
-                wdws_xplr_ignore_set = wdws_xplr_ignore = true;
+                envvars->wdws_xplr_ignore_upd(true);
                 argv++;
                 continue;
             }
@@ -776,7 +772,8 @@ main(int argc, char **argv)
     semstate   = new semantics_state;
     purgepics  = new purge_pics;
     geom_slide = new geom;
-    if (! (ppt && tcontrol && semstate && purgepics && geom_slide))
+    rootpath   = new root_path;
+    if (! (ppt && tcontrol && semstate && purgepics && geom_slide && rootpath))
     {
         err->err("heap exhausted...giving up");
         return (1);
@@ -808,9 +805,17 @@ main(int argc, char **argv)
             err->debug("flex configured correctly", 1);
     }
 
+    if (! maybe_parse_init_file_as_script(logfd))
+        goto common_exit_point;
+
     if (argc == 0)
     {
         yyin = stdin;      // read script from stdin
+
+        // If an init file was parsed above, must resync the scanner on a
+        // new FILE stream.
+        yyrestart(yyin);
+
         err->lineno_valid(! _isatty(_fileno(yyin)));
         stdin_prompt();   // emit prompt if reading from stdin
         yyparse();        // parse input stream
@@ -830,8 +835,8 @@ main(int argc, char **argv)
                 err->err(msg, IS_PGM, errno);
                 if (logfd)
                 {
-                    // error goes to logfile.  Also echo fatal condition in
-                    // user's face.
+                    // Error msg was just written to logfile.  Also echo
+                    // fatal condition in user's face.
 
                     fprintf(stderr,
                             "%s: %s: %s\n",
@@ -841,6 +846,11 @@ main(int argc, char **argv)
                 }
                 goto common_exit_point;
             }
+
+            // If this is the second (or later) of succeeding scripts/devices
+            // fed to the parser, must resync the scanner on a new FILE stream.
+            yyrestart(yyin);
+
             err->lineno_valid(! _isatty(_fileno(yyin)));
             if (nfiles > 1)
                 err->set_script_file(scriptfile);
@@ -851,10 +861,7 @@ main(int argc, char **argv)
             stdin_prompt();   // emit prompt if reading from stdin (yes this
                               // is possible, consider "con:").
             yyparse();        // parse input stream
-            (void) fclose(yyin);
-            reset_lex_input_state();
-            err->lineno_valid(false);
-            err->set_script_file("");
+            prepare_for_next_script();
         }
         while (--argc > 0);
     }

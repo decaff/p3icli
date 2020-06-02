@@ -68,6 +68,12 @@
     <ClCompile Include="insert_slide.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="envvars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rootpath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="p3icli.rc">
@@ -119,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="purgepics.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="envvars.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rootpath.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

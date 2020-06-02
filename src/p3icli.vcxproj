@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="autowrap.cpp" />
     <ClCompile Include="custom_properties.cpp" />
+    <ClCompile Include="envvars.cpp" />
     <ClCompile Include="err.cpp" />
     <ClCompile Include="geom.cpp" />
     <ClCompile Include="insert_slide.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="msppt12.cpp" />
     <ClCompile Include="p3icli.cpp" />
     <ClCompile Include="purgepics.cpp" />
+    <ClCompile Include="rootpath.cpp" />
     <ClCompile Include="semantics.cpp" />
     <ClCompile Include="semantics_misc.cpp" />
     <ClCompile Include="StdAfx.cpp" />
@@ -149,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="autowrap.h" />
     <ClInclude Include="cdefs.h" />
+    <ClInclude Include="envvars.h" />
     <ClInclude Include="err.h" />
     <ClInclude Include="geom.h" />
     <ClInclude Include="msoffice14.h" />
@@ -157,6 +160,7 @@
     <ClInclude Include="p3icli.h" />
     <ClInclude Include="progver.h" />
     <ClInclude Include="purgepics.h" />
+    <ClInclude Include="rootpath.h" />
     <ClInclude Include="semantics.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="tempname.h" />

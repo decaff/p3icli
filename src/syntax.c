@@ -17,6 +17,7 @@ emit_accepted_syntax(void)
     fputs("<uint>     ::= unsigned integer\n", stdout);
     fputs("<int>      ::= integer, optionally preceded with '-'\n", stdout);
     fputs("<filename> ::= unquoted string specifying a file path\n", stdout);
+    fputs("<folder>   ::= unquoted string specifying a folder path\n", stdout);
     fputs("<qstring>  ::= quoted string\n", stdout);
     fputs("[element]  ::= element is optional\n", stdout);
     fputs("'char'     ::= literal char\n\n", stdout);
@@ -45,11 +46,13 @@ emit_accepted_syntax(void)
     fputs("pic<uint> '<'cleaned'>'\n", stdout);
     fputs("pic<uint> move <int>,<int>\n", stdout);
     fputs("pic<uint> size <uint>,<uint>\n", stdout);
+    fputs("pics root {<folder>|'<'none'>'} \n", stdout);
     fputs("remove comments\n", stdout);
     fputs("save as {html | pdf | presentation} <filename>\n", stdout);
     fputs("sleep <uint>\n", stdout);
     fputs("slide size {default | a4 | 4:3 | 16:9 | <uint>,<uint>} \n", stdout);
     fputs("start ppt [minimized]\n", stdout);
+    fputs("templates root {<folder>|'<'none'>'} \n", stdout);
     fputs("third party fix {on | off}\n", stdout);
     fputs("title <qstring>\n", stdout);
     fputs("title move <int>,<int>\n", stdout);
