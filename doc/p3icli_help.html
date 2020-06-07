@@ -74,7 +74,8 @@ Table Of Contents
         <a href="#example_using_jsl">
             Example Using General Purpose Scripting Language</a>
     </li>
-    <li><a href="#scripting_hints">Script Hints</a></li>
+    <li><a href="#scripting_hints">Scripting Hints</a></li>
+    <li><a href="#relative_file_paths">Relative Image and Template File Paths</a></li>
     <li><a href="#utf8_encoding_hints">UTF-8 (aka UNICODE) Encoding Hints</a></li>
     <li><a href="#cleaning_up_image_files">Cleaning Up Temporary Images Files</a></li>
     <li><a href="#optimization_insights">Script Optimization Insights</a></li>
@@ -534,6 +535,10 @@ one command per logical scriptfile line.  Command elements include:
     <td class="left">Unquoted character string specifying a file path.</td>
 </tr>
 <tr>
+    <td class="code" style="text-align:center">&lt;folder&gt;</td>
+    <td class="left">Unquoted character string specifying a folder path.</td>
+</tr>
+<tr>
     <td class="code" style="text-align:center"># comment</td>
     <td class="left">Annotate script with comments&mdash;blank script
                      lines are also accepted.  Inline comments
@@ -924,6 +929,13 @@ one command per logical scriptfile line.  Command elements include:
                      Cleaning Up Temporary Images Files</a>
                      documents use of this command.
                      </p>
+                     <p>
+                     Note that <em class="standout">ignore</em> supports the
+                     use of relative file paths.
+                     Refer to the <a href="#relative_file_paths">
+                     Relative Image and Template File Paths</a> topic for
+                     further discussion.
+                     </p>
     </td>
 </tr>
 <tr>
@@ -1245,6 +1257,48 @@ one command per logical scriptfile line.  Command elements include:
     </td>
 </tr>
 <tr>
+    <td class="code">pics root {&lt;folder&gt; | '&lt;'none'&gt;'}</td>
+    <td class="left">P3ICLI prepends the specified root <em>&lt;folder&gt;</em>
+                     to any <u>relative</u> file path specified via a
+                     <em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em>
+                     command.  The
+                     <em>&lt;none&gt;</em> argument disables this feature.
+                     <p>
+                     Note that a relative file path does <u>not</u> begin with
+                     a drive designator (e.g., <b>C:</b>), a backslash ('\'),
+                     or a UNC prefix ('\\').
+                     The default is <b>&lt;none&gt;</b>.  Example:
+                     </p>
+                     <blockquote>
+                         <code>
+                         # straightforward usage<br />
+                         open template c:\temp\mytmplt.pptx<br />
+                         pics root c:\my\pics\stats<br />
+                         pic1 fit_y_by_x.png<br />
+                         &nbsp;<br />
+                         # a bit more subtle<br />
+                         pics root c:\my\analyses<br />
+                         pic2 dram\defect24.jpg<br />
+                         pic3 cpu\risc-v\tdp.jpg<br />
+                         </code>
+                     </blockquote>
+                     Which causes P3ICLI to pass these image paths to PPT:
+                     <blockquote>
+                         <code>
+                         c:\my\pics\stats\fit_y_by_x.png<br />
+                         c:\my\analyses\dram\defect24.jpg
+                         c:\my\analyses\cpu\risc-v\tdp.jpg
+                         </code>
+                     </blockquote>
+                     Finally, note that the <em class="standout">ignore</em>
+                     command honors the current setting of
+                     <em class="standout">pics root</em>.
+                     Refer to the <a href="#relative_file_paths">
+                     Relative Image and Template File Paths</a> help topic for
+                     an explanation and example.
+    </td>
+</tr>
+<tr>
     <td class="code">remove comments</td>
     <td class="left">Arbitrarily remove all comments from the
                      currently active slide.
@@ -1460,6 +1514,42 @@ one command per logical scriptfile line.  Command elements include:
                      <em class="standout">insert slide</em>
                      commands launch PowerPoint as necessary.
                      </p>
+    </td>
+</tr>
+<tr>
+    <td class="code">templates root {&lt;folder&gt; | '&lt;'none'&gt;'}</td>
+    <td class="left">P3ICLI prepends the specified root <em>&lt;folder&gt;</em>
+                     to any <u>relative</u> file path specified via an
+                     <em class="standout">insert slide</em> or
+                     <em class="standout">open template</em> command.  The
+                     <em>&lt;none&gt;</em> argument disables this feature.
+                     <p>
+                     Note that a relative file path does <u>not</u> begin with
+                     a drive designator (e.g., <b>C:</b>), a backslash ('\'),
+                     or a UNC prefix ('\\').
+                     The default is <b>&lt;none&gt;</b>.  Example:
+                     </p>
+                     <blockquote>
+                         <code>
+                         # straightforward usage<br />
+                         templates root c:\my\tmplts<br />
+                         insert slide 1 from template 5_slides.pptx<br />
+                         &nbsp;<br />
+                         # a bit more subtle<br />
+                         templates root c:\my\cache<br />
+                         insert slide 2 from template proj4\deck7.pptx<br />
+                         </code>
+                     </blockquote>
+                     Which causes P3ICLI to pass these template paths to PPT:
+                     <blockquote>
+                         <code>
+                         c:\my\tmplts\5_slides.pptx<br />
+                         c:\my\cache\proj4\deck7.pptx
+                         </code>
+                     </blockquote>
+                     Refer to the <a href="#relative_file_paths">
+                     Relative Image and Template File Paths</a> help topic for further
+                     discussion.
     </td>
 </tr>
 <tr>
@@ -1853,31 +1943,126 @@ The JMP Scripting Language serves this purpose well, as
 described here</a>.
 </p>
 <h3>
-<a name="scripting_hints" />Script Hints
+<a name="scripting_hints" />Scripting Hints
 </h3>
 <ul>
     <li>
-    Always specify the full path to any graphics or template file.
-    Remember, when PowerPoint starts, its default working directory is not
-    necessarily the same as P3ICLI's.  Not specifying the full path often
-    elicits a terse PowerPoint "File not found" error.<br />&nbsp;
+        P3ICLI does not search for multiple shapes tagged with the same
+        user-specified label (e.g., all caption shapes labeled "cap2").
+        Instead P3ICLI stops searching after the first label match.
+        Consequently, do <u><b>not</b></u> create shapes with duplicate labels
+        (this is easy to do when copying and pasting PowerPoint shapes).
+        Duplicate shape labels lead to extremely vexing script errors.  For
+        example, given two captions labeled "cap2", this command only
+        labels <b>one</b> caption:
+        <blockquote>
+        <pre class="plain_code">
+cap2 "My caption 2 text"
+        </pre>
+        </blockquote>
     </li>
     <li>
-    P3ICLI does not search for multiple shapes tagged with the same
-    user-specified label (e.g., all caption shapes labeled "cap2").
-    Instead P3ICLI stops searching after the first label match.
-    Consequently, do <u><b>not</b></u> create shapes with duplicate labels
-    (this is easy to do when copying and pasting PowerPoint shapes).
-    Duplicate shape labels lead to extremely vexing script errors.  For
-    example, given two captions labeled "cap2", this command only
-    labels <b>one</b> caption:
-    <blockquote>
-    <pre class="plain_code">
-cap2 "My caption 2 text"
-    </pre>
-    </blockquote>
+        In general, specify the full path (aka absolute path) to any graphics
+        or template file.
+        Remember, when PowerPoint starts, its default working directory is not
+        necessarily the same as P3ICLI's.  Not specifying the full path often
+        elicits a terse PowerPoint "File not found" error.  However, use of
+        relative file paths is possible and sometimes desirable.  See the next
+        topic for details and examples.
     </li>
 </ul>
+<h3>
+<a name="relative_file_paths" />Relative Image and Template File Paths
+</h3>
+As a hard and fast rule, specifying an <u>absolute</u> file path in a
+<em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em>, or
+<em class="standout">open template</em>, or
+<em class="standout">insert slide</em> command <u>always works</u> (as long as
+the path is valid).  Indeed, almost all examples given in this reference manual
+use absolute paths.  As a reminder, an absolute path is prefixed with a
+drive designator (e.g., C:), a backslash ('\'), or a UNC prefix ('\\').
+<p>
+However, there <u>are</u> cases when relative image/template paths prove useful.
+For example:
+</p>
+<ul>
+    <li>The creation of <b>portable</b> scripts that don't rely on
+        hardcoded file paths.  Subsequently moving portable scripts to
+        different computers and/or networks generally requires little effort.
+    </li>
+    <li>Placing heavily used templates in a central folder hierarchy
+        and then referencing same via path(s) relative to that hierarchy.
+    </li>
+    <li>Writing data analysis image files to a central folder hierarchy
+        and then referencing same via relative path(s).
+    </li>
+</ul>
+The mechanism for establishing relative paths is via the
+<em class="standout">pics root</em> and
+<em class="standout">templates root</em> commands.  These commands
+establish a root folder that P3ICLI <b>prepends</b> to subsequent relative
+file paths.  The relative image and template path examples shown next
+are all valid.
+    <blockquote>
+<pre class="highlit_code">
+# somewhere near top of a script....
+pics root c:\my\pics\stats
+templates root c:\my\tmplts
+
+# possible other commands....
+
+# begin straightforward usage
+insert slide 1 from template 5_slides.pptx   # c:\my\tmplts\5_slides.pptx
+pic1 fit_y_by_x.png                          # c:\my\pics\stats\fit_y_by_x.png
+pic2 projected_visits_vs_sales.jpg           # c:\my\pics\stats\projected_visits_vs_sales.jpg
+</pre>
+    </blockquote>
+Refer to the
+<em class="standout">pics root</em> and
+<em class="standout">templates root</em> syntax documentation for
+more examples.
+<p>
+It should be mentioned that the <em class="standout">ignore</em> command honors the root
+folder established via <em class="standout">pics root</em> .  For example:
+</p>
+    <blockquote>
+<pre class="highlit_code">
+# somewhere near the top of a script....
+pics root c:\my\pics\stats
+delete image files on
+
+# begin example
+insert slide 1 from template c:\temp\slides.pptx
+ignore fit_y_x.png                           # ignore c:\my\pics\stats\fit_y_by_x.png
+pic1 fit_y_by_x.png                          # c:\my\pics\stats\fit_y_by_x.png
+pic2 model4.jpg                              # bye bye c:\my\pics\stats\model4.jpg
+</pre>
+    </blockquote>
+But be aware that the <b>sequencing</b> of the <em class="standout">ignore</em>
+and <em class="standout">pics root</em> commands <b>matters</b>,
+as demonstrated in this example:
+    <blockquote>
+<pre class="highlit_code">
+# somewhere near the top of a script....
+delete image files on
+
+# begin example
+insert slide 1 from template c:\temp\slides.pptx
+
+# incorrect(!) order specified for next 2 commands
+ignore fit_y_x.png                           # ignore .\fit_y_by_x.png
+pics root c:\my\pics\stats                   # too late...
+
+pic1 fit_y_by_x.png                          # bye bye c:\my\pics\stats\fit_y_by_x.png
+pic2 model4.jpg                              # bye bye c:\my\pics\stats\model4.jpg
+</pre>
+    </blockquote>
+Moral of the story:  establish the pics root folder <u>before</u>
+specifying <em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em>
+commands.
+<p>
+<!-- force newline -->
+</p>
 <hr />
 <center>
 If you've read this far through the P3ICLI reference manual, you're ready to
@@ -2048,7 +2233,7 @@ need to run the same script over and over, or if a script generates many
 PPT slides, efficiency might matter.  What follows are two optimizing
 tips that may apply to your environment.
 </p>
-<ul>
+<ol>
     <li>
     The <em class="standout">copy source format on</em> feature is
     computationally expensive.  If a script utilizes the
@@ -2091,7 +2276,7 @@ cap1 "more text"
 </blockquote>
     When it makes sense, favor "dup template".
     </li>
-</ul>
+</ol>
 <h3>
 <a name="modifying_pic_shapes" />Dynamically Modifying Picture Shapes
 </h3>
