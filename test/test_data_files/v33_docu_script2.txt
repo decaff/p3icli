@@ -1,0 +1,30 @@
+# examples copied from the p3icli help docu
+
+# --------- Relative Image and Template File Paths examples -------------
+# somewhere near top of a script....
+pics root c:\task7\pics\stats
+templates root c:\task7\tmplts
+
+# possible other commands....
+
+# begin straightforward usage
+insert slide 1 from template 5_slides.pptx   # c:\task7\tmplts\5_slides.pptx
+pic1 fit_y_by_x.png                          # c:\task7\pics\stats\fit_y_by_x.png
+pic2 projected_visits_vs_sales.jpg           # c:\task7\pics\stats\projected_visits_vs_sales.jpg
+# -----------------------------------------------------------------------
+
+# ----------------------------- ignore cmd & pics root ------------------
+# somewhere near the top of a script....
+pics root c:\task7\pics\stats
+delete image files on
+
+# begin example
+insert slide 1 from template c:\temp\slides.pptx
+ignore fit_y_by_x.png                        # ignore c:\task7\pics\stats\fit_y_by_x.png
+pic1 fit_y_by_x.png                          # c:\task7\pics\stats\fit_y_by_x.png (untouched)
+pic2 model4.jpg                              # bye bye c:\task7\pics\stats\model4.jpg
+# -----------------------------------------------------------------------
+#
+# cleanup
+kill ppt discard
+

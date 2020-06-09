@@ -1,0 +1,20 @@
+# examples copied from the p3icli help docu
+
+# --------- Relative Files and Misuse of Ignore command example -------------
+# somewhere near the top of a script....
+delete image files on
+
+# begin example
+insert slide 1 from template c:\temp\slides.pptx
+
+# incorrect(!) order specified for next 2 commands
+ignore fit_y_by_x.png                        # ignore .\fit_y_by_x.png
+pics root c:\task7\pics\stats                # too late...
+
+pic1 fit_y_by_x.png                          # bye bye c:\task7\pics\stats\fit_y_by_x.png
+pic2 model4.jpg                              # bye bye c:\task7\pics\stats\model4.jpg
+# -----------------------------------------------------------------------
+
+# cleanup
+kill ppt discard
+

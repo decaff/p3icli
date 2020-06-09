@@ -61,7 +61,7 @@ rm -f c:/temp/v31_log.txt
 rm -f c:/temp/v31_win10_log.txt
 rm -f c:/temp/v32_log[012345678].txt
 rm -f c:/temp/v32_cmdline_log[12].txt
-rm -f c:/temp/v33_log[12345].txt
+rm -f c:/temp/v33_log[12345678].txt
 rm -f c:/temp/v33_log_edited.txt
 rm -f c:/temp/run*_log.txt
 
@@ -73,6 +73,8 @@ rm -f c:/temp/delete_me.pptx
 rm -f c:/temp/delete_me.pdf
 rm -rf c:/temp/delete_me_files
 rm -f c:/temp/demo.potx
+rm -f c:/temp/mytmplt.pptx
+rm -f c:/temp/slides.pptx
 rm -f c:/temp/junk.pptx
 rm -f c:/temp/max_caps_pics_result.pptx
 rm -f c:/temp/pic_geom.pptx

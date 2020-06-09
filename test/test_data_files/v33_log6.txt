@@ -1,0 +1,11 @@
+5   
+p3icli: line 6: warning: stat("c:\my\tmplts\5_slides.pptx") failed: No such file or directory
+PPT: line 6: error: Slides.InsertFromFile : Failed.
+p3icli: line 10: warning: stat("c:\my\cache\proj4\deck7.pptx") failed: No such file or directory
+PPT: line 10: error: Slides.InsertFromFile : Failed.
+p3icli: line 20: warning: stat("c:\my\pics\stats\fit_y_by_x.png") failed: No such file or directory
+PPT: line 20: error: The specified file wasn't found.
+p3icli: line 24: warning: stat("c:\my\analyses\dram\defect24.jpg") failed: No such file or directory
+PPT: line 24: error: The specified file wasn't found.
+p3icli: line 25: warning: stat("c:\my\analyses\cpu\risc-v\tdp.jpg") failed: No such file or directory
+PPT: line 25: error: The specified file wasn't found.

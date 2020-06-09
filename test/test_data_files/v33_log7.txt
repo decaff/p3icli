@@ -1,0 +1,6 @@
+1   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: line 13: warning: stat("c:\task7\pics\stats\projected_visits_vs_sales.jpg") failed: No such file or directory
+PPT: line 13: error: The specified file wasn't found.
+p3icli: debug: image file deleted: c:\task7\pics\stats\model4.jpg

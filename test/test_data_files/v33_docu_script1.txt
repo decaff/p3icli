@@ -1,0 +1,29 @@
+# examples copied from the p3icli help docu
+
+# ----------------------- templates root docu examples ------------------
+# straightforward usage
+templates root c:\my\tmplts
+insert slide 1 from template 5_slides.pptx
+ 
+# a bit more subtle
+templates root c:\my\cache
+insert slide 2 from template proj4\deck7.pptx
+# -----------------------------------------------------------------------
+
+# cleanup
+kill ppt discard
+
+# ----------------------- pics root docu examples -----------------------
+# straightforward usage
+open template c:\temp\mytmplt.pptx
+pics root c:\my\pics\stats
+pic1 fit_y_by_x.png
+ 
+# a bit more subtle
+pics root c:\my\analyses
+pic2 dram\defect24.jpg
+pic3 cpu\risc-v\tdp.jpg
+# -----------------------------------------------------------------------
+
+# cleanup
+kill ppt discard

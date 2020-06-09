@@ -1,0 +1,5 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: debug: image file deleted: c:\task7\pics\stats\fit_y_by_x.png
+p3icli: debug: image file deleted: c:\task7\pics\stats\model4.jpg

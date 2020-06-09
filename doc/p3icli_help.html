@@ -9,6 +9,9 @@ td.left {text-align: left;}
 td.code {text-align: left;
          font-family: courier-new, monospace;
          font-size: 0.9em;}
+ol.code {text-align: left;
+         font-family: courier-new, monospace;
+         font-size: 0.9em;}
 pre.plain_code {text-align: left;
                 font-family: courier, monospace;
                 font-size: 0.8em;}
@@ -26,6 +29,10 @@ b.bright {color:magenta;}
 i.bright {color:magenta;}
 em.standout {color:blue;}
 .controlname {font-weight:bold;font-style:italic;}
+code.standout_code {text-align: left;
+                    font-family: courier, monospace;
+                    background-color:#e8e8e8;
+                    font-size: 0.9em;}
 -->
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -79,6 +86,7 @@ Table Of Contents
     <li><a href="#utf8_encoding_hints">UTF-8 (aka UNICODE) Encoding Hints</a></li>
     <li><a href="#cleaning_up_image_files">Cleaning Up Temporary Images Files</a></li>
     <li><a href="#optimization_insights">Script Optimization Insights</a></li>
+    <li><a href="#init_file">Configuring P3ICLI via an Init File</a></li>
     <li><a href="#modifying_pic_shapes">Dynamically Modifying Picture Shapes</a></li>
     <li><a href="#modifying_text_shapes">Dynamically Modifying Text Shapes</a></li>
     <li><a href="#office_2013_considerations">Office 2013 (and later) Considerations</a></li>
@@ -2006,15 +2014,15 @@ are all valid.
     <blockquote>
 <pre class="highlit_code">
 # somewhere near top of a script....
-pics root c:\my\pics\stats
-templates root c:\my\tmplts
+pics root c:\task7\pics\stats
+templates root c:\task7\tmplts
 
 # possible other commands....
 
 # begin straightforward usage
-insert slide 1 from template 5_slides.pptx   # c:\my\tmplts\5_slides.pptx
-pic1 fit_y_by_x.png                          # c:\my\pics\stats\fit_y_by_x.png
-pic2 projected_visits_vs_sales.jpg           # c:\my\pics\stats\projected_visits_vs_sales.jpg
+insert slide 1 from template 5_slides.pptx   # c:\task7\tmplts\5_slides.pptx
+pic1 fit_y_by_x.png                          # c:\task7\pics\stats\fit_y_by_x.png
+pic2 projected_visits_vs_sales.jpg           # c:\task7\pics\stats\projected_visits_vs_sales.jpg
 </pre>
     </blockquote>
 Refer to the
@@ -2028,14 +2036,14 @@ folder established via <em class="standout">pics root</em> .  For example:
     <blockquote>
 <pre class="highlit_code">
 # somewhere near the top of a script....
-pics root c:\my\pics\stats
+pics root c:\task7\pics\stats
 delete image files on
 
 # begin example
 insert slide 1 from template c:\temp\slides.pptx
-ignore fit_y_x.png                           # ignore c:\my\pics\stats\fit_y_by_x.png
-pic1 fit_y_by_x.png                          # c:\my\pics\stats\fit_y_by_x.png
-pic2 model4.jpg                              # bye bye c:\my\pics\stats\model4.jpg
+ignore fit_y_by_x.png                        # ignore c:\task7\pics\stats\fit_y_by_x.png
+pic1 fit_y_by_x.png                          # c:\task7\pics\stats\fit_y_by_x.png (untouched)
+pic2 model4.jpg                              # bye bye c:\task7\pics\stats\model4.jpg
 </pre>
     </blockquote>
 But be aware that the <b>sequencing</b> of the <em class="standout">ignore</em>
@@ -2050,16 +2058,15 @@ delete image files on
 insert slide 1 from template c:\temp\slides.pptx
 
 # incorrect(!) order specified for next 2 commands
-ignore fit_y_x.png                           # ignore .\fit_y_by_x.png
-pics root c:\my\pics\stats                   # too late...
+ignore fit_y_by_x.png                        # ignore .\fit_y_by_x.png
+pics root c:\task7\pics\stats                # too late...
 
-pic1 fit_y_by_x.png                          # bye bye c:\my\pics\stats\fit_y_by_x.png
-pic2 model4.jpg                              # bye bye c:\my\pics\stats\model4.jpg
+pic1 fit_y_by_x.png                          # bye bye c:\task7\pics\stats\fit_y_by_x.png
+pic2 model4.jpg                              # bye bye c:\task7\pics\stats\model4.jpg
 </pre>
     </blockquote>
-Moral of the story:  establish the pics root folder <u>before</u>
-specifying <em class="standout">pic&lt;uint&gt; &lt;filename&gt;</em>
-commands.
+Moral of the story:  establish the <em class="standout">pics root</em>
+folder <u>before</u> specifying <em class="standout">ignore</em> commands.
 <p>
 <!-- force newline -->
 </p>
@@ -2277,6 +2284,88 @@ cap1 "more text"
     When it makes sense, favor "dup template".
     </li>
 </ol>
+<h3>
+<a name="init_file" />Configuring P3ICLI via an Init File
+</h3>
+P3ICLI searches for an initial startup script (aka an Init File)
+during invocation and executes same if found.
+An Init File could, for example, be used to store boilerplate commands that
+appear repeatedly in P3ICLI scripts.
+<p>
+P3ICLI searches for an Init File
+in these locations and in this order (first found, first used):
+</p>
+<blockquote>
+    <ol class="code">
+        <li>&nbsp;%HOME%\.p3iclirc</li>
+        <li>&nbsp;%HOME%\_p3iclirc</li>
+        <li>&nbsp;%USERPROFILE%\p3icli_init.txt</li>
+    </ol>
+</blockquote>
+The %name% notation denotes the value of an environment variable that is
+concatenated by P3ICLI with the indicated "leaf" to arrive at a
+final file path.
+<ul>
+    <li>%HOME% is an <u>optional</u>, user-specified environment variable
+        that can be adjusted to point at any readable folder in the
+        current computing environment.  For example, assume the value of
+        %HOME% is "c:\analyses".  In that case, P3ICLI will search at
+        startup for these 2 text files:
+        <p></p>
+        <ol class="code">
+            <li>&nbsp;c:\analyses\.p3iclirc</li>
+            <li>&nbsp;c:\analyses\_p3iclirc</li>
+        </ol>
+        &nbsp;<br />
+    </li>
+    <li>%USERPROFILE% is an environment variable created by Windows and
+        points at a user's profile folder. A typical path is
+        C:\Users\UserName .  For example, given the Windows username
+        <b>fred</b>, P3ICLI will search at startup for the file
+        <code class="standout_code">
+        c:\Users\fred\p3icli_init.txt</code> .
+    </li>
+</ul>
+So what commands might be placed in an Init File?  Suppose <b>utf8</b>
+encoding is a mainstay of your scripts, <b>source formatting</b> is almost
+always used, and all script templates exist in a cental repository.  Here's
+a corresponding, hypothetical Init File that P3ICLI could run every time
+at startup:
+<blockquote>
+<pre class="highlit_code">
+# ----------------- Begin Example Init File ---------------------
+# Some common p3icli parameters appearing in almost every script.
+#
+# These parameters are initialized before any command line
+# script is parsed and executed.
+# ---------------------------------------------------------------
+encoding utf8
+copy source format on
+templates root c:\analyses\tmplts   # example template repository
+</pre>
+</blockquote>
+On occasion, it may be necessary to override these configuration parameters
+in one or more subsequent scripts.  Rather than deleting or renaming the
+above Init File to neuter its effects, simply override the desired parameters
+in the affected scripts, like so:
+<blockquote>
+<pre class="highlit_code">
+# ------------ Begin Traditional P3ICLI Script --------------
+# This script is invoked from the p3icli command line _after_
+# the above Init File is processed.
+# ----------------------------------------------------------
+
+# Uncomment the next 3 commands as necessary to roll back Init File configuration.
+#
+# encoding ansi
+# copy source format off
+# templates root &lt;none&gt;
+
+# .... remainder of traditional script goes here
+</pre>
+</blockquote>
+Finally, add debug level 4 (.i.e., -D4) to the P3ICLI command line to 
+determine which Init File was opened and processed.
 <h3>
 <a name="modifying_pic_shapes" />Dynamically Modifying Picture Shapes
 </h3>
