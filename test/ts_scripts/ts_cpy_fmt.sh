@@ -67,5 +67,5 @@ exit_code=$?
 if [ $exit_code -ne 0 ] ; then
     echo 'p3icli exited with error(s)'
 fi
-tools/delete_init_file.sh     # clean up
+../tools/delete_init_file.sh     # clean up
 exit $exit_code
