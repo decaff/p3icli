@@ -56,5 +56,12 @@ if [ $? -ne 0 ] ; then
     echo "test failed!!"
     exit 1
 fi
+
+# $script leaves PPT running...fix that
+sleep 5       # just a peek at results...not really necessary
+p3icli -X <<ALLDONE_2
+    halt
+ALLDONE_2
+
 echo test passed
 exit 0

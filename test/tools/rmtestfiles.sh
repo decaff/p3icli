@@ -42,6 +42,7 @@ rm -f c:/temp/slide_oor_log.txt
 rm -f c:/temp/slide_size_log_file[12].txt
 rm -f c:/temp/max_pics_caps_log.txt
 rm -f c:/temp/ole_err_log.txt
+rm -f c:/temp/ole_err_log_edited.txt
 rm -f c:/temp/utf8_log.txt
 rm -f c:/temp/v13pics_data_log_file.txt
 rm -f c:/temp/v13caps_data_log_file.txt

@@ -309,5 +309,12 @@ if [ $? -ne 0 ] ; then
 fi
 echo "test #5 passed"
 
+# --------------------------------------------------------------------------
+# Office 2010 will leave an empty PPT presentation on screen after the last
+# test.  Kill that...
+
+p3icli << TESTS_FIN
+    kill ppt discard
+TESTS_FIN
 
 exit 0

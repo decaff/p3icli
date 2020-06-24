@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# A long ago, there was a version of p3icli that could not handle a failed
+# Long ago, there was a version of p3icli that could not handle a failed
 # "open template".  Test that bug fix.  This is a semi- self-checking test.
 
 logfile="c:/temp/ole_err_log.txt"
 testdata="test_data_files/ole_err_log.txt"
+logfile_edited="c:/temp/ole_errs_log_edited.txt"
 
 rm -f $logfile
 
@@ -31,7 +32,12 @@ halt
 
 ALLDONE_2
 
-diff -bu $testdata $logfile
+# When opening a garbage template file, Office 2010 uses a different
+# error message than later versions of PPT.  Remove the differing
+# verbiage from the log file.
+sed -e  's/\(^PPT: line 1: error: \).*$/\1/' $logfile > $logfile_edited
+
+diff -bu $testdata $logfile_edited
 if [ $? -ne 0 ] ; then
     echo "OLE err test failed!"
     exit 1

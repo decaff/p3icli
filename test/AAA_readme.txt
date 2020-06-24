@@ -64,6 +64,10 @@ c) If PPT 2010 or earlier is installed on your PC, run this script:
    selected test before running it may show comments that describe what
    it does.
 
+   Be aware that the test "file_errs.sh" includes a UNC test path that almost
+   certainly must be changed for use in the current (i.e., your) network
+   environment.  See the comments at the top of file_errs.sh for more details.
+
    Note that some tests in <rootdir>/p3icli/test are self-checking and return
    a simple pass/fail status--they require no human intervention.  Other
    tests require visual verification of data.  These latter tests can be

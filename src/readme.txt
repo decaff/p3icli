@@ -18,13 +18,19 @@ Installation
 P3ICLI is distributed via a self-extracting setup program, which may be
 downloaded from the P3ICLI home page, here:
 
-    http://p3icli.sourceforge.net/
+    https://p3icli.sourceforge.io/
 
 The setup program prompts for a few simple parameters (e.g., folder
 installation path, etc.) and then copies several files to the host file
-system.  Note that setup copies p3icli.exe to the Windows root folder
-(e.g., c:\windows), which means that administrator privilege is _required_
-for installation.
+system.  Note that in the case of a clean install (i.e., p3icli
+uninstalled or never installed), setup prompts with one of two choices:
+
+            1) Install for all users (recommended)
+            2) Install for me only
+
+Choice #1 copies p3icli.exe to the Windows root folder (e.g., c:\windows)
+and requires administrator privilege.  Choice #2 does not require admin
+privs and copies p3icli.exe to a local, writable folder.
 
 Credits
 =======
@@ -63,9 +69,75 @@ is included with the P3ICLI distribution.
 
 Change Log
 ==========
-v3.3 released ??/??/2020
-    - Documentation continues the transition to post-Office 2003 filename
+v3.3 released 06/23/2020
+    - Documentation completes the transition to post-Office 2003 filename
       suffixes (e.g., .pot to .potx, likewise .ppt to .pptx).
+    - Some source code restructured for easier understanding by
+      developers other than the author.
+    - The integrity of P3ICLI's lexical token table is only checked
+      if the command line debug level is > 5 (e.g., -D6).
+    - Lexical scanner correctly reset if devices (e.g. con:) and files
+      are mixed together on the command line.  Longstanding bug (fixed).
+    - Added two new commands that permit users to specify relative
+      file paths within their P3ICLI scripts.
+
+            pics root      {<folder> | '<'none'>'}
+            templates root {<folder> | '<'none'>'}
+
+      P3ICLI prepends the specified root <folder> to any relative file
+      path specified by an "insert slide", "open template", or
+      "pic <uint>" command.  See the documentation for further details.
+    - The ignore command honors "pics root <folder>".
+    - A new "Relative Image and Template File Paths" help file topic
+      discusses the motivation behind use of relative file paths, as well
+      as the aforementioned interaction with the ignore command.
+    - P3ICLI may now be configured via an init file. Refer to the new
+      "Configuring P3ICLI via an Init File" help file topic for details.
+    - P3ICLI's setup (aka installation) program now uses Inno Setup
+      major version 6.  Before describing what changed, be aware that
+      unless your old version of P3ICLI is uninstalled, you will _not_
+      encounter the new setup screen described below.  Instead,
+      setup will install v3.3 using the same permissions (Admin rights,
+      quite likely) as were in effect during the last install.  If you
+      have no desire to effect a non-Admin install, skip the rest of
+      this change topic.
+
+      P3ICLI v3.3 setup changes (assuming P3ICLI is uninstalled):
+
+      + The previous, clumsy install sequence for non-Admin users has
+        been completely revamped.
+      + Users now encounter two choices on the first setup screen:
+
+            1) Install for all users (recommended)
+            2) Install for me only
+
+        Choice #1 is the install sequence used by P3ICLI since its
+        inception.  This choice requires Admin privileges and the
+        default install folder path is:
+
+            C:\Program Files (x86)\p3icli
+
+        During this Admin install, setup copies p3icli.exe to the
+        Windows root folder (traditionally located at C:\Windows).
+        All users on the target PC may run P3ICLI.
+
+        Choice #2 does _not_ require Admin privileges and copies
+        various files, including p3icli.exe, to a user's
+        AppData\Local\Programs folder.  In the hypothetical case of
+        Windows user "Sally", the default install folder path is:
+
+            C:\Users\Sally\AppData\Local\Programs\p3icli
+
+        During the latter install, setup prompts the user to add the
+        above folder path to his/her PATH environment variable.  Do
+        _not_ skip this step.  If you do, Windows can neither locate
+        nor invoke P3ICLI.  Following installation, only Sally may
+        run P3ICLI.
+
+        As an aside for curious readers...  An update to the PATH
+        environment variable is not required during a P3ICLI Admin
+        installation (choice #1).  Reason:  the Windows root folder
+        is added to PATH when Windows is installed.
 
 v3.2 released 04/19/2020
     - Support for testing on Windows 7 & 8.1 dropped due to the author's

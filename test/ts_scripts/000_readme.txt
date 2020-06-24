@@ -43,8 +43,8 @@ take the following steps:
        appropriate to move on to Task Scheduler configuration (next topic).
 
 
-Running The Tests Under Task Scheduler
-======================================
+Running The Tests Under Task Scheduler (ts_simple.sh)
+=====================================================
 As a first step, open the p3icli help documentation and read the section
 entitled "Task Scheduler Hints/Caveats".  It's not long.
 
@@ -103,5 +103,34 @@ c:\temp by the task_sched_simple.txt script and make sure it looks legit.
 
 One down, two to go.
 
-Repeat steps 1-7 for 3rd_party.sh and ts_cpy_fmt.sh .  Be sure to choose
-new, unique task names during step 1.
+
+3rd_party.sh
+============
+Repeat steps 1-7 above, with these changes:
+
+    Step 1)  Add a new task called "p3icli 3rd party"
+
+    Step 2)  Add this Action:
+
+             bash <path_to_root>\p3icli\test\ts_scripts\3rd_party.sh
+
+    Step 6)  Visually scan the presentation created in c:\temp by the
+             3rd_party_fix.txt script and make sure it looks legit.
+
+    Step 7)  _DISABLE_ the "p3icli 3rd party" task in the Task Scheduler.
+
+
+ts_cpy_fmt.sh
+=============
+Repeat steps 1-7 above, with these changes:
+
+    Step 1)  Add a new task called "p3icli cpy src fmt"
+
+    Step 2)  Add this Action:
+
+             bash <path_to_root>\p3icli\test\ts_scripts\ts_cpy_fmt.sh
+
+    Step 6)  Visually scan the presentation created in c:\temp by the
+             task_sched_cpy_fmt.txt script and make sure it looks legit.
+
+    Step 7)  _DISABLE_ the "p3icli cpy src fmt" task in the Task Scheduler.

@@ -61,8 +61,12 @@ sed -e "s/_ROOT/${p3icli_root_dos_subst}/"                           \
 
 p3icli -D2 -Ex -l $logfile4 $script_edited
 
-# strip out nonportable, path-specific data from log file...
+# 1) strip out nonportable, path-specific data from log file...
+# 2) When opening a nonexistent template file, Office 2010 uses a different
+#    error message than later versions of PPT.  Remove the differing
+#    verbiage from the log file.
 sed -e "s/\(Expanded path: \)${p3icli_root_dos_subst}\(.*$\)/\1..\2/" \
+    -e  's/\(^PPT: line 65: error: \).*$/\1/'                         \
     $logfile4 > $logfile_edited
 
 diff -bu $testdata4 $logfile_edited

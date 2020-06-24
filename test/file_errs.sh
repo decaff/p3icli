@@ -50,9 +50,13 @@ p3icli -l $logfile $script
 
 tools/delete_init_file.sh     # clean up
 
-# strip out nonportable, path-specific data from log file...
+# 1) Strip out nonportable, path-specific data from log file.
+# 2) When opening a garbage template file, Office 2010 uses a different
+#    error message than later versions of PPT.  Remove the differing
+#    verbiage from the log file.
 sed -e  \
 's/\(warning: stat("\)'"${p3icli_root_dos_subst}"'\\test\\\(.*$\)/\1\2/' \
+-e 's/\(^PPT: line 49: error: \).*$/\1/'                                 \
     $logfile > $logfile_edited
 
 diff -bu $testdata $logfile_edited

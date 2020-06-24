@@ -43,7 +43,8 @@ echo "pics root ${p3icli_root_dos_echo}\test"      >  $HOME/.p3iclirc
 echo "templates root ${p3icli_root_dos_echo}\test" >> $HOME/.p3iclirc
 # --------------------------------------------------------------------------
 
-echo "test fails w/ PPT 2003"
+echo "This test ensures that a presentation with a .pptx suffix can be created."
+echo "...test fails w/ PPT 2003"
 sleep 2
 
 p3icli -l $logfile test_data_files/v26_bugfix.txt
@@ -65,6 +66,7 @@ fi
 
 if [ -f $testpres ] ; then
     echo test passed
+    echo PPT must be manually closed....
     exit 0
 else
     echo test failed, $testpres not created
