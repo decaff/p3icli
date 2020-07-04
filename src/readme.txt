@@ -69,6 +69,9 @@ is included with the P3ICLI distribution.
 
 Change Log
 ==========
+v3.4 released ??/??/2020
+    - Numeric values may now be prefixed with a '+' sign.
+
 v3.3 released 06/23/2020
     - Documentation completes the transition to post-Office 2003 filename
       suffixes (e.g., .pot to .potx, likewise .ppt to .pptx).

@@ -26,10 +26,10 @@ p3icli: line 10: warning: stat("size what?,311") failed: No such file or directo
 PPT: line 10: error: The specified file wasn't found.
 p3icli: line 11: warning: stat("move e,a") failed: No such file or directory
 PPT: line 11: error: The specified file wasn't found.
-p3icli: line 12: error: pic<ui> size <ui>,<ui> <garbage>
+p3icli: line 12: error: pic<ui> size <uint>,<uint> <garbage>
 p3icli: line 12: error: syntax error
 p3icli: warning: giving up, too many errors....
-7   
+8   
 p3icli: line 3: error: syntax error
 p3icli: line 4: error: syntax error
 p3icli: line 5: error: syntax error
@@ -37,6 +37,8 @@ p3icli: line 6: error: syntax error
 p3icli: line 7: error: syntax error
 p3icli: line 11: error: syntax error
 p3icli: line 12: error: syntax error
+p3icli: line 15: error: pic<ui> move <int>,<int> <garbage>
+p3icli: warning: giving up, too many errors....
 0   
 Tmplt Slide: bounds (720,540)
 Tmplt Slide: title (649,41) @ (42,12)

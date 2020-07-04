@@ -15,9 +15,6 @@
   state) as soon as a slide presentation is created.  This is a PPT
   regression (with respect to all previous versions of the program).
 
-- For completeness sake, <int> tokens should allow an optional '+' (not
-  just '-').
-
 - When a template containing a slide master configuration created with a
   newer version of PPT is subsequently referenced by P3ICLI while
   interfacing with older versions of PPT, slide index out-of-range errors

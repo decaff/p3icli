@@ -29,6 +29,7 @@ title "What a cute baby!"
 duplicate template
 dup template
 pic2 <cleaned>
+pic+2 <cleaned>   # '+' legit in v3.4
 remove comments   # there are no comment shapes (should not induce error)
 save as presentation c:\temp\delete_me.pptx
 kill ppt save      # this command is pretty silly
@@ -57,7 +58,7 @@ insert slide 1 from template test\tmplts\junk.potx
 encoding ansi
 cap1 <cleaned>
 cap2 "stuff"
-cap3 'more stuff'
+cap+3 'more stuff'                # '+' legit in v3.4
 encoding utf8
 cap1 "Production 3-σ limits"
 title "¿Se recomienda precaución?"
@@ -93,8 +94,11 @@ insert slide 1 from template test\tmplts\junk.potx
 list geometries
 
 
+pic1 size +60  ,  70  # exercise lexer's '+' recognition for pic cmds
+pic1 size 60  ,  +60  # exercise lexer's '+' recognition for pic cmds
+pic1 size +65,  +65   # exercise lexer's '+' recognition for pic cmds
 pic1 size 70  ,  70   # a nice little square
-pic1 move 325,126    # center horizontally on the slide
+pic1 move +325,+126   # center horizontally on the slide
 
 pic3 size  500, 200
 
@@ -103,14 +107,14 @@ pic3 move  0  ,340
 
 
 title "I'm on the move"
-title  size  500,25  
+title  size  500,+25  
 title  move  0 , 515    # lower left corner
 
   title     move  75      ,      35
 
 cap1 "I'll be moved as well..."
-cap1  move 360   ,  270     # move to center of slide
-cap1  size  140, 60
+cap1  move +360   ,  +270     # move to center of slide
+cap1  size  +140, 60
   cap1  move  290 , 240     # that should center the cap1 shape
                             # horizontally and vertically...
 
@@ -129,6 +133,8 @@ slide   size   default
 custom property "My Name" = "my text value"
 
 # Number custom property
+custom property "My Number" = +3456
+custom property "My Number" = -3456
 custom property "My Number" = 3456
 
 # Yes/No custom property
@@ -150,7 +156,7 @@ third party fix on
 slide size         a4
 slide size a4
 slide size     120 ,  95
-slide size     130,195
+slide size     +130,+195
 slide size     44,55
 slide size 96     ,99
 

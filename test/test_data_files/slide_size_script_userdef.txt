@@ -10,7 +10,7 @@ slide size 800, fin the garbage tests
 # first test that anything below 72 is silently clipped
 #
 kill ppt discard
-slide size       71,40
+slide size       +71,40
 insert slide 1 from template tmplts\slide_size_user_defined.pptx
 list geometries
 
@@ -18,14 +18,14 @@ list geometries
 
 # but a 72 dim is aok
 kill ppt discard
-slide size 270     , 72
+slide size 270     , +72
 insert slide 1 from template tmplts\slide_size_user_defined.pptx
 list geometries
 
 #exit
 
 kill ppt discard
-slide size 800  , 20
+slide size +800  , +20
 insert slide 1 from template tmplts\slide_size_user_defined.pptx
 list geometries
 

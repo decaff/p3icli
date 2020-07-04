@@ -11,7 +11,7 @@ title "last slide"
 pic21 "out of range high"
 pic0 "out of range low"
 pic-1 "negative pic ref"
-pic3 <cleaned>
+pic+03 <cleaned>
 pic9 c:\temp\baby_smiling1.jpeg  # no such shape
 clean slide
 pic3 c:\temp\baby_smiling1.jpeg

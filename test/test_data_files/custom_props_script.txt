@@ -17,7 +17,7 @@ custom property "kilroy working" = ""    # delete again, not an error as
                                          # of v3.1
 
 custom property "hello" = "world"
-custom property "the beast" = 666
+custom property "the beast" = +666
 
 custom property "negative#" = -101
 

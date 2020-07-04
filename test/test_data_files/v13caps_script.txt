@@ -3,8 +3,8 @@ kill ppt discard
 insert slide "  off slide, No pics, 2 caps       " from template tmplts\junk.potx
 cap1 "stuff from hell"
 title "cap test"
-cap2 <cleaned>
-cap2 <cleaned>
+cap+2 <cleaned>
+cap+0002 <cleaned>
 cap2 "????"
 clean caps
 clean pics

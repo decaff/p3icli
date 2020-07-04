@@ -10,4 +10,8 @@ cap9   move 0  ,   0
 
 cap9   move   ,   0 # but this is
 cap17   size 445,  # oh darn
+
+# next line exercises pic<ui> non-context free grammar parser
+pic+15 move +20,400 your mom
+
 kill ppt discard

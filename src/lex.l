@@ -252,7 +252,7 @@ reset_lex_input_state(void)
 %x FNAME DUP_TMPLT PICREF_ARG FPATH
 
 cleaned   \<cleaned\>
-number     -?[0-9]+
+number     (-|\+)?[0-9]+
 keyword    [a-z]+
 qstr1      \"([^"\\\n]|\\.)*["\n]
 qstr2      '([^'\\\n]|\\.)*['\n]
@@ -603,7 +603,7 @@ picref_lookahead(void)
     while (isspace(*cp))
         cp++;
 
-    if (! ((isdigit(*cp) || (*cp == '-' && isdigit(cp[1]))) &&
+    if (! ((isdigit(*cp) || ((*cp == '-' || *cp == '+') && isdigit(cp[1]))) &&
                                                     (strchr(cp, ',') != NULL)))
     {
         /* not:  {size|move} {number},{number} */
@@ -612,9 +612,9 @@ picref_lookahead(void)
     }
 
     j = 0;
-    if (*cp == '-')
+    if (*cp == '-' || *cp == '+')
     {
-        /* a negative {number} makes sense if a shape is rotated. */
+        /* Note:  a negative {number} makes sense if a shape is rotated. */
 
         numbuf[j++] = *cp++;
     }
@@ -649,12 +649,12 @@ picref_lookahead(void)
     while (isspace(*cp))
         cp++;
 
-    if (! (isdigit(*cp) || (*cp == '-' && isdigit(cp[1]))))
+    if (! (isdigit(*cp) || ((*cp == '-' || *cp == '+') && isdigit(cp[1]))))
         return (make_filename_token(base));
     j = 0;
-    if (*cp == '-')
+    if (*cp == '-' || *cp == '+')
     {
-        /* a negative {number} makes sense if a shape is rotated. */
+        /* Note:  a negative {number} makes sense if a shape is rotated. */
 
         numbuf[j++] = *cp++;
     }
@@ -686,8 +686,10 @@ picref_lookahead(void)
 
         _snprintf(msg,
                   sizeof(msg),
-                  "pic<ui> %s <ui>,<ui> <garbage>",
-                  ((is_size_cmd) ? SIZE_TOK : MOVE_TOK));
+                  "pic<ui> %s %s,%s <garbage>",
+                  ((is_size_cmd) ? SIZE_TOK : MOVE_TOK),
+                  ((is_size_cmd) ? "<uint>" : "<int>"),
+                  ((is_size_cmd) ? "<uint>" : "<int>"));
 
         syntax_error(msg, 0);
         return (P3ICLI_ERR_TOK);
