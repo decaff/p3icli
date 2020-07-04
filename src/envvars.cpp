@@ -27,14 +27,14 @@ static const char*  WDWS_XPLR_IGNORE_ENV_VAR   = "P3ICLI_WDWS_XPLR_IGNORE";
 //
 // Since this routine is invoked at program startup (only), it calls
 // exit(1) for invalid data.
-static int
+static bool
 grab_numeric_val_from_env_var(const char*   varname,
                               unsigned long minvalue,
                               unsigned long maxvalue,
                               unsigned long *rslt)
 {
     char *opt = getenv(varname);
-    int  rc   = FALSE;
+    bool rc   = false;
 
     if (! opt)
         return (rc);
@@ -70,7 +70,7 @@ grab_numeric_val_from_env_var(const char*   varname,
         exit(1);
     }
     *rslt = tmp;
-    return (TRUE);
+    return (true);
 }
 
 // Possible function return values:
@@ -81,11 +81,11 @@ grab_numeric_val_from_env_var(const char*   varname,
 //
 // Since this routine is invoked at program startup (only), it calls
 // exit(1) for invalid data.
-static int
-grab_bool_val_from_env_var(const char* varname, int *rslt)
+static bool
+grab_bool_val_from_env_var(const char* varname, bool *rslt)
 {
     char *opt = getenv(varname);
-    int rc    = FALSE;
+    bool rc   = false;
 
     if (! opt)
         return (rc);
@@ -99,30 +99,30 @@ grab_bool_val_from_env_var(const char* varname, int *rslt)
     }
 
     char *var_value = mklower(cp);
-    rc = TRUE;
+    rc = true;
     if (! var_value[1])
     {
         // single char value
 
         if (var_value[0] == 'f')
         {
-            *rslt = FALSE;
+            *rslt = false;
             return (rc);
         }
         else if (var_value[0] == 't')
         {
-            *rslt = TRUE;
+            *rslt = true;
             return (rc);
         }
     }
     else if (strcmp(var_value, "false") == 0)
     {
-       *rslt = FALSE;
+       *rslt = false;
        return (rc);
     }
     else if (strcmp(var_value, "true") == 0)
     {
-       *rslt = TRUE;
+       *rslt = true;
        return (rc);
     }
 
@@ -180,17 +180,17 @@ env_vars::collect_env_var_options()
     }
     if (IsWdws10AndLater())
     {
-        int bval;
+        bool bval;
 
         if (grab_bool_val_from_env_var(WDWS_XPLR_END_TASK_ENV_VAR, &bval))
         {
             _wdws_xplr_end_task_set = true;
-            _wdws_xplr_end_task     = (bval == TRUE);   // kill devStudio wrng
+            _wdws_xplr_end_task     = bval;
         }
         if (grab_bool_val_from_env_var(WDWS_XPLR_IGNORE_ENV_VAR, &bval))
         {
             _wdws_xplr_ignore_set = true;
-            _wdws_xplr_ignore     = (bval == TRUE);   // kill devStudio wrng
+            _wdws_xplr_ignore     = bval;
         }
     }
 }

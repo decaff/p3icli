@@ -6,6 +6,6 @@
 #ifndef PROGVER_H
 #define PROGVER_H
 
-#define PROG_VRSN "3.4"
+#define PROG_VRSN "3.4 rc-1"
 
 #endif
