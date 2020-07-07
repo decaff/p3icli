@@ -22,13 +22,13 @@ static bool insert_named_tmplt_slide(
                                   const char *src_tmplt_path,
                                   Presentations &
                                     );
-static void insert_numeric_tmplt_slide_cpy_src_fmt(
+static bool insert_numeric_tmplt_slide_cpy_src_fmt(
                                                 long slide_idx,
                                                 const char *src_tmplt_path,
                                                 _Presentation &dstpres,
                                                 Slides &dstslides
                                                   );
-static void insert_numeric_tmplt_slide_via_copy_paste(
+static bool insert_numeric_tmplt_slide_via_copy_paste(
                                                 long slide_idx,
                                                 const char *src_tmplt_path,
                                                 _Presentation &dstpres,
@@ -381,8 +381,13 @@ pause_for_failed_slide_paste(void)
 
 // ---------------- various flavors of "insert slide" -------------------
 
-// returns true if desired slide inserted...otherwise, GotoSlide()
-// throws exception.
+// Returns true if desired slide inserted...otherwise:
+//
+// a) InsertFromFile() throws an exception, or
+// a) Some other PPT method (e.g., GotoSlide()) throws an exception, or
+// c) insert_slide_idx_oor() returns an error up the call chain and this
+//    function returns false.
+//
 static bool
 insert_numeric_tmplt_slide(long slide_idx, const char *tmplt_path)
 {
@@ -392,10 +397,13 @@ insert_numeric_tmplt_slide(long slide_idx, const char *tmplt_path)
     {
         // user wants src slide contents & background copied to destination.
 
-        insert_numeric_tmplt_slide_cpy_src_fmt(slide_idx,
-                                               tmplt_path,
-                                               pres,
-                                               slides);
+        if (! insert_numeric_tmplt_slide_cpy_src_fmt(slide_idx,
+                                                     tmplt_path,
+                                                     pres,
+                                                     slides))
+        {
+            return (false);
+        }
     }
     else
     {
@@ -417,13 +425,15 @@ insert_numeric_tmplt_slide(long slide_idx, const char *tmplt_path)
             // directly copying a slide from one presentation to another.
             // So workaround the problem using copy and paste.
 
-            insert_numeric_tmplt_slide_via_copy_paste(slide_idx,
-                                                      tmplt_path,
-                                                      pres,
-                                                      slides);
+            if (! insert_numeric_tmplt_slide_via_copy_paste(slide_idx,
+                                                            tmplt_path,
+                                                            pres,
+                                                            slides))
+            {
+                return (false);
+            }
         }
     }
-
 
     // Now, adjust active slide...
     DocumentWindow wdw(ppt->app().GetActiveWindow());
@@ -502,7 +512,13 @@ insert_named_tmplt_slide(P3ICLI_CMD_DATA *cmd,
 // insert slide w/o copying source formatting, but resort to use of the
 // clipboard to effect the presentation update (slower and much more
 // complex).
-static void
+//
+// Returns:   false => slide oor
+//            true  => success
+//
+// Note that this routine could also throw an exception, which will be
+// caught and handled with an appropriate error.
+static bool
 insert_numeric_tmplt_slide_via_copy_paste(long            slide_idx,
                                           const char      *src_tmplt,
                                           _Presentation   &dstpres,
@@ -533,7 +549,7 @@ insert_numeric_tmplt_slide_via_copy_paste(long            slide_idx,
         // opened presentation.
 
         srcpres.Close();
-        return;
+        return (false);
     }
 
     COleVariant var_slide_idx(slide_idx);
@@ -543,6 +559,7 @@ insert_numeric_tmplt_slide_via_copy_paste(long            slide_idx,
     // clipboard during a copy/paste operation.  Don't give up easily.
     (void) paste_src_slide(srcslide, dstslides); // LEAK, see disclaimer
     srcpres.Close();
+    return (true);
 }
 
 // same effect as insert_numeric_tmplt_slide(), plus the source slide's
@@ -550,8 +567,13 @@ insert_numeric_tmplt_slide_via_copy_paste(long            slide_idx,
 // versions, no Automation support is provided for copying the background
 // formatting, which makes the equivalent implementation NONTRIVIAL.
 //
-// Any PPT issues will throw an exception.
-static void
+// Returns:
+//       true  -- all is well
+//       false -- slide oor
+//
+// Note that any PPT issues will throw an exception.
+//
+static bool
 insert_numeric_tmplt_slide_cpy_src_fmt(
                             long slide_idx,
                             const char *src_tmplt_path,
@@ -586,8 +608,10 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         // opened presentation.
 
         srcpres.Close();
-        return;
+        return (false);
     }
+
+    bool rc = true;
 
     COleVariant var_slide_idx(slide_idx);
     _Slide srcslide(srcslides.Item(var_slide_idx));
@@ -601,7 +625,7 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         if (running_under_task_scheduler())
         {
             paste_with_src_fmt_under_task_scheduler(srcpres, srcslide, dstpres);
-            return;
+            return (rc);
         }
 
         // Right now, the Source Presentation is the active presentation.
@@ -621,7 +645,7 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         }
         copy_src_fmt_copy_paste_retries(srcslide);
         srcpres.Close();
-        return;
+        return (rc);
     }
     // ------------- end Office 2010 and later functionality --------------
 
@@ -660,7 +684,7 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         // in an Office 2007 env, there's nothing more to do, actually...
 
         srcpres.Close();  // dst presentation is now the active presentation
-        return;
+        return (rc);
 
         // ---------- end code specific to office 2007 (and later)
     }
@@ -829,6 +853,7 @@ insert_numeric_tmplt_slide_cpy_src_fmt(
         dstfill.SetTransparency(src_transparency);
 
     srcpres.Close();  // dst presentation is now the active presentation
+    return (rc);
 }
 
 // -------------------- Declare entry point for parser ------------------

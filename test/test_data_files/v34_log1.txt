@@ -1,0 +1,7 @@
+6   
+PPT: line 5: error: Slides.InsertFromFile : Integer out of range. 2 is not in SlideStart's valid range of 1 to 1.
+PPT: line 13: error: Slides.InsertFromFile : Integer out of range. 20 is not in SlideStart's valid range of 1 to 1.
+PPT: line 14: error: Slides.InsertFromFile : Integer out of range. 8 is not in SlideStart's valid range of 1 to 1.
+p3icli: line 25: error: Named slide "dave's not here" not found in "c:\ghub\p3icli\test\tmplts\junk3.potx"
+PPT: line 28: error: Slides.InsertFromFile : Integer out of range. 7 is not in SlideStart's valid range of 1 to 3.
+PPT: line 31: error: Slides.InsertFromFile : Integer out of range. 6 is not in SlideStart's valid range of 1 to 5.

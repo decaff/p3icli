@@ -1,0 +1,41 @@
+copy src fmt off
+third party fix off
+
+# next slide is oor
+insert slide 2 from template tmplts\intel_slide.pptx
+
+# this is not
+insert slide 1 from template tmplts\intel_slide.pptx
+pic1 pics\bernie_and_bird.jpg
+cap1 "bernie!"
+
+# next 2 slides are oor
+insert slide 20 from template tmplts\generic_tmplt.pptx
+insert slide 8 from template tmplts\geom_test.potx
+
+# this is legit
+insert slide 1 from template tmplts\max_pics_caps.potx
+pic1  pics\pic1.png
+pic20 pics\pic20.png
+cap1 "cap1"
+cap20 "cap20"
+clean slide
+
+# no such slide
+insert slide "dave's not here" from template tmplts\junk3.potx
+
+# next slide is oor
+insert slide 7 from template tmplts\some_slides.pptx
+
+# also oor
+insert slide 6 from template tmplts\junk3.potx
+
+# this is okay
+insert slide 1 from template tmplts\some_slides.pptx
+pic3 pics\humpback whale.jpg
+
+# linger for a peek
+sleep 5000
+
+kill ppt discard
+

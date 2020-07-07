@@ -1,0 +1,59 @@
+copy src fmt on
+third party fix off
+
+slide size 4:3    # useful for many templates in this script
+
+# next slide is oor
+insert slide 2 from template tmplts\intel_slide.pptx
+
+# this is not
+insert slide 1 from template tmplts\intel_slide.pptx
+pic1 pics\bernie_and_bird.jpg
+cap1 "bernie!"
+clean slide
+
+# next 2 slides are oor
+insert slide 20 from template tmplts\generic_tmplt.pptx
+insert slide 8 from template tmplts\geom_test.potx
+
+# this is legit
+insert slide 1 from template tmplts\max_pics_caps.potx
+pic1  pics\pic1.png
+pic2  pics\pic2.png
+pic19 pics\pic19.png
+pic20 pics\pic20.png
+cap1 "cap1 text"
+cap2 "cap2 text"
+cap19 "cap19 text"
+cap20 "cap20 text"
+clean slide
+
+# next slide is oor
+insert slide 7 from template tmplts\some_slides.pptx
+
+# also oor
+insert slide 6 from template tmplts\junk3.potx
+
+# this is okay
+insert slide 1 from template tmplts\some_slides.pptx
+pic3 pics\humpback whale.jpg
+cap3 "whale"
+clean caps
+
+# neither okay
+insert slide 55 from template tmplts\mult_intel.pptx
+insert slide 10 from  template tmplts\cpy_src_test.pptx
+
+# okay
+insert slide 8 from template tmplts\cpy_src_test.pptx
+
+# okay
+insert slide 4 from template tmplts\mult_intel.pptx
+title "all done!"
+clean slide
+
+# linger for a peek
+sleep 5000
+
+kill ppt discard
+

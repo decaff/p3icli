@@ -1,0 +1,7 @@
+6   
+p3icli: line 5: error: slide 2 out-of-range, valid range is 1 to 1
+p3icli: line 13: error: slide 20 out-of-range, valid range is 1 to 1
+p3icli: line 14: error: slide 8 out-of-range, valid range is 1 to 1
+p3icli: line 27: error: slide 7 out-of-range, valid range is 1 to 3
+p3icli: line 30: error: slide 6 out-of-range, valid range is 1 to 5
+p3icli: line 37: error: slide 100 out-of-range, valid range is 1 to 5
