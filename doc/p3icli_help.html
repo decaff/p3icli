@@ -45,7 +45,7 @@ P3ICLI (PowerPoint Picture Insert Command Line Interface) Reference Manual
 P3ICLI (PowerPoint Picture Insert Command Line Interface)<br />Reference Manual
 </h1>
 <h4 align="center">
-Version 3.3
+Version 3.4
 </h4>
 <div class="top">
 <h3>
@@ -93,6 +93,7 @@ Table Of Contents
     <li><a href="#task_scheduler_caveats">Task Scheduler Hints/Caveats</a></li>
     <li><a href="#fast_PC_considerations">Fast PC Considerations</a></li>
     <li><a href="#win10_instability">PowerPoint Instability On Windows 10</a></li>
+    <li><a href="#troubleshooting_random_strange_errors">Troubleshooting Random, Strange Errors</a></li>
 </ul>
 <h4>Figures and Tables</h4>
 <ul>
@@ -1710,6 +1711,19 @@ where:
     </td>
 </tr>
 <tr>
+    <td class="code">-Iev</td>
+    <td class="left">Ignore P3ICLI Environment Variable values (if any).
+    </td>
+</tr>
+<tr>
+    <td class="code">-Iifx</td>
+    <td class="left">Ignore a P3ICLI Init File (if any).  This switch
+                     provides a simple method of temporarily suppressing an
+                     init file's settings and commands without renaming or
+                     deleting same.
+    </td>
+</tr>
+<tr>
     <td class="code">-Ix</td>
     <td class="left">Ignore windows eXplorer (aka File Explorer) on a Windows
                      10 host.
@@ -2364,7 +2378,7 @@ in the affected scripts, like so:
 # .... remainder of traditional script goes here
 </pre>
 </blockquote>
-Finally, add debug level 4 (.i.e., -D4) to the P3ICLI command line to 
+Finally, add debug level 4 (.i.e., -D4) to the P3ICLI command line to
 determine which Init File was opened and processed.
 <h3>
 <a name="modifying_pic_shapes" />Dynamically Modifying Picture Shapes
@@ -2883,9 +2897,9 @@ these three conditions exist:
   <li>Windows Explorer (aka File Explorer) is <b>visible</b>.
   </li>
 </ol>
-Then PowerPoint 2016 exhibits increased instability, especially during the
-execution of long running scripts.  I.E., PowerPoint 2016 more
-frequently pops up this message box:
+Then PowerPoint 2016 and 2019 exhibit increased instability, especially during
+the execution of long running scripts.  I.E., PowerPoint 2016/2019 more
+frequently pop up this message box:
 <p align="center">
 <img src="ppt_is_sorry.png" alt="PowerPoint is sorry message box" />
 </p>
@@ -2935,6 +2949,69 @@ overrides.
 Finally, if a debug level of -D1 (or higher) is added to the command line,
 P3ICLI lists the aforementioned -Ix/-Ex values in effect at program invocation.
 </p>
+<h3>
+<a name="troubleshooting_random_strange_errors" />
+Troubleshooting Random, Strange Errors
+</h3>
+There are occasions when P3ICLI reports strange errors that seem both random
+and absurd.  Example of such errors include:
+<ul>
+   <li>RPC Server is Unavailable</li>
+   <li>No memory resources to start PowerPoint (even when memory is plentiful)</li>
+</ul>
+<p>
+Here follows a troubleshooting guide to fix and/or avoid these strange error
+messages:
+</p>
+<ol>
+    <li> It's common knowledge within the technology community that
+         when the Windows operating system runs for a long time without
+         a restart, programs (not just P3ICLI) begin failing in strange ways.
+         <b>The quickest cure is often a Windows reboot.</b>
+         <br />&nbsp;
+    </li>
+    <li> When a P3ICLI script saves a presentation, kills PowerPoint, and
+         successfully exits, PowerPoint occasionally does <u>not</u> cleanly
+         terminate. Consequently, an invisible, "orphan" instance of PowerPoint
+         can continue running in the background. If this orphan is not killed
+         (via Task Manager), P3ICLI scripts begin failing with odd and bizarre
+         errors.
+         <p>
+         When in doubt, <b>check for an <u>invisible</u> instance of
+         Microsoft PowerPoint running in the background.</b>
+         </p>
+    </li>
+    <li> Good P3ICLI script "hygiene" can preclude creation of the orphan
+         PowerPoint processes described in item #2 above.
+         This script idiom has proven quite
+         successful at preventing orphans:
+<blockquote>
+<pre class="highlit_code">
+# begin script
+# ============
+kill ppt discard     # start from a clean environment
+
+# now, run as many p3icli commands as necessary
+# ....
+# ....
+
+# at the end of the script, save all work
+save as presentation c:\some\path\my_slide_deck.pptx
+
+# Clean up by nuking all instances of ppt
+# =======================================
+kill ppt discard
+</pre>
+</blockquote>
+         Notes on the above idiom:
+         <ul>
+            <li> <b><u>Not</u></b> for use in a Task Scheduler environment.</li>
+            <li> The -X command line option may be substituted for the final
+                 line of the idiom.
+            </li>
+         </ul>
+    </li>
+</ol>
 </div>
 </body>
 </html>
