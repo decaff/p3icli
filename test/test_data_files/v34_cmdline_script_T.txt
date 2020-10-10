@@ -1,0 +1,20 @@
+# This script is launched with the -T switch in effect...so "kill ppt discard"
+# is a no-no and powerpoint is already running when this script is initiated.
+
+# add a bunch of commands that do mostly nothing and quit
+
+encoding utf8
+encoding ansi
+third party fix on
+
+ignore c:\some\dir\some\file.png
+
+pics root c:\what\dir
+
+templates root c:\that\dir\subdir
+
+third party fix off
+sleep 475
+
+# time to go
+exit

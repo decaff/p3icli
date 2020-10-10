@@ -47,6 +47,37 @@ env_vars               *envvars;
 
 /* ------------------------------------------------------------------- */
 
+// Returns T if -Iev found on cmdline
+static bool
+ignore_env_vars(int argc, char **argv)
+{
+    argv++; argc--;     // skip progname
+    for (int i = 0; i < argc; i++, argv++)
+    {
+        if (**argv == '-')
+        {
+            char *option = argv[0] + 1;
+
+            if (*option == 'I')
+            {
+                if (option[1] == 'e' && option[2] == 'v' && (! option[3]))
+                    return (true);
+            }
+            else if (*option == 'V' || *option == 'T' || *option == 'l')
+            {
+                // This option takes a cmdline arg, skip it.
+
+                i++;
+                argv++;
+            }
+        }
+        else
+            break;   // remainder of cmdline must be a single script filename
+    }
+    return (false);
+
+}
+
 static unsigned int
 parse_debug_level(const char *cmdline_level_str)
 {
@@ -362,6 +393,8 @@ usage(int rc)
 "  -D[n]         enable internal debug msgs at optional level \"n\" (integer)\n"
 "  -Ex           send 'End task' msg to windows eXplorer on Win10 host\n"
 "  -F            dif cmd: Force image file deletion if number of errors > 0\n"
+"  -Iev          Ignore p3icli Environment Variable values (if any)\n"
+"  -Iif          Ignore Init File (if any)\n"
 "  -Ix           Ignore windows eXplorer on Win10 host\n"
 "  -S            dump accepted syntax on stdout and exit\n"
 "  -X            execute \"kill ppt discard\" after all scripts are processed.\n"
@@ -561,7 +594,7 @@ main(int argc, char **argv)
 {
     char          *cp, *slash, msg[FILENAME_MAX + 128], *logfile = NULL;
     unsigned int  debug_level  = 0;
-    bool          enable_debug = false;
+    bool          enable_debug = false, ignore_init_file = false;
     HRESULT       hr;
     FILE          *logfd = NULL;
     unsigned long PPT_task_sched_wait_time;
@@ -584,9 +617,13 @@ main(int argc, char **argv)
         return (1);
     }
 
-    // Record prefs from env vars, if any.  Command line switch values can
-    // override these prefs.
-    envvars->collect_env_var_options();
+    if (! ignore_env_vars(argc, argv))
+    {
+        // Record prefs from env vars, if any.  Command line switch values can
+        // override these prefs.
+
+        envvars->collect_env_var_options();
+    }
 
     // primitive cmd line parsing (getopt not available in MS land)
     argv++;
@@ -631,9 +668,18 @@ main(int argc, char **argv)
             }
             else if (*option == 'I')
             {
-                if (! (option[1] == 'x' && option[2] == '\0'))
+                if (option[1] == 'x' && option[2] == '\0')
+                    envvars->wdws_xplr_ignore_upd(true);
+                else if (option[1] == 'e' && option[2] == 'v' && (! option[3]))
+                {
+                    // option already handled via a call to ignore_env_vars().
+
+                    ;
+                }
+                else if (option[1] == 'i' && option[2] == 'f' && (! option[3]))
+                    ignore_init_file = true;
+                else
                     usage(1);
-                envvars->wdws_xplr_ignore_upd(true);
                 argv++;
                 continue;
             }
@@ -805,8 +851,11 @@ main(int argc, char **argv)
             err->debug("flex configured correctly", 1);
     }
 
-    if (! maybe_parse_init_file_as_script(logfd))
-        goto common_exit_point;
+    if (! ignore_init_file)
+    {
+        if (! maybe_parse_init_file_as_script(logfd))
+            goto common_exit_point;
+    }
 
     if (argc == 0)
     {

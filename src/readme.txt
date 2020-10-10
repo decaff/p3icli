@@ -71,6 +71,21 @@ Change Log
 ==========
 v3.4 released ??/??/2020
     - Numeric values may now be prefixed with a '+' sign.
+    - Added new command line switch -Iif, which causes P3ICLI to Ignore
+      an Init File that might exist in the current host environment.
+    - Added new command line switch -Iev, which causes P3ICLI to Ignore
+      its program-specific Environment Variables. Type "p3icli -S"  on
+      the command line to obtain a list of said variables.
+    - Documentation updated to describe -Iif and -Iev .
+    - A new "Troubleshooting Random, Strange Errors" help file topic
+      describes some approaches for dealing with strange, absurd script
+      errors.
+    - Error processing for the "insert slide" command has been improved.
+    - Take note that there's not much new functionality in this release
+      and no bug fixes, either.  If P3ICLI v3.3 (the previous version)
+      proves satisfactory for your work flow, there's no need to upgrade
+      to v3.4 .
+    - Barring an unforeseen bug, this may be the last P3ICLI release.
 
 v3.3 released 06/23/2020
     - Documentation completes the transition to post-Office 2003 filename

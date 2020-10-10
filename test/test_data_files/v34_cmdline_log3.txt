@@ -1,0 +1,4 @@
+1   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256
+p3icli: .p3iclirc(line 1): error: syntax error

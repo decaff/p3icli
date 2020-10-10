@@ -1,0 +1,19 @@
+kill ppt discard
+
+# add a bunch of commands that do mostly nothing and quit
+
+start ppt
+encoding utf8
+encoding ansi
+third party fix on
+
+ignore c:\some\dir\some\file.png
+
+pics root c:\what\dir
+
+templates root c:\that\dir\subdir
+
+third party fix off
+sleep 450
+kill ppt discard
+halt

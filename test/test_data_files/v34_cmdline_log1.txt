@@ -1,0 +1,3 @@
+0   
+p3icli: debug: config: wait after async cmd: 80
+p3icli: debug: config: wait at exit: 256

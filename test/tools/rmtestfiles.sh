@@ -65,6 +65,8 @@ rm -f c:/temp/v32_cmdline_log[12].txt
 rm -f c:/temp/v33_log[12345678].txt
 rm -f c:/temp/v33_log_edited.txt
 rm -f c:/temp/v34_log[123].txt
+rm -f c:/temp/v34_cmdline_log[12345].txt
+rm -f c:/temp/v34_cat_log_edited.txt
 rm -f c:/temp/run*_log.txt
 
 set +x
